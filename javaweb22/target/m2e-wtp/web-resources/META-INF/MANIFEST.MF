@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Admin
+Build-Jdk: 11.0.16.1
+Implementation-Title: Maven Spring Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.devpro
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/javaweb23
+Created-By: Maven Integration for Eclipse
+
