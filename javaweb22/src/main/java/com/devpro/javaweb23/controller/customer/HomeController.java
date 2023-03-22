@@ -19,15 +19,18 @@ import com.devpro.javaweb23.controller.BaseController;
 import com.devpro.javaweb23.dto.Employee;
 import com.devpro.javaweb23.model.Contact;
 import com.devpro.javaweb23.model.Product;
+import com.devpro.javaweb23.model.Shop;
 import com.devpro.javaweb23.services.impl.CategoriesService;
 import com.devpro.javaweb23.services.impl.ProductService;
+import com.devpro.javaweb23.services.impl.ShopService;
 
 //1.Báo cho spring mvc biết đây là 1 controller
 //2.tạo ra một Bean(Object/Instance) và được quản lí bởi spring-container
 @Controller
 public class HomeController extends BaseController{
 	
-	
+	@Autowired
+	private ShopService shopService;
 	@Autowired
 	private ProductService productService;
 	@Autowired
@@ -69,7 +72,7 @@ public class HomeController extends BaseController{
 		public String home(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 
-			model.addAttribute("products", productService.findAll());
+			model.addAttribute("shops", shopService.findAll());
 	
 			return "customer/grabfood";   ///WEB-INF/views/customer/grabfood.jsp;
 		};
@@ -80,5 +83,14 @@ public class HomeController extends BaseController{
 			//đường dẫn tới file view 
 			return "customer/danhmuc";   ///WEB-INF/views/customer/grabfood.jsp;
 		};
-	
+		@RequestMapping(value = { "home/cuahang/{shopId}" }, method = RequestMethod.GET)
+		public String test_cua_hang_view_id(final Model model, 
+												final HttpServletRequest request,
+												final HttpServletResponse response,
+												@PathVariable("shopId") Integer shopId) 
+			throws IOException {
+			Shop shop = shopService.getById(shopId);
+			model.addAttribute("shop", shop); // đẩy data xuống view
+			return "customer/chitiet"; /// WEB-INF/views/customer/grabfood.jsp;
+		};
 }

@@ -612,7 +612,7 @@ html{
 .body-content{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    
     margin-left: 0px !important;
     position: relative;
     padding: 10px 0px;
@@ -622,6 +622,7 @@ html{
 .body-item{
     width: 20%;
     background-color: var(--blacklight-color);
+    margin:0 0.5% 15px 0.5%;
     padding: 10px;
     position: relative;
     border-radius: 10px;
@@ -719,9 +720,8 @@ html{
     color: #fff;
     padding-right: 7px;
 }
-.sale span{
+.sale p{
     font-size: 15px;
-    text-align: center;
     color: var(--violet-color);
 }
 .ti-tag{
@@ -1716,6 +1716,7 @@ html{
     margin-top: 20px;
 }
 .mySlides {
+	height: 370px !important;
 	display: none;
 	box-shadow: rgba(151, 148, 148, 0.35) 0px 5px 15px;
 }
@@ -1747,7 +1748,9 @@ img {vertical-align: middle;}
     user-select: none;
     text-decoration: none;
   }
-  
+  .prev{
+  	left:0;
+  }
   /* Position the "next button" to the right */
   .next {
     right: 0;
@@ -1868,17 +1871,18 @@ h2{
     padding: 0px;
     font-size: 13px;
     margin-left: -5px;
+    display:flex;
 
 }
 .product-details__time{
     width: 100%;
     display: flex;
+    justify-content: space-between;
     margin: 20px 0px;
 }
 .product-details__select{
-    width: 376px;
+    width: 47%;
     height: 48px;
-    margin-right: 50px;
     border: 1px solid gainsboro;
     border-radius: 10px;
     background: var(--white-color);
@@ -1887,7 +1891,7 @@ h2{
     padding: 0px 20px;
 }
 .select-time{
-    width: 85%;
+    width:77%;
     height: 48px;
     line-height: 48px;
     display: inline-block;
@@ -2537,6 +2541,7 @@ h2{
         padding: 10px 0px;
         color: var(--violet-color);
     }
+    
     .body-item{
         margin-bottom: 20px;
     }
@@ -2609,7 +2614,27 @@ h2{
     }
 
 }
-    
+
+@media (max-width: 1200px){
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 32.333333% !important;
+}
+@media (max-width: 992px){
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 32.333333% !important;
+}
+}
+@media (max-width: 768px){
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 49% !important;
+}
+}
+
+
+
 #footer{
     width: 100%;
     background-color: var(--violet-color);

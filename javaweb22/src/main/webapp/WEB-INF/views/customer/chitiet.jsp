@@ -34,8 +34,11 @@
 	rel="stylesheet"
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+	rel="stylesheet" />
 </head>
 
 <body>
@@ -53,18 +56,18 @@
 					<!-- nav__danhmuc -->
 					<nav class="menu menu__chitiet">
 						<a href="./grabfood.html">Trang chủ</a> <i class="ti-angle-right"></i>
-						<a href="#">Ẩm thực</a> <i class="ti-angle-right"></i> <a href="#">Bún
-							hải sải - Mỹ Đình</a>
+						<a href="#">Ẩm thực</a> <i class="ti-angle-right"></i> <a href="#">${shop.name }</a>
 					</nav>
 					<!-- /nav__danhmuc -->
 					<!-- h2 -->
-					<h2 style="color: var(--white-color);">Bún hải sải - Mỹ Đình</h2>
+					<h2 style="color: var(--white-color);">${shop.name }</h2>
 					<!-- /h2 -->
 					<!--product-details__p  -->
 					<p>Cơm</p>
 					<p>
-						<span style="color: var(- -violet-color);">Địa chỉ: </span>số 134
-						Nguyên Xá, Minh Khai, Bắc Từ Liêm, Hà Nội
+						<i class="fa-sharp fa-solid fa-location-dot"
+							style="color: #e11818; margin-right: 5px;"></i><span
+							style="color: var(--violet-color);">Địa chỉ: </span>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
 					</p>
 					<p>
 						<i class="fa-solid fa-star"
@@ -77,8 +80,9 @@
 							style="color: #fff;">3km</span>
 					</p>
 					<p>
-						<span style="font-weight: bold;">Giờ mở cửa: </span><span
-							style="margin-left: 54px;">07:00-22:30</span>
+						<span style="font-weight: bold;">Giờ đóng mở cửa: </span><span
+							style="margin-left: 54px;">${shop.openTime } h -
+							${shop.closeTime } h</span>
 					</p>
 					<!--product-details__p  -->
 					<!-- btn-book-shop -->
@@ -90,14 +94,12 @@
 					<!-- /btn-book-shop -->
 					<!-- product-details__sale -->
 					<div class="product-details__sale sale">
-						<i class="ti-tag"></i><span>Tặng ngay trà tắc thơm ngon khi
-							đặt đơn tối thiểu 150.000₫</span>
+						<i class="ti-tag"></i>
+						<p>${shop.descriptionShop }</p>
 					</div>
 					<div class="product-details__sale sale">
-						<i class="ti-tag"></i><span>Giảm 5.000₫ phí giao hàng khi
-							đặt đơn tối thiểu 150.000₫</span> <span
-							style="margin-left: 40px; color: rgb(63, 63, 151); font-weight: bold;">Xem
-							thêm 5</span>
+						<i class="ti-tag"></i>
+						<p>Giảm 5.000₫ phí giao hàng khi đặt đơn tối thiểu 150.000₫</p>
 					</div>
 					<!-- /product-details__sale -->
 					<!-- product-details__time -->
@@ -140,27 +142,18 @@
 				<!-- /product-details -->
 				<!-- wrapper-imgShop -->
 				<div class="wrapper-imgShop">
-					<div class="slideshow-container">
-						<div class="mySlides ">
-							<div class="numbertext">1 / 3</div>
-							<img src="${base }/img/imgchitiet/img-nhahang1.jpg"
-								style="width: 100%">
-							<div class="text">Hình ảnh nhà hàng 1</div>
+					<div class="slideshow-container" style="height: 412px !important;">
+						<div class="mySlides " style="margin-top: 20px;">
+							<img src="${base }/upload/${shop.avatar}" style="width: 100%">
+							<div class="text" style="color: var(--violet-color);">Hình
+								ảnh nhà hàng</div>
 						</div>
-
-						<div class="mySlides ">
-							<div class="numbertext">2 / 3</div>
-							<img src="${base }/img/imgchitiet/img-nhahang2.png"
-								style="width: 100%">
-							<div class="text">Hình ảnh nhà hàng 2</div>
-						</div>
-
-						<div class="mySlides ">
-							<div class="numbertext">3 / 3</div>
-							<img src="${base }/img/imgchitiet/img-nhahang3.jpg"
-								style="width: 100%">
-							<div class="text">Hình ảnh nhà hàng 3</div>
-						</div>
+						<c:forEach items="${shop.shopImages }" var="shopImage">>				
+							<div class="mySlides ">
+								<img src="${base }/upload/${shopImage.path}" style="width: 100%">
+								<div class="text">Bên trong quán</div>
+							</div>
+						</c:forEach>
 
 						<a class="prev" onclick="plusSlides(-1)">❮</a> <a class="next"
 							onclick="plusSlides(1)">❯</a>
@@ -206,7 +199,7 @@
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
 					<c:forEach var="product" items="${products }">
-						
+
 						<div
 							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"
 							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
@@ -237,9 +230,9 @@
 							<!-- 
 							<a href="${base }/product/detail/${product.seo }"></a>					
 							 -->
-							 <a href="#"></a>
-						</div>				
-						
+							<a href="#"></a>
+						</div>
+
 					</c:forEach>
 					<!--  /body-content__item1-->
 					<!-- body-content__item1 -->
@@ -931,7 +924,7 @@
 					</div>
 					<!-- /four -->
 				</div>
-			
+
 				<div class="footer__modal">
 					<div class="buttons_added">
 						<input onclick="handleMinus()" class="minus is-form" type="button"
@@ -947,7 +940,7 @@
 
 					</button>
 				</div>
-			
+
 			</div>
 		</div>
 		<!-- /modal-buy
