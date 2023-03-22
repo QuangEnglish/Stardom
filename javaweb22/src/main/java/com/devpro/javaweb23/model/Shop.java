@@ -189,5 +189,17 @@ public class Shop extends BaseEntity{
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+	public Boolean getIsNew() {
+		return isNew;
+	}
+	public void setIsNew(Boolean isNew) {
+		this.isNew = isNew;
+	}
+	public Boolean getIsDisplay() {
+		return isDisplay;
+	}
+	public void setIsDisplay(Boolean isDisplay) {
+		this.isDisplay = isDisplay;
+	}
 	
 }

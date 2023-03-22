@@ -97,6 +97,7 @@
 										<tr>
 											<th scope="col">STT</th>
 											<th scope="col">Tên món</th>
+											<th scope="col">Mã cửa hàng</th>
 											<th scope="col">Giá</th>
 											<th scope="col">Thể loại món</th>
 											<th scope="col">Status</th>
@@ -110,6 +111,8 @@
 											<tr>
 												<th scope="row" width="5%">${loop.index + 1}</th>
 												<td>${product.title }</td>
+												<td>
+												</td>
 												<td>
 													<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
 														scope="session" /> <fmt:formatNumber

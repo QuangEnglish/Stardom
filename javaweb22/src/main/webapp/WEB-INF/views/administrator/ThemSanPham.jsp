@@ -100,7 +100,12 @@
 									<tr>
 										<td style="width: 180px;">Mã id sản phẩm:</td>
 										<td><sf:input path="id" type="text" name="productCode"
-												id="productCode"></sf:input></td>
+												id="productCode" placeholder="Nếu thêm mới thì không cần nhập id!"></sf:input></td>
+									</tr>
+									<tr>
+										<td style="width: 180px;">Mã id cửa hàng:</td>
+										<td><sf:input path="shop.id" type="text" name="shopCode"
+												id="shopCode"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tiêu đề:</td>
@@ -129,20 +134,6 @@
 												id="detail_description" class="form-control summernote"></sf:textarea>
 										</td>
 									</tr>
-									<tr>
-										<td>Tác vụ:</td>
-										<td style="display: flex;"><input type="checkbox"
-											name="productCheck1" id="productCheck1"
-											style="height: 20px; width: 20px; margin: 15px 10px;">
-											<label for="productCheck1">Mới</label><br> <input
-											type="checkbox" name="productCheck2" id="productCheck2"
-											style="height: 20px; width: 20px; margin: 15px 10px;">
-											<label for="productCheck2"> Nổi bật</label><br> <input
-											type="checkbox" name="productCheck3" id="productCheck3"
-											style="height: 20px; width: 20px; margin: 15px 10px;">
-											<label for="productCheck3">Hiển thị</label><br></td>
-									</tr>
-									<tr></tr>
 									<tr>
 										<td></td>
 										<td><button type="submit"

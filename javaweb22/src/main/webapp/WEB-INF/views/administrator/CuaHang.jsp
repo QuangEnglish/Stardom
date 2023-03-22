@@ -255,8 +255,10 @@
 											<th scope="col">STT</th>
 											<th scope="col">Tên cửa hàng</th>
 											<th scope="col">Địa chỉ</th>
-											<th scope="col">Giờ đóng mở cửa</th>
+											<th scope="col">ID Sản phẩm</th>
+											<th scope="col">Hiển thị</th>
 											<th scope="col">Nổi bật</th>
+											<th scope="col">Đang sale</th>
 											<th scope="col">Hình ảnh</th>
 											<th scope="col">Status</th>
 											<th scope="col">Tác vụ</th>
@@ -270,10 +272,34 @@
 												<td style="width: 20%;">
 													<p>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }</p>
 												</td>
-												<td>${shop.openTime }-${shop.closeTime }</td>
+												<td>
+													
+												</td>
+												<td style="width: 70px;"><span
+													id="_shop_isHot_${shop.id} }"> <c:choose>
+															<c:when test="${shop.isDisplay }">
+																<input type="checkbox" checked="checked"
+																	readonly="readonly">
+															</c:when>
+															<c:otherwise>
+																<input type="checkbox" readonly="readonly">
+															</c:otherwise>
+														</c:choose>
+												</span></td>
 												<td style="width: 70px;"><span
 													id="_shop_isHot_${shop.id} }"> <c:choose>
 															<c:when test="${shop.isHot }">
+																<input type="checkbox" checked="checked"
+																	readonly="readonly">
+															</c:when>
+															<c:otherwise>
+																<input type="checkbox" readonly="readonly">
+															</c:otherwise>
+														</c:choose>
+												</span></td>
+												<td style="width: 70px;"><span
+													id="_shop_isNew_${shop.id} }"> <c:choose>
+															<c:when test="${shop.isNew }">
 																<input type="checkbox" checked="checked"
 																	readonly="readonly">
 															</c:when>

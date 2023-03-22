@@ -122,7 +122,7 @@ public class User extends BaseEntity implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+		// trả về 1 danh sách các role
 		return this.roles;
 	}
 	@Override

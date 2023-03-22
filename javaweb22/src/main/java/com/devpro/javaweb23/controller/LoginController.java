@@ -20,7 +20,7 @@ public class LoginController extends BaseController {
 	throws IOException{
 		model.addAttribute("registerModel", new Contact()); 	 	
 		//đường dẫn tới file view 
-		return "login";   
+		return "login2";   
 	};
 	
 }

@@ -137,29 +137,30 @@
 									</tr>
 									<tr>
 										<td>Tác vụ:</td>
-										<td style="display: flex;"><sf:input path="isNew" type="checkbox"
-											name="newShop" id="newShop"
-											style="height: 20px; width: 20px; margin: 15px 10px;"></sf:input>
-											<label for="newShop">Mới</label><br> <sf:input path="isHot"
-											type="checkbox" name="hotShop" id="hotShop"
-											style="height: 20px; width: 20px; margin: 15px 10px;"></sf:input>
-											<label for="hotShop"> Nổi bật</label><br> <sf:input
-											type="checkbox" name="displayShop" id="displayShop" path="isDisplay"
-											style="height: 20px; width: 20px; margin: 15px 10px;"></sf:input>
-											<label for="displayShop">Hiển thị</label><br></td>
+										<td style="display: flex;">
+											<sf:checkbox path="isNew"
+											name="newShop" id="newShop" label="Đang sale"
+											style="height: 20px; width: 20px; margin: 15px 10px;" />
+											<sf:checkbox path="isHot"  name="hotShop" id="hotShop" label="Nổi bật"
+											style="height: 20px; width: 20px; margin: 15px 10px;"/>
+											<sf:checkbox path="isDisplay" name="displayShop" id="displayShop"  label="Hiển thị"
+											style="height: 20px; width: 20px; margin: 15px 10px;" />
+										</td>
 									</tr>
 									<tr></tr>
 									<tr>
 										<td></td>
 										<td><button type="submit"
-												style="width: 150px; margin-right: 50px;">Thêm</button>
+												style="width: 150px; margin-right: 50px;">Thêm cửa hàng</button>
 											<button type="button"
 												style="width: 150px; margin-right: 50px;">
 												<a href="${base }/admin/cuahang"
 													style="text-decoration: none; color: black;">Thoát</a>
-											</button></td>
+											</button>
+										</td>
 									</tr>
 								</table>
+								
 							</sf:form>
 						</div>
 					</div>
