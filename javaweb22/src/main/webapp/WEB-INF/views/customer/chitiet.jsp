@@ -110,8 +110,8 @@
 								<select>
 									<option value="0">Ngày giao hàng: Hôm nay</option>
 									<option value="1">Hôm nay</option>
-									<option value="2">Tue,22 Nov</option>
-									<option value="3">Web,23 nov</option>
+									<option value="2">Ngày mai</option>
+									<option value="3">Ngày kia</option>
 								</select>
 							</div>
 						</div>
@@ -119,19 +119,19 @@
 							<i class="ti-time"></i>
 							<div class="select-time">
 								<select>
-									<option value="0">8:00 - 8:15</option>
-									<option value="1">8:15 - 8:30</option>
-									<option value="2">8:30 - 8:45</option>
-									<option value="3">8:45 - 9:00</option>
-									<option value="4">9:00 - 9:15</option>
-									<option value="5">9:15 - 9:30</option>
-									<option value="6">9:30 - 9:45</option>
-									<option value="7">9:45 - 10:00</option>
-									<option value="8">11:00 - 12:00</option>
-									<option value="9">12:00 - 13:00</option>
-									<option value="10">18:00 - 19:00</option>
-									<option value="11">18:15 - 19:00</option>
-									<option value="12">18:45 - 19:00</option>
+									<option value="0">8:00 - 8:30</option>
+									<option value="1">8:30 - 9:00</option>
+									<option value="2">9:00 - 9:30</option>
+									<option value="3">9:30 - 10:00</option>
+									<option value="4">10:00 - 10:30</option>
+									<option value="5">10:30 - 11:00</option>
+									<option value="6">11:00 - 12:00</option>
+									<option value="7">12:00 - 12:30</option>
+									<option value="8">12:00 - 13:00</option>
+									<option value="9">17:00 - 17:30</option>
+									<option value="10">17:30 - 18:00</option>
+									<option value="11">18:00 - 19:00</option>
+									<option value="12">19:00 - 20:00</option>
 
 								</select>
 							</div>
@@ -176,12 +176,9 @@
 			<ul class="product-details__menu--ul">
 				<li onclick="myFunction()"><a href="#uuDai" class="acl">Ưu
 						đãi hôm nay</a></li>
-				<li onclick="myFunction2()"><a href="#mon1" class="acl">Cơm
-						rang</a></li>
-				<li onclick="myFunction3()"><a href="#mon2" class="acl">Bún
-						chả</a></li>
-				<li onclick="myFunction4()"><a href="#mon3" class="acl">Hoa
-						quả tráng miệng</a></li>
+				<li onclick="myFunction2()"><a href="#mon1" class="acl">Món chính</a></li>
+				<li onclick="myFunction3()"><a href="#mon2" class="acl">Món phụ</a></li>
+				<li onclick="myFunction4()"><a href="#mon3" class="acl">Món tráng miệng</a></li>
 				<li onclick="myFunction5()"><a href="#mon4" class="acl">Đồ
 						uống</a></li>
 			</ul>
@@ -198,10 +195,9 @@
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<c:forEach var="product" items="${products }">
-
-						<div
-							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"
+					<c:forEach var="product" items="${shop.products }">
+						<div id="js-buy-eat"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12" 
 							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
 							<div class="body-content__item--img">
 								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
@@ -230,7 +226,7 @@
 							<!-- 
 							<a href="${base }/product/detail/${product.seo }"></a>					
 							 -->
-							<a href="#"></a>
+							
 						</div>
 
 					</c:forEach>
@@ -294,7 +290,7 @@
 
 				<div class="title-content title-content2">
 					<div class="padding-title" id="mon1"></div>
-					<h2>Cơm rang</h2>
+					<h2>Món chính</h2>
 				</div>
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
@@ -525,7 +521,7 @@
 				<!-- title-content title-content2 -->
 				<div class="title-content title-content2">
 					<div class="padding-title" id="mon2"></div>
-					<h2>Bún Chả</h2>
+					<h2>Món phụ</h2>
 				</div>
 				<!-- /title-content title-content2 -->
 				<!-- body-content__chitiet row -->
@@ -637,7 +633,7 @@
 				<!-- title-content title-content2 -->
 				<div class="title-content title-content2">
 					<div class="padding-title" id="mon3"></div>
-					<h2>Hoa quả tráng miệng</h2>
+					<h2>Món tráng miệng</h2>
 				</div>
 				<!-- /title-content title-content2 -->
 				<!-- body-content__chitiet row -->
@@ -796,13 +792,12 @@
 		<jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 		<!-- /footer -->
 
-		<!-- modal-buy		
-			<c:forEach var="product" items="${products }">
-			-->
-		<div class="modal-buy">
-			<div class="modal-container js-modal-container">
+		<!-- modal-buy-->
+	
+		<div class="modal-buy" id="modal-buy">
+			<div class="modal-container js-modal-container" id="js-modal-container">
 				<div class="header__modal">
-					<button class="js-modal-close" type="button">
+					<button class="js-modal-close" id="js-modal-close" type="button">
 						<i class="ti-close"></i>
 					</button>
 				</div>
@@ -944,125 +939,13 @@
 			</div>
 		</div>
 		<!-- /modal-buy
-			</c:forEach>
-			
-			 -->
-
-		<!-- modal-cart -->
-		<!--  
-			
-			<div class="modal-cart">
-				<div
-					class="modal-container modal-container-cart js-modal-container-cart">
-					<div class="header__modal header__modal-cart">
-						<button class="js-modal-close-cart" type="button">
-							<i class="ti-close"></i>
-						</button>
-						<p>Giỏ đồ ăn</p>
-					</div>
-					<div class="body__modal">
-						<div class="firstBody">
-							<div class="firstBody__title">
-								<p>Cơm rang gà sốt Mỹ Đình</p>
-							</div>
-						</div>
-						<div class="secondBody"></div>
-						<div class="wrapper-row-modal wrapper-row-modal-cart">
-							<div class="buttons_added buttons_added-cart">
-								<input onclick="handleMinus()"
-									class="minus is-form is-form-cart" type="button" value="-">
-								<input aria-label="quantity" id="amount"
-									class="input-qty input-qty-cart" max="50" min="0" name=""
-									type="number" value="1" style="width: 50px;"> <input
-									onclick="handlePlus()" class="plus is-form is-form-cart"
-									type="button" value="+">
-							</div>
-							<div class="firstBody__img">
-								<img src="${base}/img/imgchitiet/item1.png" alt="">
-							</div>
-							<div class="firstBody__title firstBody__title-cart">
-								<p>Cơm rang thập cẩm bò</p>
-								<span class="sp-body-f">33.000</span><span class="sp-body">45.000</span><br>
-								<span>chả, Pate, Không dưa chuột, Không rau mùi</span>
-							</div>
-						</div>
-						<div class="line-gray"></div>
-						<div class="wrapper-row-modal wrapper-row-modal-cart">
-							<div class="buttons_added buttons_added-cart">
-								<input onclick="handleMinus()"
-									class="minus is-form is-form-cart" type="button" value="-">
-								<input aria-label="quantity" id="amount"
-									class="input-qty input-qty-cart" max="50" min="0" name=""
-									type="number" value="1" style="width: 50px;"> <input
-									onclick="handlePlus()" class="plus is-form is-form-cart"
-									type="button" value="+">
-							</div>
-							<div class="firstBody__img">
-								<img src="${base}/img/imgchitiet/item2.png" alt="">
-							</div>
-							<div class="firstBody__title firstBody__title-cart">
-								<p>Cơm rang thập cẩm bò</p>
-								<span class="sp-body-f">33.000</span><span class="sp-body">45.000</span><br>
-								<span>chả, Pate, Không dưa chuột, Không rau mùi</span>
-							</div>
-						</div>
-						<div class="line-gray"></div>
-						<div class="wrapper-row-modal wrapper-row-modal-cart">
-							<div class="buttons_added buttons_added-cart">
-								<input onclick="handleMinus()"
-									class="minus is-form is-form-cart" type="button" value="-">
-								<input aria-label="quantity" id="amount"
-									class="input-qty input-qty-cart" max="50" min="0" name=""
-									type="number" value="1" style="width: 50px;"> <input
-									onclick="handlePlus()" class="plus is-form is-form-cart"
-									type="button" value="+">
-							</div>
-							<div class="firstBody__img">
-								<img src="${base}/img/imgchitiet/item3.png" alt="">
-							</div>
-							<div class="firstBody__title firstBody__title-cart">
-								<p>Cơm rang thập cẩm bò</p>
-								<span class="sp-body-f">33.000</span><span class="sp-body">45.000</span><br>
-								<span>chả, Pate, Không dưa chuột, Không rau mùi</span>
-							</div>
-						</div>
-			-->
-		<!-- thirdBody -->
-		<!-- /thirdBody -->
-		<!-- four 
-						
-						<div class="secondBody">
-							<span class="sp-secondBody-f">Tổng</span><span
-								class="sp-secondBody-c">Delivery Fee will be shown after
-								you review order</span>
-						</div>
-						<div class="cart-cost">
-							<p>102.000đ</p>
-						</div>
-						<!-- /four
-						
-						<div class="footer__modal footer__modal-cart">
-							<button type="button"
-								class="btn-add-modal btn-add-modal-cart js-btn-close-cart">
-								<p>Đặt đơn</p>
-							</button>
-						</div>
-					</div>
-				</div>
-						 -->
-
-		<!-- /modal-cart
-				
-			</div>
-				 -->
-
 		<!-- /all -->
 	</div>
 
 
 	<script>
         let amountElement = document.getElementById('amount');
-        let amount = amountElement.value;
+        //let amount = amountElement.value;
         
         let render = (amount) => {
             amountElement.value = amount;
@@ -1081,50 +964,33 @@
         }
     </script>
 	<script>
+		//biến bao cả item
         const  buyBtns = document.querySelectorAll('.js-buy-eat')
-        const modal = document.querySelector('.modal-buy')
-        //const modalCart = document.querySelector('.modal-cart')
-        const  modalClose = document.querySelector('.js-modal-close')
-        const modalCloseCart = document.querySelector('.js-modal-close-cart')
-        const modalContainer = document.querySelector('.js-modal-container')
-        //const modalContainerCart = document.querySelector('.js-modal-container-cart')
-     
-        const modalBtnCloseCart = document.querySelector('.js-btn-close-cart')
-        const spanText = document.querySelector('.sp-cost')
-        const notif = document.querySelector('.notification')
+        //biến của giao diện js giỏ hàng
+        const modal = document.getElementById("modal-buy")
+        const modalContainer = document.getElementById("js-modal-container")
+        const  modalClose = document.getElementById("js-modal-close")
+        //biến của nút xóa x
+        
+        
         function showBuyEat(){
             modal.classList.add('open')
+        	
         }
-        function showBuyEatCart(){
-            spanText.classList.add('sp-cost-open')
-            notif.classList.add('notification-modal')
-        }
-        //function showCart(){
-            //modalCart.classList.add('open')
-        //}
         function hideBuyEat(){
             modal.classList.remove('open')
         }
-        //function hideBuyEatCart(){
-            //modalCart.classList.remove('open')
-        //}
         for(const buyBtn of buyBtns){
             buyBtn.addEventListener('click', showBuyEat)
         }
-        modalClose.addEventListener('click', hideBuyEat)
+        
         modal.addEventListener('click', hideBuyEat)
-        //modalCart.addEventListener('click', hideBuyEatCart)
-       
-        //modalBtnCloseCart.addEventListener('click', hideBuyEatCart)
-        //modalCloseCart.addEventListener('click', hideBuyEatCart)
-       
-        //notif.addEventListener('click', showCart)
+        modalClose.addEventListener('click', hideBuyEat)
+        
         modalContainer.addEventListener('click', function(event){
-            event.stopPropagation()
+        	event.stopPropagation()
         })
-        //modalContainerCart.addEventListener('click', function(event){
-            //event.stopPropagation()
-        //})
+
     </script>
 	<script>
         let slideIndex = 1;

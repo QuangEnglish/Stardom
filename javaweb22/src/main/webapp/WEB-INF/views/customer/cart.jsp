@@ -52,7 +52,7 @@
 	<!-- Section-->
 	<section class="py-5 wrapper-container-cart">
 		<div class="pos-fix">
-			<a href="${base }/chitiet" class="back-button shake-element"><i
+			<a href="javascript:history.back()" class="back-button shake-element"><i
 				class="fa-solid fa-mug-hot"
 				style="color: #fff; margin-right: 5px; font-size: 20px; color: #8cf5b7;"></i>Xem
 				thêm món</a>

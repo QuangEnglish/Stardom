@@ -56,3 +56,4 @@ $(document).ready(function(){
 // function myFunctio4(){
 //     document.querySelector('.title-content5').setAttribute("style", "padding: 132px 0px 80px 0px;");
 // }
+

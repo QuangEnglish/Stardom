@@ -9,6 +9,14 @@ public class ShopSearch {
 	private String villageAddress;
 	private String detailAddress;
 	private String currentPage;
+	private String seo;
+	
+	public String getSeo() {
+		return seo;
+	}
+	public void setSeo(String seo) {
+		this.seo = seo;
+	}
 	public String getKeyword() {
 		return keyword;
 	}

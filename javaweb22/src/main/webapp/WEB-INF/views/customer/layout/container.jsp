@@ -19,16 +19,42 @@
 					explore good food near you.</p>
 				<div class="search-wrapper">
 					<div class="search">
-						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-							type="text" name="add" id="conscious" placeholder="Tỉnh..."
-							style="height: 46px; width: 60%;"> <i
-							class="fa-sharp fa-solid fa-location-crosshairs"></i>
+						<i class="fa-sharp fa-solid fa-location-dot"></i>
+						<div class="select-container">
+							<select class="select-input">
+								<optgroup label="Tỉnh">
+									<option value="0">Tỉnh</option>
+									<option value="hanoi">Hà Nội</option>
+									<option value="danang">Đà Nẵng</option>
+									<option value="hochiminh">Hồ Chí Minh</option>
+								</optgroup>
+							</select>
+						</div>
+						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
-						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-							type="text" name="add" id="district" placeholder="Quận, huyện..."
-							style="height: 46px; width: 60%;"> <i
-							class="fa-sharp fa-solid fa-location-crosshairs"></i>
+						<i class="fa-sharp fa-solid fa-location-dot"></i>
+						<div class="select-container">
+							<select id="my-select" class="select-input">
+								<optgroup label="Quận, huyện">
+									<option value="0">Quận, huyện</option>
+									<option value="1">Hoàn Kiếm</option>
+									<option value="2">Đống Đa</option>
+									<option value="2">Ba Đình</option>
+									<option value="2">Hai Bà Trưng</option>
+									<option value="2">Hoàng Mai</option>
+									<option value="2">Thanh Xuân</option>
+									<option value="2">Long Biên</option>
+									<option value="2">Nam Từ Liêm</option>
+									<option value="2">Bắc Từ Liêm</option>
+									<option value="2">Tây Hồ</option>
+									<option value="2">Hà Đông</option>
+									<option value="">Nhập tên quận, huyện khác</option>
+								</optgroup>
+							</select> <input id="my-input" class="input-field" type="text"
+								placeholder="Nhập tên huyện khác...">
+						</div>
+						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
 						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
@@ -68,111 +94,39 @@
 				<c:forEach var="shop" items="${shops }">
 					<!-- body-item -->
 					<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6">
-						<a href="${base }/home/cuahang/${shop.id}"></a>
+						<a href="${base }/shop/detail/${shop.seo}"></a>
 						<div class="img-item">
 							<img src="${base }/upload/${shop.avatar}" alt="">
 						</div>
 						<h3>${shop.name }</h3>
 						<h4>
-							<i class="fa-sharp fa-solid fa-location-dot"
-								style="color: var(--secondary-icon); margin-right: 5px;"></i><span style="color: var(--secondary-icon); margin-right: 5px; font-weight: bold;">Địa
-							chỉ:</span> ${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
+							<i class="fa-sharp fa-solid fa-location-dot"></i><span
+								style="font-weight: bold;">Địa chỉ:</span> ${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
 						</h4>
 						<div class="infor">
-							<i
-								class="ti-tag"></i><span
-								style="color: var(--violet-color); text-transform: uppercase;">${shop.shortDescriptionShop }</span>
+							<i class="ti-tag"></i><span
+								style="color: var(- -violet-color); text-transform: uppercase;">${shop.shortDescriptionShop }</span>
 						</div>
 						<div class="sale-btnShop">
 							<div class="sale">
-								<i class="fa-solid fa-star" style="color: #ffc107; margin-right: 5px;"></i><span>5.000 lượt</span>
+								<i class="fa-solid fa-star"
+									style="color: #ffc107; margin-right: 5px;"></i><span>5.000
+									lượt</span>
 							</div>
 							<div class="btnShop">
-								<a href="${base }/home/cuahang/${shop.id}"><i class="ti-shopping-cart"></i>Xem
-									quán</a>
+								<a href="${base }/shop/detail/${shop.seo}"><i
+									class="ti-shopping-cart"></i>Xem quán</a>
 							</div>
 						</div>
 					</div>
-					<!-- /body-item -->
-					<!-- body-item 
-                        
-                        <div class="body-item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                            <a href="./chitiet.html"></a>
-                            <div class="img-item">
-                                <img src="${base }/img/imgtrangchu/img-item2.png" alt="">
-                            </div>
-                            <h3>Hải sản Thiên Ngọc</h3>
-                            <h4>Hải Sản</h4>
-                            <div class="infor">
-                                <i class="ti-star"></i><span>3.8</span><i class="ti-alarm-clock"></i><span>15 phút</span><i
-                                    class="ti-control-record"></i><span>2km</span>
-                            </div>
-                            <div class="sale-btnShop">
-                                <div class="sale">
-                                    <i class="ti-tag"></i><span>Đồng giá 33k</span>
-                                </div>
-                                <div class="btnShop">
-                                    <a href="./chitiet.html"><i class="ti-shopping-cart"></i>Xem quán</a>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-					<!-- /body-item -->
-					<!-- body-item
-                        
-                        <div class="body-item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                            <a href="./chitiet.html"></a>
-                            <div class="img-item">
-                                <img src="${base }/img/imgtrangchu/img-item3.png" alt="">
-                            </div>
-                            <h3>Highlands Coffee - Vinhome</h3>
-                            <h4>Bún - Phở - Mì - Hủ tiếu</h4>
-                            <div class="infor">
-                                <i class="ti-star"></i><span>3.8</span><i class="ti-alarm-clock"></i><span>20 phút</span><i
-                                    class="ti-control-record"></i><span>3.9km</span>
-                            </div>
-                            <div class="sale-btnShop">
-                                <div class="sale">
-                                    <i class="ti-tag"></i><span>Đồng giá 33k</span>
-                                </div>
-                                <div class="btnShop">
-                                    <a href="./chitiet.html"><i class="ti-shopping-cart"></i>Xem quán</a>
-                                </div>
-                            </div>
-                        </div>
-                         -->
-					<!-- /body-item -->
-					<!-- body-item 
-                        
-                        <div class="body-item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                            <div class="img-item">
-                                <img src="${base }/img/imgtrangchu/img-item6.png" alt="">
-                            </div>
-                            <h3>Cơm gà Anh Ngọc</h3>
-                            <h4>Cơm Gà</h4>
-                            <div class="infor">
-                                <i class="ti-star"></i><span>3.8</span><i class="ti-alarm-clock"></i><span>10 phút</span><i
-                                    class="ti-control-record"></i><span>1.9km</span>
-                            </div>
-                            <div class="sale-btnShop">
-                                <div class="sale">
-                                    <i class="ti-tag"></i><span>Đồng giá 33k</span>
-                                </div>
-                                <div class="btnShop">
-                                    <a href="./chitiet.html"><i class="ti-shopping-cart"></i>Xem quán</a>
-                                </div>
-                            </div>
-                        </div>
-                        -->
+
+
 				</c:forEach>
 			</div>
-			<!-- body-content -->
 
-
-			<!-- /body-content -->
 			<!-- see-all -->
 			<div class="see-all">
-				<a href="#">See all promotions</a>
+				<a href="#">Xem thêm</a>
 			</div>
 			<!-- /see-all -->
 		</div>
@@ -345,3 +299,4 @@
 
 </div>
 <!-- /container -->
+

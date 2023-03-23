@@ -17,10 +17,10 @@
 		<div class="header-pos">
 			<div class="header-mag">
 				<div class="logo">
-					<a class="brand-logo" href="./grabfood.html"><img
+					<a class="brand-logo" href="${base }/home"><img
 						class="logo-img"
 						src="${base }/img/imgtrangchu/iconLogoOffStardom.png" alt="logo" /></a>
-					<a href="./grabfood.html"><h2 class="brand-title">Stardom</h2></a>
+					<a href="${base }/home"><h2 class="brand-title">Stardom</h2></a>
 				</div>
 				<div class="wrapper-search-block">
 					<form class="search-wrapper search-block" action="" method="post">
