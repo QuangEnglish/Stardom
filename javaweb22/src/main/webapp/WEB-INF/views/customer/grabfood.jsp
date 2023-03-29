@@ -30,6 +30,8 @@
 	rel="stylesheet"
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -40,38 +42,11 @@
 		<jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		  $('#my-select').change(function() {
-		    if ($(this).val() === '') {
-		      $('#my-input').show();
-		      $('#my-input').focus();
-		    } else {
-		      $('#my-input').hide();
-		    }
-		  });
-		  
-		  $('#my-input').blur(function() {
-		    var newOption = $(this).val();
-		    if (newOption !== '') {
-		      var optionExists = false;
-		      $('#my-select option').each(function() {
-		        if ($(this).val() === newOption) {
-		          optionExists = true;
-		          return false;
-		        }
-		      });
-		      if (!optionExists) {
-		        $('#my-select').append($('<option>', {
-		          value: newOption,
-		          text: newOption
-		        }));
-		        $('#my-select').val(newOption);
-		      }
-		    }
-		    $(this).val('');
-		    $(this).hide();
-		  });
+		$(document).ready(function(){
+			$("#filter-select").val('${shopSearchFilter.filterSelect}');
+	 		$("#provinceAddress").val('${shopSearch.provinceAddress}');	
+	 		
 		});
-	</script>
+		</script>	
 </body>
 </html>

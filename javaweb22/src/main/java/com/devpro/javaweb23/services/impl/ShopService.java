@@ -174,24 +174,31 @@ public class ShopService extends BaseService<Shop> {
 		String sql = "SELECT * FROM tbl_shop p WHERE 1=1";
 
 		if (searchModel != null) {
-
-			// tìm kiếm theo category
+			if(searchModel.getFilterSelect() != null && !"0".equals(searchModel.getFilterSelect())) {
+				if(searchModel.getFilterSelect().equals("1")) {
+					sql += " and is_hot = 1";					
+				}else if(searchModel.getFilterSelect().equals("2")) {
+					sql += " and is_new = 1";
+				}else {
+					sql += " and is_display = 1";
+				}
+			}
+			// tìm kiếm theo địa chỉ
 			if (searchModel.getProvinceAddress() != null && !"0".equals(searchModel.getProvinceAddress())
 					|| searchModel.getTownAddress() != null && !"0".equals(searchModel.getTownAddress())
 					|| searchModel.getVillageAddress() != null && !"0".equals(searchModel.getVillageAddress())) {
-				sql += " and province_address = " + searchModel.getProvinceAddress() + " and town_address = "
-						+ searchModel.getTownAddress() + " and village_address = " + searchModel.getVillageAddress();
+				sql += " and ( province_address like '%" + searchModel.getProvinceAddress() + "%'" 
+					+ " and town_address like '%" + searchModel.getTownAddress() + "%'" 
+					+ " and village_address like '%" + searchModel.getVillageAddress() + "%')";
 			}
 
 			// tìm kiếm theo title và description
-			if (!StringUtils.isEmpty(searchModel.getKeyword())) {
-				sql += " and (p.province_address like '%" + searchModel.getKeyword() + "%'"
-						+ " or p.town_address like '%" + searchModel.getKeyword() + "%'"
-						+ " or p.village_address like '%" + searchModel.getKeyword() + "%'"
-						+ " or p.detail_address like '%" + searchModel.getKeyword() + "%'"
-						+ " or p.detail_description like '%" + searchModel.getKeyword() + "%'"
-						+ " or p.short_description like '%" + searchModel.getKeyword() + "%')";
-			}
+//			if (!StringUtils.isEmpty(searchModel.getKeyword())) {
+//				sql += " and (p.province_address like '%" + searchModel.getProvinceAddress() + "%'"
+//						+ " or p.town_address like '%" + searchModel.getTownAddress() + "%'"
+//						+ " or p.village_address like '%" + searchModel.getVillageAddress() + "%'"
+//						+ " or p.detail_address like '%" + searchModel.getDetailAddress() + "%')";
+//			}
 			// tìm kiếm theo seo
 			if (!StringUtils.isEmpty(searchModel.getSeo())) {
 				sql += " and seo = '" + searchModel.getSeo() + "'";

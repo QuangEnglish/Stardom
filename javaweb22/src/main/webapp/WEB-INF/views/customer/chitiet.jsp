@@ -72,16 +72,11 @@
 					<p>
 						<i class="fa-solid fa-star"
 							style="color: yellow; margin-right: 5px;"></i><span
-							style="color: #fff;">4.5</span><i class="fa-solid fa-clock"
-							style="color: #18e13e; margin-right: 5px; margin-left: 30px;"></i><span
-							style="color: #fff;">15 phút</span> <i
-							class="fa-sharp fa-solid fa-location-dot"
-							style="color: #e11818; margin-right: 5px; margin-left: 30px;"></i><span
-							style="color: #fff;">3km</span>
+							style="color: #fff;">5000 lượt xem</span>
 					</p>
 					<p>
 						<span style="font-weight: bold;">Giờ đóng mở cửa: </span><span
-							style="margin-left: 54px;">${shop.openTime } h -
+							style="margin-left: 7px;">${shop.openTime } h -
 							${shop.closeTime } h</span>
 					</p>
 					<!--product-details__p  -->
@@ -143,7 +138,7 @@
 				<!-- wrapper-imgShop -->
 				<div class="wrapper-imgShop">
 					<div class="slideshow-container" style="height: 412px !important;">
-						<div class="mySlides " style="margin-top: 20px;">
+						<div class="mySlides ">
 							<img src="${base }/upload/${shop.avatar}" style="width: 100%">
 							<div class="text" style="color: var(--violet-color);">Hình
 								ảnh nhà hàng</div>
@@ -174,12 +169,12 @@
 		<!-- product-details__menu -->
 		<div id="product-details__menu">
 			<ul class="product-details__menu--ul">
-				<li onclick="myFunction()"><a href="#uuDai" class="acl">Ưu
+				<li><a href="#uuDai" class="acl">Ưu
 						đãi hôm nay</a></li>
-				<li onclick="myFunction2()"><a href="#mon1" class="acl">Món chính</a></li>
-				<li onclick="myFunction3()"><a href="#mon2" class="acl">Món phụ</a></li>
-				<li onclick="myFunction4()"><a href="#mon3" class="acl">Món tráng miệng</a></li>
-				<li onclick="myFunction5()"><a href="#mon4" class="acl">Đồ
+				<li><a href="#mon1" class="acl">Món chính</a></li>
+				<li><a href="#mon2" class="acl">Món phụ</a></li>
+				<li><a href="#mon3" class="acl">Món tráng miệng</a></li>
+				<li><a href="#mon4" class="acl">Đồ
 						uống</a></li>
 			</ul>
 		</div>
@@ -915,7 +910,7 @@
 					</div>
 					<div class="wrapper-input-modal">
 						<input type="text" name="" id=""
-							placeholder="E.g. No onions please">
+							placeholder="Bạn có muốn ghi chú gì thêm cho đầu bếp không?">
 					</div>
 					<!-- /four -->
 				</div>
@@ -923,7 +918,8 @@
 				<div class="footer__modal">
 					<div class="buttons_added">
 						<input onclick="handleMinus()" class="minus is-form" type="button"
-							value="-" style="width: 50px;"> <input
+							value="-" style="width: 50px;"> 
+						<input
 							aria-label="quantity" id="amount" class="input-qty" max="50"
 							min="0" name="" type="number" value="1" style="width: 100px;">
 						<input onclick="handlePlus()" class="plus is-form" type="button"
@@ -945,7 +941,7 @@
 
 	<script>
         let amountElement = document.getElementById('amount');
-        //let amount = amountElement.value;
+        let amount = amountElement.value;
         
         let render = (amount) => {
             amountElement.value = amount;
@@ -1049,7 +1045,6 @@
         				$('.sp-body').text(jsonResult.priceSale+"đ");
         				var onclickString = "AddToCart('${base}',"+jsonResult.id+", 1)";
         				$('#btn-add-modal').attr("onclick", onclickString);
-        				console.log(jsonResult.id);
         				//location.reload();
         			},
         			error: function(jqXhr, textStatus, errorMessage) { // gọi ajax thất bại

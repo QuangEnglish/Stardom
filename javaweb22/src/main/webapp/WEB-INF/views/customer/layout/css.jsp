@@ -8,4 +8,4 @@
 
 <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/style-off.css'>
 <link rel="stylesheet" href='${base}/font/themify-icons-font/themify-icons/themify-icons.css'>
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />

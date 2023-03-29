@@ -30,8 +30,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
 	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
+	rel="stylesheet">
 <!-- COMMON -->
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 
@@ -43,6 +46,8 @@
 <!-- CSS -->
 <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
 <link href="${base}/css/styles.css" rel="stylesheet" />
+
+<link href="${base}/js/cart.js" rel="stylesheet" />
 </head>
 
 <body>
@@ -115,8 +120,8 @@
 											value="+">+</button>
 									</td>
 									<td><p style="margin-top: 25px;">${ci.productDetail }</p></td>
-									<td class="border-0 align-middle"><a href="#"
-										class="delete-button"
+									<td class="border-0 align-middle"><a href="#" id="delete"
+										class="delete-button" onclick="deleteItem('${base }', ${ci.productId})" 
 										style="text-decoration: none; color: black; font-weight: bold;"><i
 											class="fa-sharp fa-solid fa-trash"></i>Xóa</a></td>
 								</tr>
@@ -146,36 +151,36 @@
 							class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông
 							tin khách hàng</div>
 						<div class="p-4">
-
-							<%-- <c:choose>
-								<c:when test="${isLogined }"> --%>
-							<div class="form-group" style="margin-bottom: 5px;">
-								<label for="customerPhone">Họ và tên khách hàng</label> <input
-									type="text" class="form-control" id="customerFullName"
-									name="customerFullName" placeholder="Full name" required>
-							</div>
-							<div class="form-group" style="margin-bottom: 5px;">
-								<label for="customerEmail">Địa chỉ Email</label> <input
-									type="email" class="form-control" id="customerEmail"
-									name="customerEmail" placeholder="Enter email" required>
-								<small id="emailHelp" class="form-text text-muted">We'll
-									never share your email with anyone else.</small>
-							</div>
-							<div class="form-group" style="margin-bottom: 5px;">
-								<label for="customerPhone">Phone</label> <input type="tel"
-									class="form-control" id="customerPhone" name="customerPhone"
-									placeholder="Phone" required>
-							</div>
-							<div class="form-group" style="margin-bottom: 5px;">
-								<label for="customerAddress">Địa chỉ giao hàng</label> <input
-									type="text" class="form-control" id="customerAddress"
-									name="customerAddress" placeholder="Address" required>
-							</div>
-							<%-- </c:when>
+						
+							<c:choose>
+								<c:when test="${isLogined }">
+									<div class="form-group" style="margin-bottom: 5px;">
+										<label for="customerPhone">Họ và tên khách hàng</label> <input
+											type="text" class="form-control" id="customerFullName" value="${userLogined.username }"
+											name="customerFullName" placeholder="Full name" required>
+									</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<label for="customerEmail">Địa chỉ Email</label> <input
+											type="email" class="form-control" id="customerEmail" value="${userLogined.email }"
+											name="customerEmail" placeholder="Enter email" required>
+										<small id="emailHelp" class="form-text text-muted">We'll
+											never share your email with anyone else.</small>
+									</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<label for="customerPhone">Phone</label> <input type="tel" value="${userLogined.phone }"
+											class="form-control" id="customerPhone" name="customerPhone"
+											placeholder="Phone" required>
+									</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<label for="customerAddress">Địa chỉ giao hàng</label> <input
+											type="text" class="form-control" id="customerAddress" value="${userLogined.shippingAddress }"
+											name="customerAddress" placeholder="Address" required>
+									</div>
+								</c:when>
 								<c:otherwise>
 									<input type="text">
 								</c:otherwise>
-							</c:choose> --%>
+							</c:choose>
 
 
 						</div>
@@ -189,18 +194,16 @@
 								calculated based on values you have entered.</p>
 							<ul class="list-unstyled mb-4">
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
-									class="text-muted">Tiền phụ thu </strong><strong >5.000đ</strong></li>
+									class="text-muted">Tiền phụ thu </strong><strong>5.000đ</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Phí vận chuyển ship</strong><strong>0.5%</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Thuế</strong><strong>$0.00</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Tổng tiền</strong>
-									<h5 class="font-weight-bold totalPrice" id="sup">
-									<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+									<h5 class="font-weight-bold totalPrice" id="sup"><fmt:setLocale value="vi_VN"
 											scope="session" /> <fmt:formatNumber
-											value="${Tongtienthanhtoan }" type="currency" />
-									</h5></li>
+											value="${Tongtienthanhtoan }" type="currency" /></h5></li>
 							</ul>
 							<button type="submit"
 								class="btn btn-dark rounded-pill py-2 btn-block">Thanh
@@ -221,6 +224,9 @@
 	<!-- JS -->
 	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
 	<script src="${base}/js/animation-rung.js"></script>
+	
+	<!-- 
+	
 	<script type="text/javascript">
 		const productList = document.getElementById('product-list');
 		productList.addEventListener('click', function(event) {
@@ -229,9 +235,9 @@
 	    const listItem = event.target.closest('tr');
 	    listItem.remove();
 	  }
-	});
-		
+	});		
 	</script>
+	 -->
 	<script type="text/javascript">
 			  const customerForm = document.getElementById("customer-form");
 			  const table = document.getElementById("my-table-cart");

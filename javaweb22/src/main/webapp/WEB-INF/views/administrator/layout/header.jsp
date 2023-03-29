@@ -37,10 +37,10 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="pages/samples/login.html" style="color: #fff; background-color: black;">
+                <a class="dropdown-item" href="${base }/login" style="color: #fff; background-color: black;">
                   <i class="mdi mdi-cached me-2 text-success"></i> Đăng Nhập </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="pages/samples/login.html" style="color: #fff; background-color: black;">
+                <a class="dropdown-item" href="${base }/logout" style="color: #fff; background-color: black;">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Đăng Xuất </a>
               </div>
             </li>

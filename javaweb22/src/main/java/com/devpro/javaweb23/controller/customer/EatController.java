@@ -28,7 +28,7 @@ public class EatController extends BaseController{
 	@RequestMapping(value = {"/chitiet"}, method = RequestMethod.GET)
 	public String display_chitiet(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 	throws IOException{
-		model.addAttribute("products", productService.findAll());
+		model.addAttribute("product", productService.findAll());
 		model.addAttribute("categories", categoriesService.findAll());
 		//đường dẫn tới file view 
 		return "customer/chitiet";   ///WEB-INF/views/customer/grabfood.jsp;

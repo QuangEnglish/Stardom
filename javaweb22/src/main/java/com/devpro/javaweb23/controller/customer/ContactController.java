@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.devpro.javaweb23.controller.BaseController;
 import com.devpro.javaweb23.dto.ContactDTO;
 import com.devpro.javaweb23.model.Contact;
+import com.devpro.javaweb23.model.User;
 import com.devpro.javaweb23.services.impl.ContactService;
 
 @Controller
@@ -78,6 +79,7 @@ public class ContactController extends BaseController {
 //		model.addAttribute("contact", new Contact());
 //		return "customer/contact";
 //	}
+
 	//------------------------------------------------------------------------------------
 	@RequestMapping(value = { "/register-us-spring-form" }, method = RequestMethod.POST)
 	public String register_post_spring_form(final Model model,

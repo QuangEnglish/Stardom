@@ -24,6 +24,13 @@ setInterval(function(){
 }, 5000);
 
 
+//select-title
+function myFunctionSelect() {
+	var x = document.getElementById("filter-select");
+	var i = x.selectedIndex;
+	document.getElementById("sp-title-content").innerHTML = x.options[i].text;
+}		
+	
 
 $(document).ready(function(){
     $(window).scroll(function(){
@@ -57,3 +64,6 @@ $(document).ready(function(){
 //     document.querySelector('.title-content5').setAttribute("style", "padding: 132px 0px 80px 0px;");
 // }
 
+
+
+    

@@ -30,6 +30,7 @@
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
+              	<div class="rgba-black"></div>
                 <div class="brand-logo">
                   <!-- <img src="../../assets/images/logo.svg"> -->
                   <h2>Stardom</h2>
@@ -45,7 +46,7 @@
 						</div>
 					</c:if>
                   <div class="form-group">
-                    <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Tài khoản">
+                    <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Tài khoản" >
                   </div>
                   <div class="form-group">
                     <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mật khẩu">
@@ -56,7 +57,7 @@
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input">Nhớ mật khẩu
+                        <input type="checkbox" class="form-check-input" name="remember-me">Nhớ mật khẩu
                         <i class="input-helper"></i>
                        </label>
                     </div>

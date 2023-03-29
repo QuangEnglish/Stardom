@@ -68,14 +68,15 @@ public class HomeController extends BaseController{
 			//đường dẫn tới file view 
 			return "customer/grabfood";   ///WEB-INF/views/customer/grabfood.jsp;
 		};
-		@RequestMapping(value = {"/home"}, method = RequestMethod.GET)
-		public String home(final Model model, final HttpServletRequest request, final HttpServletResponse response)
-		throws IOException{
-
-			model.addAttribute("shops", shopService.findAll());
-	
-			return "customer/grabfood";   ///WEB-INF/views/customer/grabfood.jsp;
-		};
+		
+//		@RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+//		public String home(final Model model, final HttpServletRequest request, final HttpServletResponse response)
+//		throws IOException{
+//
+//			model.addAttribute("shops", shopService.findAll());
+//	
+//			return "customer/grabfood";   ///WEB-INF/views/customer/grabfood.jsp;
+//		};
 		
 		@RequestMapping(value = {"/danhmuc"}, method = RequestMethod.GET)
 		public String display_danhmuc(final Model model, final HttpServletRequest request, final HttpServletResponse response)

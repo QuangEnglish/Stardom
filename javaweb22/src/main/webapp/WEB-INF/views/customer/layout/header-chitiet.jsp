@@ -9,30 +9,19 @@
 <div class="header-pos header-pos-detail">
 	<div class="header-mag">
 		<div class="logo">
-			<a class="brand-logo" href="${base }/home"><img class="logo-img"
+			<a class="brand-logo" href="${base }/home/shop"><img class="logo-img"
 				src="${base }/img/imgtrangchu/iconLogoOffStardom.png" alt="logo" /></a>
-			<a href="${base }/home"><h2 class="brand-title">Stardom</h2></a>
+			<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
 		</div>
 		<div class="wrapper-search-block">
 			<form class="search-wrapper search-block" action="" method="post">
-				<div class="search search-block--mg">
+				<div class="search search-block--mg" style="width: 60%;">
 					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-						type="text" name="add" id="conscious" placeholder="Tỉnh..."
+						type="text" name="add" id="conscious" placeholder="Tìm món..."
 						style="height: 46px; width: 60%;"> <i
 						class="fa-sharp fa-solid fa-location-crosshairs"></i>
 				</div>
-				<div class="search search-block--mg">
-					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-						type="text" name="add" id="district" placeholder="Quận, huyện..."
-						style="height: 46px; width: 60%;"> <i
-						class="fa-sharp fa-solid fa-location-crosshairs"></i>
-				</div>
-				<div class="search search-block--mg">
-					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-						type="text" name="add" id="wards" placeholder="Phường, xã..."
-						style="height: 46px; width: 60%;"> <i
-						class="fa-sharp fa-solid fa-location-crosshairs"></i>
-				</div>
+				
 				<div class="search-btn search-block__btn">
 					<button type="submit"
 						class="search-btn--sub search-block__btn--sub" id="add">
@@ -55,12 +44,12 @@
 			<div class="avatar_chitiet" style="cursor: pointer;">
 				<p id="profileDropdown" style="color: #ffff;">QA</p>
 				<div class="dropdown-menuz">
-					<a class="dropdown-itemz" href="./login.html"> <i
+					<a class="dropdown-itemz" href="${base }/login"> <i
 						class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
 						Đăng Nhập
 					</a>
 					<!-- <div class="dropdown-divider"></div> -->
-					<a class="dropdown-itemz" href="./login.html"
+					<a class="dropdown-itemz" href="${base }/logout"
 						style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
 						<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
 						Đăng Xuất

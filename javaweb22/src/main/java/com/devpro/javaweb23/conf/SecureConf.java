@@ -1,11 +1,13 @@
 package com.devpro.javaweb23.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.devpro.javaweb23.services.impl.UserDetailsServiceImpl;
 
@@ -31,18 +33,25 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 		//nếu chưa xác thực thì hiển thị trang login
 		// /login: một request trong LoginController
 		.formLogin().loginPage("/login").loginProcessingUrl("/login_processing_url")
-//		.successHandler(authenticationSuccessHandler())
-		.defaultSuccessUrl("/home", true) // login thành công thì luôn trở về trang người dùng
+		.successHandler(authenticationSuccessHandler())
+//		.defaultSuccessUrl("/home/shop", true) // login thành công thì luôn trở về trang người dùng
 		.failureUrl("/login?login_error=true")
 		
 		.and()
 		
 		//cấu hình cho phần logout
-		.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
-		.deleteCookies("JSESSIONID");
-//		.and().rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400);
+		.logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
+		.deleteCookies("JSESSIONID")
+		
+		//nhớ mật khẩu
+		.and().rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400);
 	}
 	
+	
+	@Bean
+	public AuthenticationSuccessHandler  authenticationSuccessHandler(){
+		return new UrlAuthenticationSuccessHandler();
+	}
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	@Autowired

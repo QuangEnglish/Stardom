@@ -43,5 +43,12 @@ public class Cart {
 	public void setTotalProducts(Integer totalProducts) {
 		this.totalProducts = totalProducts;
 	}
-	
+	public void removeCartItem(int productId) {
+	    for (CartItem item : cartItems) {
+	        if (item.getProductId() == productId) {
+	        	cartItems.remove(item);
+	            return;
+	        }
+	    }
+	}
 }

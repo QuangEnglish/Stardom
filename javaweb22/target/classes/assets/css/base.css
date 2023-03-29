@@ -3531,7 +3531,7 @@
     color: #212529;
     background-color: color(white);
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #212529;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -8542,6 +8542,9 @@
   
   .text-black {
     --bs-text-opacity: 1;
+    font-weight: bolder;
+    text-decoration: none;
+    background-color: white;
     color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important; }
   
   .text-white, .navbar.navbar-primary .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-secondary .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-success .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-info .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-warning .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-danger .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-light .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-dark .navbar-menu-wrapper .nav-profile-text p {
@@ -13331,7 +13334,7 @@
       color: #c9c8c8; }
   
   .form-control {
-    border: 1px solid #ebedf2;
+    
     font-family: "ubuntu-regular", sans-serif;
     font-size: 0.8125rem; }
     .form-control:focus {
@@ -13731,9 +13734,9 @@
   /* === Landing screens === */
   /* Auth */
   .auth .auth-form-light {
-    background: #ffffff; 
+     background: url('http://localhost:8080/img/imgtrangchu/backgroundLogin7.jpg'); 
     border-radius: 20px;
-    box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35); 
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
     .auth .auth-form-light select {
       color: #c9c8c8; }
@@ -13747,6 +13750,15 @@
         color: #da8cff;
         font-size: 40px;
       }
+     .auth-form-light{
+     	 
+     		 background-image: url('http://localhost:8080/img/imgtrangchu/backgroundLogin7.jpg');
+  			background-color: rgba(0, 0, 0, 0.3);
+     		background-size: cover; 
+    		border-radius: 20px;
+    		box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35); 
+     }
+    
   .auth .brand-logo {
     margin-bottom: 2rem; }
     /* .auth .brand-logo img {

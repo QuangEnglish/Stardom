@@ -3,10 +3,13 @@ package com.devpro.javaweb23.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.devpro.javaweb23.model.Categories;
 import com.devpro.javaweb23.services.impl.CategoriesService;
+import com.devpro.javaweb23.model.User;
 
 public abstract class BaseController {
 
@@ -22,5 +25,34 @@ public abstract class BaseController {
 	@ModelAttribute("categories")
 	public List<Categories> getAllCategories(){
 		return categoriesService.findAll();
+	}
+	/**
+	 * trả về entity User chính là user logined
+	 * User logined có thể truy cập thông qua class SecurityContextHolder
+	 * @return
+	 */
+	@ModelAttribute("userLogined")
+	public User getUserLogined() {
+		Object userLogined = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(userLogined != null && userLogined instanceof UserDetails)
+			return (User) userLogined;
+		
+		return new User();
+	}
+	
+	/**
+	 * Kiểm tra xem người dùng đã đăng nhập chưa?
+	 * User logined có thể truy cập thông qua class SecurityContextHolder
+	 * @return true|false, true nếu đã login ngược lại trả về false
+	 */
+	@ModelAttribute("isLogined")
+	public boolean isLogined() {
+		boolean isLogined = false;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal != null && principal instanceof UserDetails) {
+			isLogined = true;
+		}
+		
+		return isLogined;
 	}
 }

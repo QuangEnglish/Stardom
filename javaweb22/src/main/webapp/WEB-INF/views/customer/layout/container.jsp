@@ -6,13 +6,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- import thư viện spring-form -->
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
 <!-- container -->
 <div id="container">
 	<!-- content -->
-	<form action="" method="post">
-		<div class="content">
-			<!-- address -->
-			<div id="address">
+	<div class="content">
+		<!-- address -->
+		<div id="address">
+			<form action="${base }/home/shop" method="post">
 				<p style="padding: 20px 24px 0px 24px;" id="p1-address">Good
 					Morning</p>
 				<p style="padding: 0px 24px 0px 24px;" id="p2-address">Let's
@@ -21,116 +24,108 @@
 					<div class="search">
 						<i class="fa-sharp fa-solid fa-location-dot"></i>
 						<div class="select-container">
-							<select class="select-input">
+							<select class="select-input" name="provinceAddress"
+								id="provinceAddress">
 								<optgroup label="Tỉnh">
-									<option value="0">Tỉnh</option>
-									<option value="hanoi">Hà Nội</option>
-									<option value="danang">Đà Nẵng</option>
-									<option value="hochiminh">Hồ Chí Minh</option>
+									<option value="">Tỉnh</option>
+									<option value="Hà Nội">Hà Nội</option>
+									<option value="Đà Nẵng">Đà Nẵng</option>
+									<option value="Hồ Chí Minh">Hồ Chí Minh</option>
 								</optgroup>
 							</select>
 						</div>
 						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
-						<i class="fa-sharp fa-solid fa-location-dot"></i>
-						<div class="select-container">
-							<select id="my-select" class="select-input">
-								<optgroup label="Quận, huyện">
-									<option value="0">Quận, huyện</option>
-									<option value="1">Hoàn Kiếm</option>
-									<option value="2">Đống Đa</option>
-									<option value="2">Ba Đình</option>
-									<option value="2">Hai Bà Trưng</option>
-									<option value="2">Hoàng Mai</option>
-									<option value="2">Thanh Xuân</option>
-									<option value="2">Long Biên</option>
-									<option value="2">Nam Từ Liêm</option>
-									<option value="2">Bắc Từ Liêm</option>
-									<option value="2">Tây Hồ</option>
-									<option value="2">Hà Đông</option>
-									<option value="">Nhập tên quận, huyện khác</option>
-								</optgroup>
-							</select> <input id="my-input" class="input-field" type="text"
-								placeholder="Nhập tên huyện khác...">
-						</div>
-						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
+						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
+							type="text" name="townAddress" id="wards-2"
+							value="${shopSearch.townAddress }" placeholder="Quận, huyện..."
+							style="height: 46px; width: 60%;"> <i
+							class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
 						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-							type="text" name="add" id="wards" placeholder="Phường, xã..."
+							type="text" name="villageAddress" id="wards"
+							value="${shopSearch.villageAddress }" placeholder="Phường, xã..."
 							style="height: 46px; width: 60%;"> <i
 							class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 				</div>
 				<div class="search-btn">
 					<button type="submit" class="search-btn--sub" id="add">
-						<a href="#">Tìm Kiếm</a>
-					</button>
+						Tìm Kiếm</button>
 				</div>
+			</form>
+		</div>
+		<!-- /address -->
+		<!-- title-content-filter -->
+		<div class="title-content-filter">
+			<div class="title-content">
+				<i class="fa-sharp fa-solid fa-shop"
+					style="font-size: 40px; margin-right: 10px;"></i><span
+					id="sp-title-content">Quán ăn gần bạn</span>
 			</div>
-			<!-- /address -->
-			<!-- title-content-filter -->
-			<div class="title-content-filter">
-				<div class="title-content">
-					<i class="fa-sharp fa-solid fa-shop"
-						style="font-size: 40px; margin-right: 10px;"></i> <span>Quán
-						ăn </span> <span id="sp-title-content">gần bạn</span>
-				</div>
-				<form class="filter" action="" method="post">
-					<select name="filter-select" id="filter-select">
-						<option value="1">Quán ăn nổi bật</option>
-						<option value="2">Quán ăn gần tôi</option>
-						<option value="3">Quán ăn đang sale</option>
-						<option value="4">Quán quen</option>
-					</select>
-				</form>
-			</div>
+			<form action="${base }/home/shop/search" class="filter-select">
+				<select class="filter-select-body" name="filter-select"
+					id="filter-select" onchange="myFunctionSelect()">
+					<option value="">Quán ăn gần bạn</option>
+					<option value="1">Quán ăn nổi bật</option>
+					<option value="2">Quán ăn đang sale</option>
+					<option value="3">Quán quen</option>
+				</select>
+				<button type="submit" id="btnFilterSearch" class="btnFilterSearch">
+					<i class="fa-solid fa-magnifying-glass"></i>Tìm
+				</button>
+			</form>
 
-			<!-- /title-content-filter -->
+		</div>
+		<h3 id="sp-title-content--address"><i class="fa-solid fa-road"></i>${shopSearch.villageAddress }<i class="fa-solid fa-road"></i>${shopSearch.townAddress }<i class="fa-solid fa-road"></i> ${shopSearch.provinceAddress }</h3>
+		<!-- /title-content-filter -->
 
-			<!-- body-content -->
-			<div class="body-content row">
-				<c:forEach var="shop" items="${shops }">
-					<!-- body-item -->
-					<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6">
-						<a href="${base }/shop/detail/${shop.seo}"></a>
-						<div class="img-item">
-							<img src="${base }/upload/${shop.avatar}" alt="">
+		<!-- body-content -->
+		<div class="body-content row">
+			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
+				<!-- body-item -->
+				<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6">
+					<a href="${base }/shop/detail/${shop.seo}"></a>
+					<div class="img-item">
+						<img src="${base }/upload/${shop.avatar}" alt="">
+					</div>
+					<h3>${shop.name }</h3>
+					<h4>
+						<i class="fa-sharp fa-solid fa-location-dot"></i><span
+							style="font-weight: bold;">Địa chỉ:</span> ${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
+					</h4>
+					<div class="infor">
+						<i class="ti-tag"></i><span>${shop.shortDescriptionShop }</span>
+					</div>
+					<div class="sale-btnShop">
+						<div class="sale">
+							<i class="fa-solid fa-star"
+								style="color: #ffc107; margin-right: 5px;"></i><span>5.000
+								lượt</span>
 						</div>
-						<h3>${shop.name }</h3>
-						<h4>
-							<i class="fa-sharp fa-solid fa-location-dot"></i><span
-								style="font-weight: bold;">Địa chỉ:</span> ${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
-						</h4>
-						<div class="infor">
-							<i class="ti-tag"></i><span
-								style="color: var(- -violet-color); text-transform: uppercase;">${shop.shortDescriptionShop }</span>
-						</div>
-						<div class="sale-btnShop">
-							<div class="sale">
-								<i class="fa-solid fa-star"
-									style="color: #ffc107; margin-right: 5px;"></i><span>5.000
-									lượt</span>
-							</div>
-							<div class="btnShop">
-								<a href="${base }/shop/detail/${shop.seo}"><i
-									class="ti-shopping-cart"></i>Xem quán</a>
-							</div>
+						<div class="btnShop">
+							<a href="${base }/shop/detail/${shop.seo}"><i
+								class="ti-shopping-cart"></i>Xem quán</a>
 						</div>
 					</div>
+				</div>
 
 
-				</c:forEach>
-			</div>
-
-			<!-- see-all -->
-			<div class="see-all">
-				<a href="#">Xem thêm</a>
-			</div>
-			<!-- /see-all -->
+			</c:forEach>
 		</div>
-	</form>
+
+		<!-- see-all -->
+		<div class="see-all">
+			<button type="button" class="btn-see-shop">
+				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
+				thêm
+			</button>
+		</div>
+		<!-- /see-all -->
+	</div>
+
 	<!-- /content -->
 	<!-- eat -->
 	<div class="eat">
@@ -284,15 +279,18 @@
 				thích của bạn một cách hợp lý để giúp bạn tìm được đồ ăn dễ dàng và
 				nhanh chóng nhất có thể. Tìm và đặt món ăn yêu thích trên khắp Việt
 				Nam - đặt đồ ăn trực tuyến chỉ bằng vài thao tác, từ món Lifted
-				Coffee & Brunch cho bữa sáng, đến Maazi Indian – Nhà Hàng Ấn Độ cho
+				Coffee-Brunch cho bữa sáng, đến Maazi Indian – Nhà Hàng Ấn Độ cho
 				bữa trưa, đến Bún Cá Chấm Gốc Đa – Vũ Thạnh cho bữa tối! Hãy để
 				chúng tôi xua tan cơn đói của bạn nhờ một loạt đối tác bán đồ ăn ở
 				Việt Nam.</p>
 		</div>
 		<!-- /text-->
 		<!-- see-all -->
-		<div class="see-all">
-			<a href="#">Read More</a>
+			<div class="see-all">
+			<button type="button" class="btn-see-shop">
+				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
+				thêm
+			</button>
 		</div>
 		<!-- /see-all -->
 	</div>

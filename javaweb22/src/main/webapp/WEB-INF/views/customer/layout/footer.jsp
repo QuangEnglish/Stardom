@@ -52,9 +52,9 @@
                 </div>
                 <div class="footer-pay">
                     <div class="logo" style="background-color: var(--blacklight-color); margin-left: -15px;">
-                        <a class="brand-logo" href="${base }/home"><img class="logo-img" src="${base }/img/imgtrangchu/iconLogoOffStardom.png"
+                        <a class="brand-logo" href="${base }/home/shop"><img class="logo-img" src="${base }/img/imgtrangchu/iconLogoOffStardom.png"
                             alt="logo" /></a>
-                        <a  href="${base }/home"><h2 class="brand-title">Stardom</h2></a>
+                        <a  href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
                     </div>
                     <p>© Bản quyền 2023 | Đã đăng ký Bản quyền</p>
                     <ul class="footer-list-pay">

@@ -10,7 +10,14 @@ public class ShopSearch {
 	private String detailAddress;
 	private String currentPage;
 	private String seo;
-	
+	private String filterSelect;
+
+	public String getFilterSelect() {
+		return filterSelect;
+	}
+	public void setFilterSelect(String filterSelect) {
+		this.filterSelect = filterSelect;
+	}
 	public String getSeo() {
 		return seo;
 	}
