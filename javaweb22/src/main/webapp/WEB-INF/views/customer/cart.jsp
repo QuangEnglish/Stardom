@@ -47,7 +47,7 @@
 <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
 <link href="${base}/css/styles.css" rel="stylesheet" />
 
-<link href="${base}/js/cart.js" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 		<div class="pos-fix">
 			<a href="javascript:history.back()" class="back-button shake-element"><i
 				class="fa-solid fa-mug-hot"
-				style="color: #fff; margin-right: 5px; font-size: 20px; color: #8cf5b7;"></i>Xem
+				style="color: #fff; margin-right: 5px; font-size: 20px; color: #fff;"></i>Xem
 				thêm món</a>
 		</div>
 		<div class="container px-4 px-lg-5 mt-5">
@@ -112,6 +112,7 @@
 												value="${ci.priceUnit }" type="currency" /></strong></td>
 									<td class="border-0 align-middle">
 										<button style="width: 25px; height: 25px; font-weight: bold;"
+											class="decrease-quantity-btn"
 											onclick="UpdateQuanlityCart('${base }', ${ci.productId}, -1)"
 											value="-">-</button> <strong><span
 											id="quanlity_${ci.productId}">${ci.quanlity }</span></strong>
@@ -120,10 +121,12 @@
 											value="+">+</button>
 									</td>
 									<td><p style="margin-top: 25px;">${ci.productDetail }</p></td>
-									<td class="border-0 align-middle"><a href="#" id="delete"
-										class="delete-button" onclick="deleteItem('${base }', ${ci.productId})" 
-										style="text-decoration: none; color: black; font-weight: bold;"><i
-											class="fa-sharp fa-solid fa-trash"></i>Xóa</a></td>
+									<td class="border-0 align-middle"><button id="delete"
+											class="delete-button fw-bolder"
+											onclick="deleteItem('${base }', ${ci.productId})"
+											style="text-decoration: none; color: black; padding: 5px 10px;">
+											<i class="fa-sharp fa-solid fa-trash"></i>Xóa
+										</button></td>
 								</tr>
 							</c:forEach>
 
@@ -147,38 +150,43 @@
 								</div>
 							</div>
 						</div> -->
-						<div
-							class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông
+						<div class="bg-light  px-4 py-3 text-uppercase font-weight-bold">Thông
 							tin khách hàng</div>
 						<div class="p-4">
-						
+
 							<c:choose>
 								<c:when test="${isLogined }">
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerPhone">Họ và tên khách hàng</label> <input
-											type="text" class="form-control" id="customerFullName" value="${userLogined.username }"
-											name="customerFullName" placeholder="Full name" required>
+											type="text" class="form-control" id="customerFullName"
+											value="${userLogined.username }" name="customerFullName"
+											placeholder="Full name" required>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerEmail">Địa chỉ Email</label> <input
-											type="email" class="form-control" id="customerEmail" value="${userLogined.email }"
-											name="customerEmail" placeholder="Enter email" required>
-										<small id="emailHelp" class="form-text text-muted">We'll
+											type="email" class="form-control" id="customerEmail"
+											value="${userLogined.email }" name="customerEmail"
+											placeholder="Enter email" required> <small
+											id="emailHelp" class="form-text text-muted">We'll
 											never share your email with anyone else.</small>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
-										<label for="customerPhone">Phone</label> <input type="tel" value="${userLogined.phone }"
-											class="form-control" id="customerPhone" name="customerPhone"
-											placeholder="Phone" required>
+										<label for="customerPhone">Phone</label> <input type="tel"
+											value="${userLogined.phone }" class="form-control"
+											id="customerPhone" name="customerPhone" placeholder="Phone"
+											required>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerAddress">Địa chỉ giao hàng</label> <input
-											type="text" class="form-control" id="customerAddress" value="${userLogined.shippingAddress }"
+											type="text" class="form-control" id="customerAddress"
+											value="${userLogined.shippingAddress }"
 											name="customerAddress" placeholder="Address" required>
 									</div>
 								</c:when>
 								<c:otherwise>
-									<input type="text">
+									<div>
+										<h2>Bạn hãy đăng nhập để có thể mua hàng</h2>
+									</div>
 								</c:otherwise>
 							</c:choose>
 
@@ -186,8 +194,7 @@
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<div
-							class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông
+						<div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Thông
 							tin thanh toán</div>
 						<div class="p-4">
 							<p class="font-italic mb-4">Shipping and additional costs are
@@ -201,9 +208,11 @@
 									class="text-muted">Thuế</strong><strong>$0.00</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Tổng tiền</strong>
-									<h5 class="font-weight-bold totalPrice" id="sup"><fmt:setLocale value="vi_VN"
-											scope="session" /> <fmt:formatNumber
-											value="${Tongtienthanhtoan }" type="currency" /></h5></li>
+									<h5 class="font-weight-bold totalPrice" id="sup">
+										<fmt:setLocale value="vi_VN" scope="session" />
+										<fmt:formatNumber value="${Tongtienthanhtoan }"
+											type="currency" />
+									</h5></li>
 							</ul>
 							<button type="submit"
 								class="btn btn-dark rounded-pill py-2 btn-block">Thanh
@@ -224,7 +233,7 @@
 	<!-- JS -->
 	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
 	<script src="${base}/js/animation-rung.js"></script>
-	
+
 	<!-- 
 	
 	<script type="text/javascript">
@@ -261,6 +270,76 @@
 					});
 			}
 		});						  		  
+	</script>
+	<script type="text/javascript">
+	function deleteItem(_baseUrl, _productId) {
+
+		// tạo javascript object để binding với data bên phía controller  
+		var requestBody = {
+			productId: _productId
+		};
+		// $ === jQuery
+		// json == javascript object
+		jQuery.ajax({
+			url: _baseUrl + "/ajax/deleteItems", 	   //->request mapping định nghĩa bên controller
+			type: "post",					   //-> method type của Request Mapping	
+			contentType: "application/json",   //-> nội dung gửi lên dạng json <=> javascript object
+			data: JSON.stringify(requestBody), //-> chuyển 1 javascript object thành string json
+
+			dataType: "json", 				   // kiểu dữ liệu trả về từ Controller
+			success: function (jsonResult) {    // gọi ajax thành công
+            	$("#numberEat").html(jsonResult.totalItems);
+            	location.reload();
+            	
+    		},
+			error: function (jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
+				alert("error");
+			}
+			
+		});
+	}
+	</script>
+	<script type="text/javascript">
+	
+	function UpdateQuanlityCart(_baseUrl, _productId, _quanlity) {
+
+		// tạo javascript object để binding với data bên phía controller  
+		var requestBody = {
+			productId: _productId,
+			quanlity: _quanlity
+		};
+	
+		// $ === jQuery
+		// json == javascript object
+		jQuery.ajax({
+			url: _baseUrl + "/ajax/increaseItems", 	   //->request mapping định nghĩa bên controller
+			type: "post",					   //-> method type của Request Mapping	
+			contentType: "application/json",   //-> nội dung gửi lên dạng json <=> javascript object
+			data: JSON.stringify(requestBody), //-> chuyển 1 javascript object thành string json		
+			dataType: "json", 				   // kiểu dữ liệu trả về từ Controller
+			success: function (jsonResult) {    // gọi ajax thành công
+				let prevQuantity = ($(`#quanlity_${ci.productId}`).text());//lấy text (ở đây là quantity) 
+				$(`#quanlity_${ci.productId}`).html(parseInt(prevQuantity) +  _quanlity);// lay cai text tren cong hoac tru 1
+				
+				//let quantity = parseInt($('#quanlity_${ci.productId}').text());
+				//console.log(quantity);
+				
+					 //if (quantity > 1) {
+						$("#numberEat").html(jsonResult.totalItems);
+						location.reload()
+					  //} else {
+					   // alert('Số lượng tối thiểu là 1.');
+					  //}
+					
+				
+				//$("#numberEat").html(jsonResult.totalItems);
+				//location.reload();								
+			},
+			error: function (jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
+				alert("error");
+			}
+		});
+	}
 	</script>
 </body>
 </html>

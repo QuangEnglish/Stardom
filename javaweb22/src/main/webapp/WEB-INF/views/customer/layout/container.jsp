@@ -119,7 +119,7 @@
 		<!-- see-all -->
 		<div class="see-all">
 			<button type="button" class="btn-see-shop">
-				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
+				<i class="fa-solid fa-plus" onclick="loadMore()" style="color: #fff; margin-right: 5px;"></i>Xem
 				thêm
 			</button>
 		</div>

@@ -23,30 +23,30 @@
 					<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
 				</div>
 				<div class="wrapper-search-block">
-					<form class="search-wrapper search-block" action="" method="post">
+					<form class="search-wrapper search-block"
+						action="${base }/home/shop" method="post">
 						<div class="search search-block--mg">
 							<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-								type="text" name="add" id="conscious" placeholder="Tỉnh..."
-								style="height: 46px; width: 60%;"> <i
-								class="fa-sharp fa-solid fa-location-crosshairs"></i>
+								type="text" name="provinceAddress" id="conscious"
+								placeholder="Tỉnh..." style="height: 46px; width: 60%;">
+							<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 						</div>
 						<div class="search search-block--mg">
 							<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-								type="text" name="add" id="district"
+								type="text" name="townAddress" id="district"
 								placeholder="Quận, huyện..." style="height: 46px; width: 60%;">
 							<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 						</div>
 						<div class="search search-block--mg">
 							<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-								type="text" name="add" id="wards" placeholder="Phường, xã..."
-								style="height: 46px; width: 60%;"> <i
-								class="fa-sharp fa-solid fa-location-crosshairs"></i>
+								type="text" name="villageAddress" id="wards"
+								placeholder="Phường, xã..." style="height: 46px; width: 60%;">
+							<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 						</div>
 						<div class="search-btn search-block__btn">
 							<button type="submit"
 								class="search-btn--sub search-block__btn--sub" id="add">
-								<a href="#">Tìm Kiếm</a>
-							</button>
+								Tìm Kiếm</button>
 						</div>
 					</form>
 				</div>
@@ -61,27 +61,49 @@
 							<span id="numberEat">${Tongsoluongmon }</span>
 						</div>
 					</div>
-					<div class="avatar_chitiet" style="cursor: pointer;">
-						<p id="profileDropdown" style="color: #ffff;">QA</p>
-						<div class="dropdown-menuz">
-							<a class="dropdown-itemz" href="${base }/login"> <i
-								class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
-								Đăng Nhập
-							</a>
-							<!-- <div class="dropdown-divider"></div> -->
-							<a class="dropdown-itemz" href="${base }/logout"
-								style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
-								<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
-								Đăng Xuất
-							</a>
-						</div>
-					</div>
-					<!-- <div class="avatar">
-                                <a href="#" style="color: #ffff;">Đăng ký</a>
-                            </div>
-                            <div class="avatar">
-                                <a href="#" style="color: #ffff;">Đăng nhập</a>
-                            </div> -->
+					<c:choose>
+						<c:when test="${isLogined }">
+							<div class="avatar_chitiet" style="cursor: pointer;">
+								<p id="profileDropdown" style="color: #ffff;">
+									<i class="fa-solid fa-user" style="color: #fff;"></i>
+								</p>
+								<div class="dropdown-menuz">
+									<p class="dropdown-itemz"> <i
+										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
+										Nguyễn Quang Anh
+									</p> 
+									<p class="dropdown-itemz"> <i
+										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
+										hquanganh123@gmail.com
+									</p> 
+									<a class="dropdown-itemz" href="${base }/login"> <i
+										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
+										Đăng Nhập
+									</a>
+									<!-- <div class="dropdown-divider"></div> -->
+									<a class="dropdown-itemz" href="${base }/logout"
+										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
+										<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
+										Đăng Xuất
+									</a> <a class="dropdown-itemz" href="${base }/logout"
+										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
+										<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
+										Cài đặt tài khoản
+									</a>
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="avatar">
+								<a href="${base }/register" style="color: #ffff;">Đăng ký</a>
+							</div>
+							<div class="avatar">
+								<a href="${base }/login" style="color: #ffff;">Đăng nhập</a>
+							</div>
+
+						</c:otherwise>
+					</c:choose>
+
 					<select name="language" id="language" class="language">
 						<option value="VI">Việt Nam</option>
 						<option value="EN">English</option>

@@ -82,12 +82,9 @@ public class ShopController extends BaseController{
 			shopSearch.setVillageAddress(villageAddress);
 			//shopSearch.setKeyword(keyword);			
 			//muốn giữ được các giá trị search trên màn hình thì cần phải đẩy lại dữ liệu nhập trước đó xuống vỉew
-			model.addAttribute("shopSearch", shopSearch);
-						
+			model.addAttribute("shopSearch", shopSearch);					
 			PagerData<Shop> shops = shopService.searchShop(shopSearch);
-			
 			model.addAttribute("shops", shops);
-			
 			// đường dẫn tới file view
 			return "customer/grabfood"; /// WEB-INF/views/customer/grabfood.jsp;
 		};

@@ -87,7 +87,7 @@ public class CartController extends BaseController {
 		session.setAttribute("cart", null);
 		session.setAttribute("Tongsoluongmon", 0);
 
-		return "customer/chitiet"; // -> đường dẫn tới View.
+		return "customer/cart"; // -> đường dẫn tới View.
 
 	}
 
@@ -216,43 +216,7 @@ public class CartController extends BaseController {
 		return ResponseEntity.ok(jsonResult);
 	}
 
-	// Xử lý yêu cầu xóa sản phẩm khỏi giỏ hàng
-//	@RequestMapping(value = "/cart/remove", method = RequestMethod.POST)
-//	@ResponseBody
-//	public Map<String, Object> removeCartItem(@RequestParam("productId") int productId, HttpSession session) {
-//		// Lấy giỏ hàng từ session
-//		Cart cart = (Cart) session.getAttribute("cart");
-//
-//		// Nếu giỏ hàng không tồn tại, trả về thông báo lỗi
-//		if (cart == null) {
-//			Map<String, Object> response = new HashMap<String, Object>();
-//			response.put("success", false);
-//			response.put("message", "Giỏ hàng không tồn tại.");
-//			return response;
-//		}
-//
-//		// Xóa sản phẩm khỏi giỏ hàng
-//		cart.removeCartItem(productId);
-//
-//		// Lưu giỏ hàng vào session
-//		session.setAttribute("cart", cart);
-//
-//		// Tạo đối tượng phản hồi
-//		Map<String, Object> response = new HashMap<String, Object>();
-//		response.put("success", true);
-//		response.put("cartHtml", getCartHtml(cart));
-//		return response;
-//	}
-
-	// Hàm lấy HTML của giỏ hàng
-//	private String getCartHtml(Cart cart) {
-//	    String cartHtml = "<tbody id='cart-items'>";
-//	    for (CartItem item : cart.getCartItems()) {
-//	        cartHtml += "<tr> <td scope='row' class='border-0'> <div class='p-2'><img src='${base }/upload/${ci.productAvatar }' alt=''style='width: 70px; height: 70px;' class='img-fluid rounded shadow-sm'> <div class='ml-3 d-inline-block align-middle'> <h5 class='mb-0'> <a href='#' class='text-dark d-inline-block align-middle>"+item.getProductName()+"</a> </h5> <span class='text-muted font-weight-normal font-italic d-block'></span> </div> </div> </td> <td class='border-0 align-middle'><fmt:setLocale value='vi_VN' /> <strong><fmt:formatNumber value="+item.getPriceUnit()+" type='currency' /></strong></td><td class='border-0 align-middle'> <button style='width: 25px; height: 25px; font-weight: bold;' onclick='UpdateQuanlityCart('${base }', ${ci.productId}, -1)' value='-'>-</button> <strong><span id='quanlity_${ci.productId}'>"+item.getQuanlity()+"</span></strong> <button style='width: 25px; height: 25px; font-weight: bold;' onclick='UpdateQuanlityCart('${base }', ${ci.productId}, 1)' value='+'>+</button> </td> <td><p style='margin-top: 25px;'>"+item.getProductDetail()+"</p></td> <td class='border-0 align-middle'><button class='remove-item' data-product-id='${ci.productId}' style='text-decoration: none; color: black; font-weight: bold;'> <i class='fa-sharp fa-solid fa-trash'></i>Xóa </button></td></tr>;}";
-//	    }
-//	    cartHtml += "</tbody>";
-//	    return cartHtml;
-//	}
+	
 	@RequestMapping(value = { "/ajax/increaseItems" }, method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> ajax_IncreaseItems(final Model model,
 														       final HttpServletRequest request,
@@ -303,9 +267,9 @@ public class CartController extends BaseController {
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
 		session.setAttribute("cartItem.quantity", getTotalItems(request));
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
-		session.setAttribute("TongSoLuongSanPhamTrongGioHang", getTotalItems(request));
+		session.setAttribute("Tongsoluongmon", getTotalItems(request));
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
-		session.setAttribute("tongGia", getTotalMoney(request));
+		session.setAttribute("Tongtienthanhtoan", getTotalMoney(request));
 		return ResponseEntity.ok(jsonResult);
 		
 	}
@@ -341,15 +305,11 @@ public class CartController extends BaseController {
 		for (CartItem item : cartItems) {
 			if (item.getProductId() == cartItem.getProductId()) {
 				// xoa sp trong cart
-				System.out.println("quantity: "+cartItem.getQuanlity());
+				//System.out.println("quantity: "+cartItem.getQuanlity());
 				cartItems.remove(item);
 				break;
 			}
 		}
-	
-//		// tính tổng tiền
-//		this.calculateTotalPrice(request);
-		
 		// trả về kết quả
 		Map<String, Object> jsonResult = new HashMap<String, Object>();
 		jsonResult.put("code", 200);
@@ -360,9 +320,9 @@ public class CartController extends BaseController {
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
 		session.setAttribute("cartItem.quantity", getTotalItems(request));
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
-		session.setAttribute("TongSoLuongSanPhamTrongGioHang", getTotalItems(request));
+		session.setAttribute("Tongsoluongmon", getTotalItems(request));
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
-		session.setAttribute("tongGia", getTotalMoney(request));
+		session.setAttribute("Tongtienthanhtoan", getTotalMoney(request));
 		return ResponseEntity.ok(jsonResult);
 	}
 }

@@ -1412,6 +1412,16 @@ css select-input
 .btn-add-modal:hover{
 	background-color: #ad69f1b0;
 }
+.btn-add-modal a{
+	display: block;
+    color: #fff;
+    text-decoration: none;
+    line-height: 50px;
+    font-size: 20px;
+}
+.btn-add-modal:hover a{
+	color:#fff;
+}
 .btn-add-modal p{
     font-size: 17px;
     color: #fff;
@@ -1518,7 +1528,7 @@ css select-input
     background-color: black;
     border-radius: 7px;
     box-shadow: 1px 2px 5px #999999;
-    margin-top: 20px;
+    margin-top: 15px;
     border: 2px solid #fff;
     box-sizing: border-box;
     margin-right: 7px;
@@ -1761,6 +1771,9 @@ css select-input
 #product-details{
     width: 50%;
 	margin-top: 20px;
+}
+#product-details h2{
+	color: var(--white-color);
 }
 .wrapper-imgShop{
     width: 50%;

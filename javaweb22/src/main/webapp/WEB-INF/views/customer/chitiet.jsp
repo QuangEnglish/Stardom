@@ -60,14 +60,14 @@
 					</nav>
 					<!-- /nav__danhmuc -->
 					<!-- h2 -->
-					<h2 style="color: var(--white-color);">${shop.name }</h2>
+					<h2>${shop.name }</h2>
 					<!-- /h2 -->
 					<!--product-details__p  -->
 					<p>Cơm</p>
 					<p>
 						<i class="fa-sharp fa-solid fa-location-dot"
 							style="color: #e11818; margin-right: 5px;"></i><span
-							style="color: var(--violet-color);">Địa chỉ: </span>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
+							style="color: var(- -violet-color);">Địa chỉ: </span>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
 					</p>
 					<p>
 						<i class="fa-solid fa-star"
@@ -75,7 +75,8 @@
 							style="color: #fff;">5000 lượt xem</span>
 					</p>
 					<p>
-						<span style="font-weight: bold;">Giờ đóng mở cửa: </span><span
+						<i class="fa-solid fa-clock" style="color: #20c320;  margin-right: 5px;"></i> <span
+							style="font-weight: bold;">Giờ đóng mở cửa: </span><span
 							style="margin-left: 7px;">${shop.openTime } h -
 							${shop.closeTime } h</span>
 					</p>
@@ -140,7 +141,7 @@
 					<div class="slideshow-container" style="height: 412px !important;">
 						<div class="mySlides ">
 							<img src="${base }/upload/${shop.avatar}" style="width: 100%">
-							<div class="text" style="color: var(--violet-color);">Hình
+							<div class="text" style="color: var(- -violet-color);">Hình
 								ảnh nhà hàng</div>
 						</div>
 						<c:forEach items="${shop.shopImages }" var="shopImage">>				
@@ -169,13 +170,11 @@
 		<!-- product-details__menu -->
 		<div id="product-details__menu">
 			<ul class="product-details__menu--ul">
-				<li><a href="#uuDai" class="acl">Ưu
-						đãi hôm nay</a></li>
+				<li><a href="#uuDai" class="acl">Ưu đãi hôm nay</a></li>
 				<li><a href="#mon1" class="acl">Món chính</a></li>
 				<li><a href="#mon2" class="acl">Món phụ</a></li>
 				<li><a href="#mon3" class="acl">Món tráng miệng</a></li>
-				<li><a href="#mon4" class="acl">Đồ
-						uống</a></li>
+				<li><a href="#mon4" class="acl">Đồ uống</a></li>
 			</ul>
 		</div>
 		<!-- /product-details__menu -->
@@ -192,7 +191,7 @@
 					<!-- body-content__item1 -->
 					<c:forEach var="product" items="${shop.products }">
 						<div id="js-buy-eat"
-							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12" 
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"
 							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
 							<div class="body-content__item--img">
 								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
@@ -221,7 +220,7 @@
 							<!-- 
 							<a href="${base }/product/detail/${product.seo }"></a>					
 							 -->
-							
+
 						</div>
 
 					</c:forEach>
@@ -788,9 +787,10 @@
 		<!-- /footer -->
 
 		<!-- modal-buy-->
-	
+
 		<div class="modal-buy" id="modal-buy">
-			<div class="modal-container js-modal-container" id="js-modal-container">
+			<div class="modal-container js-modal-container"
+				id="js-modal-container">
 				<div class="header__modal">
 					<button class="js-modal-close" id="js-modal-close" type="button">
 						<i class="ti-close"></i>
@@ -918,18 +918,27 @@
 				<div class="footer__modal">
 					<div class="buttons_added">
 						<input onclick="handleMinus()" class="minus is-form" type="button"
-							value="-" style="width: 50px;"> 
-						<input
+							value="-" style="width: 50px;"> <input
 							aria-label="quantity" id="amount" class="input-qty" max="50"
 							min="0" name="" type="number" value="1" style="width: 100px;">
 						<input onclick="handlePlus()" class="plus is-form" type="button"
 							value="+" style="width: 50px;">
 					</div>
-					<button type="button" class="btn-add-modal" id="btn-add-modal"
-						onclick="">
-						<p>Add to Basket</p>
+					<c:choose>
+						<c:when test="${isLogined }">
+							<button type="button" class="btn-add-modal" id="btn-add-modal"
+								onclick="">
+								<p>Thêm vào giỏ hàng</p>
 
-					</button>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-add-modal">
+								<a href="${base }/login">Thêm vào giỏ hàng</a>
+							</button>
+
+						</c:otherwise>
+					</c:choose>
 				</div>
 
 			</div>
