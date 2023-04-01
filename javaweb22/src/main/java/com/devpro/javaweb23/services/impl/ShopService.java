@@ -99,6 +99,7 @@ public class ShopService extends BaseService<Shop> {
 		// tạo seo: bổ sung thêm thời gian tính bằng miliseconds để tránh trùng seo
 		Slugify slugify = new Slugify();
 		shop.setSeo(slugify.slugify("%hmq" + shop.getName() + "-" + System.currentTimeMillis()));
+		//shop.setViewShop(1);
 		// lưu vào database
 		return super.saveOrUpdate(shop);
 	}

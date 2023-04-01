@@ -1,14 +1,18 @@
 package com.devpro.javaweb23.controller.customer;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -107,5 +111,15 @@ public class ShopController extends BaseController{
 			// đường dẫn tới file view
 			return "customer/grabfood"; /// WEB-INF/views/customer/grabfood.jsp;
 		};
-		
+		@RequestMapping(value = { "/ajax/shop-view" }, method = RequestMethod.POST)
+		public ResponseEntity<Map<String, Object>> view_shop(final Model model, final HttpServletRequest request,
+				final HttpServletResponse response, final @RequestBody Shop shop) {
+			Shop shopView = shopService.getById(shop.getId());
+			shopView.setViewShop(1);
+			shopService.saveOrUpdate(shopView);
+
+			Map<String, Object> jsonResult = new HashMap<String, Object>();
+			jsonResult.put("message", "Đã thêm view thành công!");
+			return ResponseEntity.ok(jsonResult);
+		}
 }

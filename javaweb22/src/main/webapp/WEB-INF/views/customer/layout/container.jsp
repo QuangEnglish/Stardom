@@ -53,7 +53,9 @@
 				</div>
 				<div class="search-btn">
 					<button type="submit" class="search-btn--sub" id="add">
-						Tìm Kiếm</button>
+						<i class="fa-solid fa-magnifying-glass"
+							style="font-size: 25px; color: #fff;"></i> Tìm Kiếm
+					</button>
 				</div>
 			</form>
 		</div>
@@ -79,15 +81,19 @@
 			</form>
 
 		</div>
-		<h3 id="sp-title-content--address"><i class="fa-solid fa-road"></i>${shopSearch.villageAddress }<i class="fa-solid fa-road"></i>${shopSearch.townAddress }<i class="fa-solid fa-road"></i> ${shopSearch.provinceAddress }</h3>
+		<h3 id="sp-title-content--address">
+			<i class="fa-solid fa-road"></i>${shopSearch.villageAddress }<i
+				class="fa-solid fa-road"></i>${shopSearch.townAddress }<i
+				class="fa-solid fa-road"></i> ${shopSearch.provinceAddress }
+		</h3>
 		<!-- /title-content-filter -->
 
 		<!-- body-content -->
 		<div class="body-content row">
 			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
 				<!-- body-item -->
-				<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6">
-					<a href="${base }/shop/detail/${shop.seo}"></a>
+				<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6" >
+					
 					<div class="img-item">
 						<img src="${base }/upload/${shop.avatar}" alt="">
 					</div>
@@ -102,11 +108,10 @@
 					<div class="sale-btnShop">
 						<div class="sale">
 							<i class="fa-solid fa-star"
-								style="color: #ffc107; margin-right: 5px;"></i><span>5.000
-								lượt</span>
+								style="color: #ffc107; margin-right: 5px;"></i><span>${shop.viewShop} lượt xem</span>
 						</div>
 						<div class="btnShop">
-							<a href="${base }/shop/detail/${shop.seo}"><i
+							<a  href="${base }/shop/detail/${shop.seo}" onclick="AddViewShop(${shop.id})"><i
 								class="ti-shopping-cart"></i>Xem quán</a>
 						</div>
 					</div>
@@ -118,9 +123,9 @@
 
 		<!-- see-all -->
 		<div class="see-all">
-			<button type="button" class="btn-see-shop">
-				<i class="fa-solid fa-plus" onclick="loadMore()" style="color: #fff; margin-right: 5px;"></i>Xem
-				thêm
+			<button type="button" class="btn-see-shop"  id="myButton-see-add">
+				<i class="fa-solid fa-plus"
+					style="color: #fff; margin-right: 5px;"></i>Xem thêm
 			</button>
 		</div>
 		<!-- /see-all -->
@@ -286,7 +291,7 @@
 		</div>
 		<!-- /text-->
 		<!-- see-all -->
-			<div class="see-all">
+		<div class="see-all">
 			<button type="button" class="btn-see-shop">
 				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
 				thêm

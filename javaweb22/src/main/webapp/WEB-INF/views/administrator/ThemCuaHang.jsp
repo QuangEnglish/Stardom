@@ -115,12 +115,12 @@
 									</tr>
 									<tr>
 										<td>Thời gian mở cửa:</td>
-										<td><sf:input path="openTime" type="text" name="openTime"
+										<td><sf:input path="openTime" type="time" name="openTime"
 												id="openTime"></sf:input></td>
 									</tr>
 									<tr>
 										<td style="width: 160px;">Thời gian đóng cửa:</td>
-										<td><sf:input path="closeTime" type="text"
+										<td><sf:input path="closeTime" type="time"
 												name="closeTime" id="closeTime"></sf:input></td>
 									</tr>
 									<tr>

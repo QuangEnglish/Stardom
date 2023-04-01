@@ -63,7 +63,7 @@
 					<h2>${shop.name }</h2>
 					<!-- /h2 -->
 					<!--product-details__p  -->
-					<p>Cơm</p>
+
 					<p>
 						<i class="fa-sharp fa-solid fa-location-dot"
 							style="color: #e11818; margin-right: 5px;"></i><span
@@ -72,10 +72,11 @@
 					<p>
 						<i class="fa-solid fa-star"
 							style="color: yellow; margin-right: 5px;"></i><span
-							style="color: #fff;">5000 lượt xem</span>
+							style="color: #fff;">${shop.viewShop} lượt xem</span>
 					</p>
 					<p>
-						<i class="fa-solid fa-clock" style="color: #20c320;  margin-right: 5px;"></i> <span
+						<i class="fa-solid fa-clock"
+							style="color: #20c320; margin-right: 5px;"></i> <span
 							style="font-weight: bold;">Giờ đóng mở cửa: </span><span
 							style="margin-left: 7px;">${shop.openTime } h -
 							${shop.closeTime } h</span>
@@ -83,9 +84,102 @@
 					<!--product-details__p  -->
 					<!-- btn-book-shop -->
 					<div class="btn-book-shop">
-						<button type="button">
+						<button type="button" id="showDiv">
 							<i class="fa-sharp fa-regular fa-clock"></i>Đặt bàn
 						</button>
+						<div id="myDiv">
+							<span id="closeDiv"><i class="ti-close"
+								style="font-size: 25px; font-weight: bold;"></i></span>
+							<div class="card-book">
+								<div class="card-body-book">
+									<h5 class="card-title-book">Đặt bàn trước cho quán thôi!</h5>
+
+									<!-- General Form Elements -->
+									<form>
+										<div class="row mb-3">
+											<label for="inputText" class="col-sm-2 col-form-label">Họ
+												và tên:</label>
+											<div class="col-sm-4">
+												<input type="text" class="form-control">
+											</div>
+											<label for="inputNumber" class="col-sm-2 col-form-label">Số
+												điện thoại:</label>
+											<div class="col-sm-4">
+												<input type="number" class="form-control">
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="inputDate" class="col-sm-2 col-form-label">Ngày
+												đặt:</label>
+											<div class="col-sm-4">
+												<input type="date" class="form-control">
+											</div>
+											<label for="inputTime" class="col-sm-2 col-form-label">Thời
+												gian:</label>
+											<div class="col-sm-4">
+												<input type="time" class="form-control">
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label class="col-sm-2 col-form-label">Số người:</label>
+											<div class="col-sm-4">
+												<select class="form-select"
+													aria-label="Default select example">
+													<option value="1" selected>1 người</option>
+													<option value="2">2 người</option>
+													<option value="3">3 người</option>
+													<option value="4">4 người</option>
+													<option value="5">5 người</option>
+													<option value="6">6 người</option>
+													<option value="7">7 người</option>
+													<option value="8">8 người</option>
+													<option value="9">9 người</option>
+													<option value="10">10 người</option>
+													<option value="11">11người</option>
+													<option value="12">12 người</option>
+													<option value="13">13 người</option>
+													<option value="14">14 người</option>
+													<option value="15">15 người</option>
+												</select>
+											</div>
+											<label class="col-sm-2 col-form-label">Bàn:</label>
+											<div class="col-sm-4">
+												<select class="form-select"
+													aria-label="Default select example">
+
+													<option value="1" selected>1 bàn</option>
+													<option value="2">2 bàn</option>
+													<option value="3">3 bàn</option>
+													<option value="4">4 bàn</option>
+													<option value="5">5 bàn</option>
+												</select>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="inputPassword" class="col-sm-2 col-form-label">Ghi
+												chú:</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control"
+													style="height: 50px;"
+													placeholder="Ghi chú cho quán ăn, đầu bếp,...">
+											</div>
+										</div>
+
+
+										<div class="row mb-3">
+											<div class="col-sm-3" style="margin: 12px auto;">
+												<button type="submit" class="btn btn-primary-book">Đặt
+													bàn ngay</button>
+											</div>
+										</div>
+
+									</form>
+									<!-- End General Form Elements -->
+
+								</div>
+							</div>
+
+						</div>
 					</div>
 					<!-- /btn-book-shop -->
 					<!-- product-details__sale -->
@@ -905,7 +999,7 @@
 					<!-- /thirdBody -->
 					<!-- four -->
 					<div class="secondBody">
-						<span class="sp-secondBody-f">Special instructions</span><span
+						<span class="sp-secondBody-f">Ghi chú cho đầu bếp</span><span
 							class="sp-secondBody-c">Optional</span>
 					</div>
 					<div class="wrapper-input-modal">
@@ -916,6 +1010,7 @@
 				</div>
 
 				<div class="footer__modal">
+					<!-- 
 					<div class="buttons_added">
 						<input onclick="handleMinus()" class="minus is-form" type="button"
 							value="-" style="width: 50px;"> <input
@@ -924,6 +1019,8 @@
 						<input onclick="handlePlus()" class="plus is-form" type="button"
 							value="+" style="width: 50px;">
 					</div>
+					
+					 -->
 					<c:choose>
 						<c:when test="${isLogined }">
 							<button type="button" class="btn-add-modal" id="btn-add-modal"
@@ -947,8 +1044,8 @@
 		<!-- /all -->
 	</div>
 
-
-	<script>
+	<!-- 
+		<script>
         let amountElement = document.getElementById('amount');
         let amount = amountElement.value;
         
@@ -968,6 +1065,8 @@
             }
         }
     </script>
+	 -->
+
 	<script>
 		//biến bao cả item
         const  buyBtns = document.querySelectorAll('.js-buy-eat')
@@ -1062,6 +1161,15 @@
         		});
         	}
         </script>
-
+		<script type="text/javascript">
+				$(document).ready(function() {
+					  $("#showDiv").click(function() {
+					    $("#myDiv").toggle(500);
+					  });
+					  $("#closeDiv").click(function() {
+						    $("#myDiv").toggle(300);
+						  });
+					});
+		</script>
 </body>
 </html>

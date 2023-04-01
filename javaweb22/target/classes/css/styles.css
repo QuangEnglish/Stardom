@@ -10925,5 +10925,13 @@ textarea.form-control-lg {
 	
 	padding:0;
 }
-.toast-message{
+#no-table-message {
+	margin: auto;
+	width:100%;
+	height: 300px;	
+    display: none;
+}
+#no-table-message img{
+	width:100%;
+	height:300px;
 }

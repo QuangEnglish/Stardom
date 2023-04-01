@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -50,6 +51,8 @@ public class Shop extends BaseEntity{
 	private Integer assessStart;
 	@Column(name = "seo", length = 1000, nullable = true)
 	private String seo;
+	@Column(name = "view_shop", nullable = true)
+	private Integer viewShop =1;
 	@OneToMany(cascade = CascadeType.ALL, 
 			   fetch = FetchType.EAGER, 
 			   mappedBy = "shop")
@@ -77,7 +80,9 @@ public class Shop extends BaseEntity{
 		product.setShop(null);
 		products.remove(product);
 	}
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "view_id")
+	private View view;
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_shop_category", 
 			   joinColumns = @JoinColumn(name = "shop_id"), 
@@ -201,5 +206,18 @@ public class Shop extends BaseEntity{
 	public void setIsDisplay(Boolean isDisplay) {
 		this.isDisplay = isDisplay;
 	}
+	public View getView() {
+		return view;
+	}
+	public void setView(View view) {
+		this.view = view;
+	}
+	public Integer getViewShop() {
+		return viewShop;
+	}
+	public void setViewShop(Integer viewShop) {
+		this.viewShop += viewShop;
+	}
+
 	
 }

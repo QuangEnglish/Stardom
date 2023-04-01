@@ -434,6 +434,9 @@ html{
     position: relative;
 }
 .avatar_chitiet p{
+	margin: 0;
+	color: #fff;
+	font-size: 13px;
     text-align: center;
     display: block;
     line-height: 35px;
@@ -519,17 +522,24 @@ html{
     border: none;
 }
 .search-btn{
-    width: 310px;
+    width: 24%;
     height: 55px;
     margin: 0 auto;
+    position: relative;
 }
 .search-block__btn{
-    width: 200px;
+    width: 140px;
     height: 40px;
 }
 .search-btn--sub{
-    width: 310px;
-    height: 55px;
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 1000;
+    font-size: 20px;
+    color: #fff;
     background: var(--linear-tim);
     border-radius: 10px;
     margin: 10px auto;
@@ -540,9 +550,14 @@ html{
 	background: linear-gradient(to right, #b38ac6, #be99f3);
 }
 .search-block__btn--sub{
-    width: 200px;
+    width:  140px;
     height: 48px;
-    margin: 0;
+    font-size: 15px;
+    color: #fff;
+    background: var(--linear-tim);
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .search-btn a{
     color: #fff;
@@ -581,6 +596,8 @@ css select-input
   font-size: 16px;
   line-height: 1.4;
   box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 
 .input-field {
@@ -1029,6 +1046,7 @@ css select-input
     color: #fff;
     border-radius: 10px;
     font-size: 17px;
+    border: none;
   }
   .footer-pay{
     width: 100%;
@@ -1332,7 +1350,7 @@ css select-input
     right: 0;
     bottom: 0;
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -1408,6 +1426,7 @@ css select-input
     border: none;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 .btn-add-modal:hover{
 	background-color: #ad69f1b0;
@@ -1547,32 +1566,31 @@ css select-input
     overflow: hidden;
     border-top: 1px solid #ebedf2; }
 .dropdown-menuz{
-    width: 150px;
-    height: 90px;
-    background-color: black;
+     width: 200px;
+    padding: 5px 20px;
+    background: black;
     position: absolute;
-    top: 45px;
+    top: 55px;
     left: -50%;
     z-index: 2000;
     display: none;
-    border-radius: 10px; 
-    border: 2px solid #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .dropdown-menuz a:hover{
     color: var(--violet-color);
 }
 .dropdown-menuz::before{
+	background: var(--linear-toi);
     display: block;
     content: "";
     position: absolute;
-    top: -9px;
+    top: -19px;
     left: 15px;
     border: 1px solid #fff ;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
     border-bottom: 20px solid black;
-    z-index: -1000;
+    z-index: -2000;
 }
 
 .dropdown-itemz {
@@ -1580,9 +1598,7 @@ css select-input
   width: 100%;
   line-height: 40px;
   font-weight: 400;
-  text-align: center;
-  color: #fff;
-  background-color: black;
+  color: var(--text-span);
   text-decoration: none;
   border-radius: 10px; 
 
@@ -1774,6 +1790,7 @@ css select-input
 }
 #product-details h2{
 	color: var(--white-color);
+	margin-bottom: 25px;
 }
 .wrapper-imgShop{
     width: 50%;
@@ -1827,6 +1844,7 @@ img {vertical-align: middle;}
   }
   /* On hover, add a black background color with a little bit see-through */
   .prev:hover, .next:hover {
+   color:#fff;
     background-color: rgba(0,0,0,0.8);
   }
   .next:hover a{
@@ -1924,6 +1942,62 @@ h2{
     color: var(--bs-white);
     border: none;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+#showDiv:hover{
+	background: #af84ee;
+}
+#myDiv {
+  width: 50%;
+  height: 400px;
+  z-index: 2000;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--linear-tim);
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#closeDiv {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.card-book{
+	width: 100%;
+    height: 400px;
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: var(--linear-tim);
+    border: none;
+    border-radius: 30px;
+}
+.card-title-book{
+	font-size: 30px;
+    margin: 10px 0px 40px 0px;
+    font-weight: bold;
+    color: var(--bs-body-color);
+}
+.col-form-label{
+	font-weight: 500 !important;
+    font-size: 15px !important;
+}
+.btn-primary-book{
+	width: 100% !important;
+    height: 40px !important;
+    margin: auto !important;
+    background: var(--bs-body-color) !important;
+}
+.btn-primary-book:hover{
+	color:#fff !important;
+	background: #5a6167 !important;
 }
 .btn-book-shop i{
     color: var(--bs-white);
@@ -2684,6 +2758,7 @@ h2{
         width: 80%;
         height: 55px;
         margin: 0 auto;
+        position: relative;
     }
     .search-btn--sub{
         width: 100%;

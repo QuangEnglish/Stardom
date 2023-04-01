@@ -43,9 +43,9 @@
 								placeholder="Phường, xã..." style="height: 46px; width: 60%;">
 							<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 						</div>
-						<div class="search-btn search-block__btn">
+						<div class="search-block__btn">
 							<button type="submit"
-								class="search-btn--sub search-block__btn--sub" id="add">
+								class="search-block__btn--sub" id="add">
 								Tìm Kiếm</button>
 						</div>
 					</form>
@@ -68,26 +68,23 @@
 									<i class="fa-solid fa-user" style="color: #fff;"></i>
 								</p>
 								<div class="dropdown-menuz">
-									<p class="dropdown-itemz"> <i
-										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
-										Nguyễn Quang Anh
+									<p class="dropdown-itemz-p">
+										${userLogined.username }
 									</p> 
-									<p class="dropdown-itemz"> <i
-										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
-										hquanganh123@gmail.com
+									<p class="dropdown-itemz-p">
+										${userLogined.email }
 									</p> 
-									<a class="dropdown-itemz" href="${base }/login"> <i
-										class="ti-reload" style="color: #4fdb36; margin-right: 5px;"></i>
+									<a class="dropdown-itemz" style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;" href="${base }/login"><i class="fa-solid fa-right-to-bracket" style="color: #fff; margin-right: 5px;"></i>
 										Đăng Nhập
 									</a>
 									<!-- <div class="dropdown-divider"></div> -->
 									<a class="dropdown-itemz" href="${base }/logout"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
-										<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
+										<i class="fa-sharp fa-solid fa-lock" style="color: #fff; margin-right: 5px;"></i>
 										Đăng Xuất
 									</a> <a class="dropdown-itemz" href="${base }/logout"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
-										<i class="ti-lock" style="color: #d73125; margin-right: 5px;"></i>
+										<i class="fa-solid fa-gear" style="color: #fff; margin-right: 5px;"></i>
 										Cài đặt tài khoản
 									</a>
 								</div>

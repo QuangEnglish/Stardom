@@ -18,7 +18,7 @@ import com.devpro.javaweb23.model.BaseEntity;
 @Service
 public abstract class BaseService<E extends BaseEntity> {
 
-	private static int SIZE_OF_PAGE = 8; // mỗi trang chỉ có tối đa 6 sản phẩm
+	private static int SIZE_OF_PAGE = 30; // mỗi trang chỉ có tối đa 6 sản phẩm
 	public static int NO_PAGING = 1;
 	
 	//Inject EntityManager

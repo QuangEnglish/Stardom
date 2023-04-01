@@ -66,7 +66,7 @@
 			<!-- form cho việc thanh toán -->
 			<form action="" method="post" id="customer-form">
 				<!-- Danh sách sản phẩm trong giỏ hàng -->
-				<div class="table-responsive">
+				<div class="table-responsive" id="table-container">
 					<table class="table" id="my-table-cart">
 						<thead>
 							<tr>
@@ -132,6 +132,11 @@
 
 						</tbody>
 					</table>
+				</div>
+				<div id="no-table-message">
+					<img
+						src="${base }/img/imgtrangchu/7ead0731166046c45e44e2bd4cdabf88.jpg"
+						alt="Ảnh">
 				</div>
 
 
@@ -340,6 +345,16 @@
 			}
 		});
 	}
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		  var tableRows = $('#table-container tbody tr');
+		  if (tableRows.length == 0) {
+		    $('#no-table-message').show();
+		  } else {
+		    $('#no-table-message').hide();
+		  }
+		});
 	</script>
 </body>
 </html>

@@ -18,7 +18,10 @@
 <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"
+	integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="shortcut icon"
 	href="${base}/img/imgtrangchu/iconLogoOffStardomChuan.png" />
 <link rel="stylesheet"
@@ -30,8 +33,11 @@
 	rel="stylesheet"
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -42,11 +48,43 @@
 		<jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function(){
+		$(document).ready(function() {
 			$("#filter-select").val('${shopSearchFilter.filterSelect}');
-	 		$("#provinceAddress").val('${shopSearch.provinceAddress}');	
-	 		
+			$("#provinceAddress").val('${shopSearch.provinceAddress}');
+
 		});
-		</script>	
+	</script>
+	<script type="text/javascript">
+		function AddViewShop(shopId) {
+			var data = {
+				id : shopId
+			}
+			jQuery.ajax({
+				url : '${base}' + "/ajax/shop-view",
+				type : "post",
+				contentType : "application/json",
+				data : JSON.stringify(data),
+
+				dataType : "json",
+				success : function(jsonResult) {
+				},
+				error : function(jqXhr, textStatus, errorMessage) {
+					alert("Lỗi");
+				}
+			});
+		}
+	</script>
+	<script type="text/javascript">
+		$(".body-item").slice(8).hide();
+		$("#myButton-see-add").html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Xem thêm");
+		$("#myButton-see-add").click(function() {
+			if ($(this).text() === "Xem thêm") {
+				$(this).html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Thu gọn");
+			} else {
+				$(this).html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Xem thêm");
+			}
+			$(".body-item").slice(8).stop().slideToggle(500);
+		});
+	</script>
 </body>
 </html>

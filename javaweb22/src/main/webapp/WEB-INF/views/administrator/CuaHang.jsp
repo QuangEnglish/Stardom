@@ -255,7 +255,7 @@
 											<th scope="col">STT</th>
 											<th scope="col">Tên cửa hàng</th>
 											<th scope="col">Địa chỉ</th>
-											<th scope="col">ID Sản phẩm</th>
+											<th scope="col">Lượng truy cập</th>
 											<th scope="col">Hiển thị</th>
 											<th scope="col">Nổi bật</th>
 											<th scope="col">Đang sale</th>
@@ -273,7 +273,7 @@
 													<p>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }</p>
 												</td>
 												<td>
-													
+													${shop.viewShop }
 												</td>
 												<td style="width: 70px;"><span
 													id="_shop_isHot_${shop.id} }"> <c:choose>
