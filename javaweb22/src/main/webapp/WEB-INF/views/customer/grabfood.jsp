@@ -83,7 +83,7 @@
 			} else {
 				$(this).html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Xem thêm");
 			}
-			$(".body-item").slice(8).stop().slideToggle(500);
+			$(".body-item").slice(8).stop().fadeToggle(500);
 		});
 	</script>
 </body>

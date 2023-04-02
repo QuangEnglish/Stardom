@@ -80,8 +80,25 @@ public class Shop extends BaseEntity{
 		product.setShop(null);
 		products.remove(product);
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			   mappedBy = "shop", 
+			   fetch = FetchType.EAGER)
+	private Set<SaleOrderShop> saleOrderShop = new HashSet<SaleOrderShop>();
+	public void addSaleOrderShop(SaleOrderShop _saleOrderShop) {
+		_saleOrderShop.setShop(this);
+		saleOrderShop.add(_saleOrderShop);
+	}
+	public void removeSaleOrderShop(SaleOrderShop _saleOrderShop) {
+		_saleOrderShop.setShop(null);
+		saleOrderShop.remove(_saleOrderShop);
+	}
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "view_id")
+	
+	
+	
 	private View view;
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_shop_category", 
@@ -217,6 +234,12 @@ public class Shop extends BaseEntity{
 	}
 	public void setViewShop(Integer viewShop) {
 		this.viewShop += viewShop;
+	}
+	public Set<SaleOrderShop> getSaleOrderShop() {
+		return saleOrderShop;
+	}
+	public void setSaleOrderShop(Set<SaleOrderShop> saleOrderShop) {
+		this.saleOrderShop = saleOrderShop;
 	}
 
 	

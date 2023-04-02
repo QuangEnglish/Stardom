@@ -95,35 +95,36 @@
 									<h5 class="card-title-book">Đặt bàn trước cho quán thôi!</h5>
 
 									<!-- General Form Elements -->
-									<form>
+									<form action="${base }/chitiet/book" method="post">
 										<div class="row mb-3">
 											<label for="inputText" class="col-sm-2 col-form-label">Họ
 												và tên:</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control">
+												<input type="text" name="saleorderName" class="form-control" required>
 											</div>
 											<label for="inputNumber" class="col-sm-2 col-form-label">Số
 												điện thoại:</label>
 											<div class="col-sm-4">
-												<input type="number" class="form-control">
+												<input type="tel" name="saleorderPhone"
+													class="form-control" required maxlength="10">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="inputDate" class="col-sm-2 col-form-label">Ngày
 												đặt:</label>
 											<div class="col-sm-4">
-												<input type="date" class="form-control">
+												<input type="date" name="saleorderDate" class="form-control" required>
 											</div>
 											<label for="inputTime" class="col-sm-2 col-form-label">Thời
 												gian:</label>
 											<div class="col-sm-4">
-												<input type="time" class="form-control">
+												<input type="time" name="saleorderTime" class="form-control" required>
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label class="col-sm-2 col-form-label">Số người:</label>
 											<div class="col-sm-4">
-												<select class="form-select"
+												<select class="form-select" name="saleorderPeople"
 													aria-label="Default select example">
 													<option value="1" selected>1 người</option>
 													<option value="2">2 người</option>
@@ -144,7 +145,7 @@
 											</div>
 											<label class="col-sm-2 col-form-label">Bàn:</label>
 											<div class="col-sm-4">
-												<select class="form-select"
+												<select class="form-select" name="saleorderTable"
 													aria-label="Default select example">
 
 													<option value="1" selected>1 bàn</option>
@@ -159,17 +160,20 @@
 											<label for="inputPassword" class="col-sm-2 col-form-label">Ghi
 												chú:</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control"
+												<input type="text" name="saleorderNote" class="form-control"
 													style="height: 50px;"
 													placeholder="Ghi chú cho quán ăn, đầu bếp,...">
 											</div>
+											<div class="col-sm-4" style="display:none;">
+												<input type="text" name="shopId" value="${shop.id }">
+											</div>
 										</div>
-
+								
 
 										<div class="row mb-3">
 											<div class="col-sm-3" style="margin: 12px auto;">
-												<button type="submit" class="btn btn-primary-book">Đặt
-													bàn ngay</button>
+												<button type="submit" class="btn btn-primary-book"
+													onclick="BtnBookTable();">Đặt bàn ngay</button>
 											</div>
 										</div>
 
@@ -1161,7 +1165,7 @@
         		});
         	}
         </script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 				$(document).ready(function() {
 					  $("#showDiv").click(function() {
 					    $("#myDiv").toggle(500);

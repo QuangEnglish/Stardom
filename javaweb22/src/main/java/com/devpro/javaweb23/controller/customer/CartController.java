@@ -2,10 +2,14 @@ package com.devpro.javaweb23.controller.customer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +23,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.devpro.javaweb23.controller.BaseController;
+import com.devpro.javaweb23.dto.BookItem;
 import com.devpro.javaweb23.dto.Cart;
 import com.devpro.javaweb23.dto.CartItem;
 import com.devpro.javaweb23.model.Product;
@@ -30,6 +33,7 @@ import com.devpro.javaweb23.model.SaleOrder;
 import com.devpro.javaweb23.model.SaleOrderProducts;
 import com.devpro.javaweb23.services.impl.ProductService;
 import com.devpro.javaweb23.services.impl.SaleOrderService;
+import com.devpro.javaweb23.services.impl.ShopService;
 
 @Controller
 public class CartController extends BaseController {
@@ -39,6 +43,8 @@ public class CartController extends BaseController {
 
 	@Autowired
 	private SaleOrderService saleOrderService;
+	@Autowired
+	private ShopService shopService;
 
 	// màn hình thanh toán
 	@RequestMapping(value = { "/cart/checkout" }, method = RequestMethod.GET)
@@ -324,5 +330,73 @@ public class CartController extends BaseController {
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
 		session.setAttribute("Tongtienthanhtoan", getTotalMoney(request));
 		return ResponseEntity.ok(jsonResult);
+	}
+	@RequestMapping(value = { "/chitiet/book" }, method = RequestMethod.GET)
+	public String book_table_spring_form_view(final Model model, final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException {
+		return "customer/success"; // -> đường dẫn tới View.
+	}
+
+	@RequestMapping(value = { "/chitiet/book" }, method = RequestMethod.POST)
+	public String book_table_spring_form(final Model model,
+			final HttpServletRequest request,
+			final HttpServletResponse response) 
+		throws IOException {
+
+		// Lấy thông tin khách hàng
+		String saleorderName = request.getParameter("saleorderName");
+		int saleorderPhone = Integer.parseInt(request.getParameter("saleorderPhone"));
+		LocalDate  saleorderDate = LocalDate.parse(request.getParameter("saleorderDate"));
+		LocalTime  saleorderTime = LocalTime.parse(request.getParameter("saleorderTime")); 
+		int saleorderPeople = Integer.parseInt(request.getParameter("saleorderPeople"));
+		int saleorderTable = Integer.parseInt(request.getParameter("saleorderTable"));
+		String saleorderNote = request.getParameter("saleorderNote");
+		String saleorderPhone2 = request.getParameter("saleorderPhone");
+		int shopId = Integer.parseInt(request.getParameter("shopId"));
+
+		ZoneId zoneId = ZoneId.systemDefault();
+		ZonedDateTime zonedDateTime = saleorderDate.atStartOfDay(zoneId);
+		Date date = Date.from(zonedDateTime.toInstant());
+		
+	
+		Time time = Time.valueOf(saleorderTime);
+		
+		// tạo hóa đơn + với thông tin khách hàng lấy được
+		SaleOrder saleOrder = new SaleOrder();
+		saleOrder.setCustomerName(saleorderName);
+		saleOrder.setCustomerPhone(saleorderPhone2);
+		saleOrder.setCode(String.valueOf(System.currentTimeMillis())); // mã hóa đơn: HD20230314
+
+		// lấy sản phẩm trong giỏ hàng
+		BookItem bookItem = new BookItem();
+		bookItem.setShopId(shopId);
+		bookItem.setSaleorderName(saleorderName);
+		bookItem.setSaleorderPhone(saleorderPhone);
+		bookItem.setSaleorderDateBook(date);
+		bookItem.setSaleorderTimeBook(time);
+		bookItem.setSaleorderNumberPeople(saleorderPeople);
+		bookItem.setSaleorderNumberTable(saleorderTable);
+		bookItem.setSaleorderNote(saleorderNote);
+		
+		com.devpro.javaweb23.model.SaleOrderShop saleOrderShop = new com.devpro.javaweb23.model.SaleOrderShop();
+		saleOrderShop.setShop(shopService.getById(bookItem.getShopId()));
+		saleOrderShop.setSaleorderName(bookItem.getSaleorderName());
+		saleOrderShop.setSaleorderPhone(bookItem.getSaleorderPhone());
+		saleOrderShop.setSaleorderDateBook(bookItem.getSaleorderDateBook());
+		saleOrderShop.setSaleorderTimeBook(bookItem.getSaleorderTimeBook());
+		saleOrderShop.setSaleorderNumberPeople(bookItem.getSaleorderNumberPeople());
+		saleOrderShop.setSaleorderNumberTable(bookItem.getSaleorderNumberTable());
+		saleOrderShop.setSaleorderNote(bookItem.getSaleorderNote());
+		
+		
+		// sử dụng hàm tiện ích add hoặc remove đới với các quan hệ onetomany
+		saleOrder.addSaleOrderShop(saleOrderShop);
+	
+		// lưu hóa đơn vào database
+		saleOrderService.saveOrUpdate(saleOrder);
+		
+		//model.addAttribute("registerModel", new Contact());
+
+		return "customer/success";
 	}
 }

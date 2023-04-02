@@ -49,7 +49,19 @@ public class SaleOrder extends BaseEntity {
 		_saleOrderProducts.setSaleOrder(null);
 		saleOrderProducts.remove(_saleOrderProducts);
 	}
-
+	@OneToMany(cascade = CascadeType.ALL, 
+			   mappedBy = "saleOrder", 
+			   fetch = FetchType.EAGER)
+	private Set<SaleOrderShop> saleOrderShop = new HashSet<SaleOrderShop>();
+	public void addSaleOrderShop(SaleOrderShop _saleOrderShop) {
+		_saleOrderShop.setSaleOrder(this);
+		saleOrderShop.add(_saleOrderShop);
+	}
+	public void removeSaleOrderShop(SaleOrderShop _saleOrderShop) {
+		_saleOrderShop.setSaleOrder(null);
+		saleOrderShop.remove(_saleOrderShop);
+	}
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -125,5 +137,11 @@ public class SaleOrder extends BaseEntity {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	public Set<SaleOrderShop> getSaleOrderShop() {
+		return saleOrderShop;
+	}
+	public void setSaleOrderShop(Set<SaleOrderShop> saleOrderShop) {
+		this.saleOrderShop = saleOrderShop;
+	}
+	
 }

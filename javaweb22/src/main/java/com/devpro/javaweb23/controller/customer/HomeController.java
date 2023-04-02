@@ -31,10 +31,6 @@ public class HomeController extends BaseController{
 	
 	@Autowired
 	private ShopService shopService;
-	@Autowired
-	private ProductService productService;
-	@Autowired
-	private CategoriesService categoriesService;
 	//đăng ký 1 request cho controller này
 	//
 	//@param model <<dùng để đẩy data từ controller xuống view>>
@@ -93,5 +89,11 @@ public class HomeController extends BaseController{
 			Shop shop = shopService.getById(shopId);
 			model.addAttribute("shop", shop); // đẩy data xuống view
 			return "customer/chitiet"; /// WEB-INF/views/customer/grabfood.jsp;
+		};
+		@RequestMapping(value = {"/success"}, method = RequestMethod.GET)
+		public String display_success(final Model model, final HttpServletRequest request, final HttpServletResponse response)
+		throws IOException{
+			//đường dẫn tới file view 
+			return "customer/success";   ///WEB-INF/views/customer/grabfood.jsp;
 		};
 }

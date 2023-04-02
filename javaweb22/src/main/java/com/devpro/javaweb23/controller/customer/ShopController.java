@@ -17,17 +17,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.javaweb23.controller.BaseController;
-import com.devpro.javaweb23.dto.ProductSearch;
 import com.devpro.javaweb23.dto.ShopSearch;
-import com.devpro.javaweb23.model.Product;
 import com.devpro.javaweb23.model.Shop;
 import com.devpro.javaweb23.services.PagerData;
+import com.devpro.javaweb23.services.impl.SaleOrderService;
+import com.devpro.javaweb23.services.impl.SaleOrderShopService;
 import com.devpro.javaweb23.services.impl.ShopService;
 
 @Controller
 public class ShopController extends BaseController{
 	@Autowired
 	ShopService shopService;
+	@Autowired
+	SaleOrderShopService saleOrderShopService;
+	@Autowired
+	SaleOrderService saleOrderService;
 	
 	@RequestMapping(value = { "/shop/detail/{shopSeo}" }, method = RequestMethod.GET)
 	public String shop_seo(final Model model, 
@@ -111,6 +115,7 @@ public class ShopController extends BaseController{
 			// đường dẫn tới file view
 			return "customer/grabfood"; /// WEB-INF/views/customer/grabfood.jsp;
 		};
+		
 		@RequestMapping(value = { "/ajax/shop-view" }, method = RequestMethod.POST)
 		public ResponseEntity<Map<String, Object>> view_shop(final Model model, final HttpServletRequest request,
 				final HttpServletResponse response, final @RequestBody Shop shop) {
@@ -122,4 +127,5 @@ public class ShopController extends BaseController{
 			jsonResult.put("message", "Đã thêm view thành công!");
 			return ResponseEntity.ok(jsonResult);
 		}
+	
 }
