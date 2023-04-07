@@ -20,7 +20,9 @@
       <jsp:include page="/WEB-INF/views/administrator/layout/header.jsp"></jsp:include>
       
       <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
       <jsp:include page="/WEB-INF/views/administrator/layout/sidebar.jsp"></jsp:include>
+      <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">

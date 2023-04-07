@@ -2,6 +2,7 @@ package com.devpro.javaweb23.services.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -192,5 +193,15 @@ public class ProductService extends BaseService<Product> {
 		}
 		
 		return getEntitiesByNativeSQL(sql, searchModel.getPage());
+	}
+	public List<Product> searchProductList(ProductSearch searchModel) {
+		// khởi tạo câu lệnh
+		String sql = "SELECT * FROM tbl_products p WHERE 1=1";
+
+		if (searchModel != null) {
+			sql += " and category_id = " + searchModel.getCategoryIdShop()+" and shop_id = "+searchModel.getShopId();	
+		}
+		
+		return getEntitiesByNativeSQL(sql);
 	}
 }

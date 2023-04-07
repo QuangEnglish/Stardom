@@ -93,7 +93,7 @@ public class CartController extends BaseController {
 		session.setAttribute("cart", null);
 		session.setAttribute("Tongsoluongmon", 0);
 
-		return "customer/cart"; // -> đường dẫn tới View.
+		return "customer/successpay"; // -> đường dẫn tới View.
 
 	}
 
@@ -142,7 +142,7 @@ public class CartController extends BaseController {
 			cartItem.setPriceUnit(productInDb.getPrice());
 			cartItem.setProductAvatar(productInDb.getAvatar());
 			cartItem.setProductDetail(productInDb.getDetails());
-
+			cartItem.setProductNote(cartItem.getProductNote());
 			cart.getCartItems().add(cartItem); // thêm mới sản phẩm vào giỏ hàng
 		}
 

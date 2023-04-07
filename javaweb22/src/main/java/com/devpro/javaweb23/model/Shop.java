@@ -53,6 +53,9 @@ public class Shop extends BaseEntity{
 	private String seo;
 	@Column(name = "view_shop", nullable = true)
 	private Integer viewShop =1;
+	@Column(name = "phone", length = 100, nullable = false)
+	private String phone;
+	
 	@OneToMany(cascade = CascadeType.ALL, 
 			   fetch = FetchType.EAGER, 
 			   mappedBy = "shop")
@@ -240,6 +243,12 @@ public class Shop extends BaseEntity{
 	}
 	public void setSaleOrderShop(Set<SaleOrderShop> saleOrderShop) {
 		this.saleOrderShop = saleOrderShop;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	

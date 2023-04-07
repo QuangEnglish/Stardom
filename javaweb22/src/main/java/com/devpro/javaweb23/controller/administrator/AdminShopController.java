@@ -54,6 +54,8 @@ public class AdminShopController extends BaseController {
 		String detailAddress = request.getParameter("detailAddress");
 		// lấy số page hiện tại
 		String currentPage = request.getParameter("page");
+		// lấy số page hiện tại
+	    String phone = request.getParameter("phone");
 
 		ShopSearch shopSearch = new ShopSearch();
 		shopSearch.setKeyword(keyword);
@@ -62,7 +64,7 @@ public class AdminShopController extends BaseController {
 		shopSearch.setVillageAddress(villageAddress);
 		shopSearch.setDetailAddress(detailAddress);
 		shopSearch.setCurrentPage(currentPage);
-
+		shopSearch.setPhone(phone);
 		// muốn giữ được các giá trị search trên màn hình thì cần phải đẩy lại dữ liệu
 		// nhập trước đó xuống vỉew
 		model.addAttribute("shopSearch", shopSearch);

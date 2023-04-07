@@ -22,13 +22,12 @@
 
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
+
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/regular.min.css" integrity="sha512-WidMaWaNmZqjk3gDE6KBFCoDpBz9stTsTZZTeocfq/eDNkLfpakEd7qR0bPejvy/x0iT0dvzIq4IirnBtVer5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -55,7 +54,7 @@
 				<div id="product-details">
 					<!-- nav__danhmuc -->
 					<nav class="menu menu__chitiet">
-						<a href="./grabfood.html">Trang chủ</a> <i class="ti-angle-right"></i>
+						<a href="${base }/home/shop">Trang chủ</a> <i class="ti-angle-right"></i>
 						<a href="#">Ẩm thực</a> <i class="ti-angle-right"></i> <a href="#">${shop.name }</a>
 					</nav>
 					<!-- /nav__danhmuc -->
@@ -63,22 +62,27 @@
 					<h2>${shop.name }</h2>
 					<!-- /h2 -->
 					<!--product-details__p  -->
-
+					<p>
+						<i class="fa-solid fa-phone"
+							style="color: #1863e1; margin-right: 5px;"></i><span
+							style="font-weight: bold;">Số điện thoại: </span>${shop.phone }
+					</p>
 					<p>
 						<i class="fa-sharp fa-solid fa-location-dot"
-							style="color: #e11818; margin-right: 5px;"></i><span
-							style="color: var(- -violet-color);">Địa chỉ: </span>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
+							style="color: #e11818; margin-right: 8px;"></i><span
+							style="font-weight: bold;">Địa chỉ: </span>${shop.detailAddress },${shop.villageAddress },${shop.townAddress },${shop.provinceAddress }
 					</p>
 					<p>
 						<i class="fa-solid fa-star"
 							style="color: yellow; margin-right: 5px;"></i><span
-							style="color: #fff;">${shop.viewShop} lượt xem</span>
+							style="font-weight: bold;">Ghé qua: </span>
+							${shop.viewShop} lượt
 					</p>
 					<p>
 						<i class="fa-solid fa-clock"
-							style="color: #20c320; margin-right: 5px;"></i> <span
+							style="color: #20c320; margin-right: 2px;"></i> <span
 							style="font-weight: bold;">Giờ đóng mở cửa: </span><span
-							style="margin-left: 7px;">${shop.openTime } h -
+							style="margin-left: 3px;">${shop.openTime } h -
 							${shop.closeTime } h</span>
 					</p>
 					<!--product-details__p  -->
@@ -87,6 +91,7 @@
 						<button type="button" id="showDiv">
 							<i class="fa-sharp fa-regular fa-clock"></i>Đặt bàn
 						</button>
+						<div id="wrapper-myDiv">
 						<div id="myDiv">
 							<span id="closeDiv"><i class="ti-close"
 								style="font-size: 25px; font-weight: bold;"></i></span>
@@ -100,25 +105,28 @@
 											<label for="inputText" class="col-sm-2 col-form-label">Họ
 												và tên:</label>
 											<div class="col-sm-4">
-												<input type="text" name="saleorderName" class="form-control" required>
+												<input type="text" name="saleorderName" class="form-control"
+													required>
 											</div>
 											<label for="inputNumber" class="col-sm-2 col-form-label">Số
 												điện thoại:</label>
 											<div class="col-sm-4">
-												<input type="tel" name="saleorderPhone"
-													class="form-control" required maxlength="10">
+												<input type="tel" name="saleorderPhone" class="form-control"
+													required maxlength="10">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="inputDate" class="col-sm-2 col-form-label">Ngày
 												đặt:</label>
 											<div class="col-sm-4">
-												<input type="date" name="saleorderDate" class="form-control" required>
+												<input type="date" name="saleorderDate" class="form-control"
+													required>
 											</div>
 											<label for="inputTime" class="col-sm-2 col-form-label">Thời
 												gian:</label>
 											<div class="col-sm-4">
-												<input type="time" name="saleorderTime" class="form-control" required>
+												<input type="time" name="saleorderTime" class="form-control"
+													required>
 											</div>
 										</div>
 										<div class="row mb-3">
@@ -141,6 +149,12 @@
 													<option value="13">13 người</option>
 													<option value="14">14 người</option>
 													<option value="15">15 người</option>
+													<option value="16">16 người</option>
+													<option value="17">17 người</option>
+													<option value="18">18 người</option>
+													<option value="19">19 người</option>
+													<option value="20">20 người</option>
+										
 												</select>
 											</div>
 											<label class="col-sm-2 col-form-label">Bàn:</label>
@@ -164,11 +178,11 @@
 													style="height: 50px;"
 													placeholder="Ghi chú cho quán ăn, đầu bếp,...">
 											</div>
-											<div class="col-sm-4" style="display:none;">
+											<div class="col-sm-4" style="display: none;">
 												<input type="text" name="shopId" value="${shop.id }">
 											</div>
 										</div>
-								
+
 
 										<div class="row mb-3">
 											<div class="col-sm-3" style="margin: 12px auto;">
@@ -183,6 +197,8 @@
 								</div>
 							</div>
 
+						</div>
+						
 						</div>
 					</div>
 					<!-- /btn-book-shop -->
@@ -287,9 +303,9 @@
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<c:forEach var="product" items="${shop.products }">
+					<c:forEach var="product" items="${product1 }">
 						<div id="js-buy-eat"
-							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"
 							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
 							<div class="body-content__item--img">
 								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
@@ -382,343 +398,95 @@
 
 				<div class="title-content title-content2">
 					<div class="padding-title" id="mon1"></div>
-					<h2>Món chính</h2>
+					<h2><i class="fas fa-burger-soda"></i>Món chính</h2>
 				</div>
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/com-rang.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
+					<c:forEach var="product" items="${product2 }">
+						<div id="js-buy-eat"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"
+							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
+							<div class="body-content__item--img">
+								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
+							</div>
+							<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang thập
-								Cẩm bò</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+								<p style="font-weight: 600; font-size: 20px;">${product.title }</p>
+								<div class="body-right__bottom">
+									<span
+										style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Giá
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.price }" type="currency" />
+									</span> <span
+										style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.priceSale }" type="currency" />
+									</span><br> <span
+										style="font-size: 16px; font-weight: 500; margin: 5px 0px;">${product.shortDes }</span>
+									<div class="icon--add">
+										<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/img-item-comrang.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
+							<!-- 
+							<a href="${base }/product/detail/${product.seo }"></a>					
+							 -->
 
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang gà
-								nguyên đùi</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 29.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">30.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
 						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/com-ga-mot.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang gà sốt
-								dưa</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">45.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 					<!--  /body-content__item1-->
-				</div>
-				<!-- /body-content__chitiet row -->
-				<!-- body-content__chitiet row -->
-				<div class="body-content__chitiet row">
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item7.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang dưa bò</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item8.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang gà lóc
-								xương</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 29.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">30.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item9.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm rang cải bò</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-				</div>
-				<!-- /body-content__chitiet row -->
-				<!-- body-content__chitiet row -->
-				<div class="body-content__chitiet row">
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item10.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm trắng gà
-								lóc xương</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item11.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm trắng cải
-								bò</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 29.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">30.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/com-trang-bo.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Cơm trắng dưa
-								bò</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
+					
+			
 				</div>
 				<!-- /body-content__chitiet row -->
 				<!-- title-content title-content2 -->
 				<div class="title-content title-content2">
 					<div class="padding-title" id="mon2"></div>
-					<h2>Món phụ</h2>
+					<h2><i class="fa-solid fa-burger-soda"></i>Món phụ</h2>
 				</div>
 				<!-- /title-content title-content2 -->
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/img-buncha.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
+					<c:forEach var="product" items="${product3 }">
+						<div id="js-buy-eat"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"
+							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
+							<div class="body-content__item--img">
+								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
+							</div>
+							<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Bún chả thịt
-								nướng</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">40.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+								<p style="font-weight: 600; font-size: 20px;">${product.title }</p>
+								<div class="body-right__bottom">
+									<span
+										style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Giá
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.price }" type="currency" />
+									</span> <span
+										style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.priceSale }" type="currency" />
+									</span><br> <span
+										style="font-size: 16px; font-weight: 500; margin: 5px 0px;">${product.shortDes }</span>
+									<div class="icon--add">
+										<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/img-buncha-hai.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
+							<!-- 
+							<a href="${base }/product/detail/${product.seo }"></a>					
+							 -->
 
-							<p style="font-weight: 600; font-size: 17px;">Bún chả Hà
-								thành thịt viên</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 29.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">30.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
 						</div>
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/bun-cha-ba.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Bún chả Hà
-								thành</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">55.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--  /body-content__item1-->
-				</div>
-				<!-- /body-content__chitiet row -->
-				<!-- body-content__chitiet row -->
-				<div class="body-content__chitiet row">
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/bun-cha-bon.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-
-							<div class="body-content__item--main"></div>
-							<p style="font-weight: 600; font-size: 17px;">Bún chả Hà
-								thành</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">40.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 					<!--  /body-content__item1-->
 				</div>
 				<!-- /body-content__chitiet row -->
@@ -731,29 +499,41 @@
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/qua1.png" alt="">
-						</div>
-						<div class="body-content__item--main">
+					<c:forEach var="product" items="${product4 }">
+						<div id="js-buy-eat"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"
+							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
+							<div class="body-content__item--img">
+								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
+							</div>
+							<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Hoa quả tráng
-								miệng</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">40.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+								<p style="font-weight: 600; font-size: 20px;">${product.title }</p>
+								<div class="body-right__bottom">
+									<span
+										style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Giá
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.price }" type="currency" />
+									</span> <span
+										style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.priceSale }" type="currency" />
+									</span><br> <span
+										style="font-size: 16px; font-weight: 500; margin: 5px 0px;">${product.shortDes }</span>
+									<div class="icon--add">
+										<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+									</div>
 								</div>
 							</div>
+							<!-- 
+							<a href="${base }/product/detail/${product.seo }"></a>					
+							 -->
+
 						</div>
 
-					</div>
+					</c:forEach>
 					<!--  /body-content__item1-->
 				</div>
 				<!-- /body-content__chitiet row -->
@@ -766,104 +546,41 @@
 				<!-- body-content__chitiet row -->
 				<div class="body-content__chitiet row">
 					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/nuoc1.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
+					<c:forEach var="product" items="${product5 }">
+						<div id="js-buy-eat"
+							class="body-content__item js-buy-eat col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12"
+							onclick="addCart('${base}',${product.id }, '${product.title }', ${product.price },${product.priceSale }, '${product.avatar}')">
+							<div class="body-content__item--img">
+								<img src="${base}/upload/${product.avatar}" alt="ảnh món ăn">
+							</div>
+							<div class="body-content__item--main">
 
-							<p style="font-weight: 600; font-size: 17px;">Coca chai nhựa</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+								<p style="font-weight: 600; font-size: 20px;">${product.title }</p>
+								<div class="body-right__bottom">
+									<span
+										style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Giá
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.price }" type="currency" />
+									</span> <span
+										style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">
+										<!-- định dạng tiền tệ --> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
+											value="${product.priceSale }" type="currency" />
+									</span><br> <span
+										style="font-size: 16px; font-weight: 500; margin: 5px 0px;">${product.shortDes }</span>
+									<div class="icon--add">
+										<img src="${base}/img/imgchitiet/icon-add.png" alt="">
+									</div>
 								</div>
 							</div>
+							<!-- 
+							<a href="${base }/product/detail/${product.seo }"></a>					
+							 -->
+
 						</div>
 
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/nuoc2.jpg" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Caca lon</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 29.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">30.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  /body-content__item1-->
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/nuoc3.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Bia</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">33.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  /body-content__item1-->
-				</div>
-				<!-- /body-content__chitiet row -->
-				<!-- body-content__chitiet row -->
-				<div class="body-content__chitiet row">
-					<!-- body-content__item1 -->
-					<div
-						class="body-content__item js-buy-eat col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="body-content__item--img">
-							<img src="${base}/img/imgchitiet/item3.png" alt="">
-						</div>
-						<div class="body-content__item--main">
-
-							<p style="font-weight: 600; font-size: 17px;">Trà tắc khổng
-								lồ</p>
-							<div class="body-right__bottom">
-								<span
-									style="padding: 2px; line-height: 10px; font-size: 12px; font-weight: 500; color: #f38621; opacity: 1; background-color: #eecaa9;">Tiết
-									kiệm 12.000₫</span><span
-									style="margin-left: 7px; color: #b7b7b7; text-decoration: line-through;">45.000</span><br>
-								<span
-									style="font-size: 16px; font-weight: 500; margin: 5px 0px;">40.000</span>
-								<div class="icon--add">
-									<img src="${base}/img/imgchitiet/icon-add.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 					<!--  /body-content__item1-->
 				</div>
 				<!-- /body-content__chitiet row -->
@@ -1007,7 +724,7 @@
 							class="sp-secondBody-c">Optional</span>
 					</div>
 					<div class="wrapper-input-modal">
-						<input type="text" name="" id=""
+						<input type="text" name="cartItemNote" id="cartItemNote"
 							placeholder="Bạn có muốn ghi chú gì thêm cho đầu bếp không?">
 					</div>
 					<!-- /four -->
@@ -1048,29 +765,8 @@
 		<!-- /all -->
 	</div>
 
-	<!-- 
-		<script>
-        let amountElement = document.getElementById('amount');
-        let amount = amountElement.value;
-        
-        let render = (amount) => {
-            amountElement.value = amount;
-        }
-            //xử lý handlePlus
-        let handlePlus = () =>{
-            amount++;
-            render(amount);
-        }
-        //xử lý handleMinus
-        let handleMinus = () =>{
-            if(amount>1){
-                amount--;
-                render(amount);
-            }
-        }
-    </script>
-	 -->
-
+	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
+	<script src="${base}/js/chitiet.js"></script>
 	<script>
 		//biến bao cả item
         const  buyBtns = document.querySelectorAll('.js-buy-eat')
@@ -1100,34 +796,6 @@
         })
 
     </script>
-	<script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-        
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-        
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
-        
-        function showSlides(n) {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-        }
-        </script>
 	<script type="text/javascript">
         	function addCart(_baseUrl,_id, _title, _price, _priceSale, _avatar){
         		// tạo javascript object để binding với data bên phía controller  
@@ -1165,15 +833,7 @@
         		});
         	}
         </script>
-	<script type="text/javascript">
-				$(document).ready(function() {
-					  $("#showDiv").click(function() {
-					    $("#myDiv").toggle(500);
-					  });
-					  $("#closeDiv").click(function() {
-						    $("#myDiv").toggle(300);
-						  });
-					});
-		</script>
+	
+		
 </body>
 </html>

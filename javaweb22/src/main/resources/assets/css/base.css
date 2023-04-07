@@ -14624,4 +14624,7 @@
   .btn-regist{
     background: linear-gradient(to right, #90caf9, #047edf 99%);
   }
+  .form-group input{
+	    border: 1px solid #aab2bd !important;
+}
   /* html register */

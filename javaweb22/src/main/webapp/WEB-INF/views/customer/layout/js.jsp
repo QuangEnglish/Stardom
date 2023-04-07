@@ -8,6 +8,7 @@
 <script src='${base}/js/jquery-3.6.1.js'></script>
 <script src="${base}/js/trangchu.js"></script>
 <script src="${base}/js/scripts .js"></script>
+
  <!-- 
 <script src="${base}/js/cart.js"></script>
  

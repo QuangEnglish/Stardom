@@ -541,7 +541,7 @@ html{
     font-size: 20px;
     color: #fff;
     background: var(--linear-tim);
-    border-radius: 10px;
+    border-radius: 0 0 30px 30px;
     margin: 10px auto;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -694,7 +694,7 @@ css select-input
     height: 100%;
 }
 .body-item:hover img{
-    border: 3px solid var(--violet-color);
+    border: 10px solid rgba(0,0,0,0);
 }
 .body-item:hover{
     cursor: pointer;
@@ -702,11 +702,63 @@ css select-input
 .body-item .img-item{
     width: 100%;
     height: 180px;
+    position: relative;
 }
 .img-item img{
     width: 100%;
     height: 180px;
     border-radius: 10px;
+}
+.img-item-pos{
+	position: absolute;
+    top: 0px;
+    right: 10px;
+    background: #b66dff;
+    width: 40px;
+    height: 71px;
+}
+.img-item-pos span{
+	display: block;
+    line-height: 71px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.arrow-sale {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #b66dff;
+  transform: rotate(-90deg);
+}
+.arrow-hot{
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #f83636;
+  transform: rotate(-90deg);
+}
+#arm-sale{
+	display:none;
+}
+#arm-hot{
+	background:#f83636;
+	display:none;
+}
+#arrow-sale{
+	display:none;
+}
+#arrow-hot{
+	display:none;
 }
 .body-item h3{
     text-decoration: none;
@@ -1926,6 +1978,7 @@ h2{
 }
 #product-details p span{
 	 color: var(--bs-white);
+	 margin-right: 7px;
 }
 .btn-book-shop{
     width: 30%;
@@ -2133,10 +2186,9 @@ h2{
     margin-top: 60px;
     font-weight: bold;
     font-size: 20px;
-    background: var(--linear-toi);
     border: none;
     outline: none;
-    color: var(--white-color);
+    display: flex;
 }
 .filter-select-body{
 	width: 70%;
@@ -2148,15 +2200,96 @@ h2{
     margin-left: 2px;
 }
 .btnFilterSearch{
-	width: 27%;
-    height: 33px;
+	width: 30%;
+    height: 40px;
+    background: var(--black-color);
+    color:#fff;
+    border: none;
+}
+.btnFilterSearch i{
+	color:#fff;
+	display:block;
+	
 }
 .btnFilterSearch:hover{
-	background-color: #cfd6dc;
+	background-color: #494949;
 }
 .btnFilterSearch i{
 	padding: 5px;
 }
+
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  height: 40px;
+  background-color: var(--bs-gray-600);
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 600;
+    padding: 0 0 0 15px !important;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: var(--bs-gray-600);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
 .padding-title{
     position: absolute;
     top: -132px;
@@ -2256,7 +2389,7 @@ h2{
     height: 30px;
     text-align: center;
     margin: 30px 0px 0px 0px;
-    background-color: #f7f7f7;
+  
 }
 #lienhe span{
     line-height: 30px;
@@ -2313,6 +2446,9 @@ h2{
     .footer-pay p {
         display: none;
     }
+    .actor{
+    
+    width:40%;}
 }
 @media all and (max-width:1260px){
     .product-details__time {
@@ -2410,8 +2546,31 @@ h2{
     position: relative;
     margin:auto;
 }
+	.search-wrapper{
+		display:block;
+	}
+	.search{
+		width:80%;
+		
+	}
+	#address{
+		height: 350px;
+	}
+	.search-btn {
+    width: 34%;
+    height: 50px;
+    margin: 0 auto;
+    position: relative;
+	}
+	.search-btn--sub {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: -8px;
+    left: 0;
+    z-index: 1000;
 }
-
+}
 @media all and (max-width:1024px){
     .title-content span{
         font-size: 25px;
@@ -2468,6 +2627,9 @@ h2{
         max-width: 80%;
         position: relative;
         margin: auto;
+    }
+    .actor{
+    	width:60%
     }
 
 }
@@ -2568,6 +2730,24 @@ h2{
         margin-top: 20px;
         margin: auto;
     }
+    .logo .brand-title_a{
+    	display:none;
+    }
+        #address{
+        width: 60%;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+        box-shadow: 1px 2px 5px #999999;
+        position: absolute;
+        top: -300px;
+        left: 20%;
+        padding-bottom: 40px;
+    }
+    #p2-address {
+    color: var(--white-color);
+    font-size: 20px;
+    font-weight: 500;
+}
 
 }
 @media all and (max-width:768px){
@@ -2704,6 +2884,18 @@ h2{
         margin-top: 20px;
         margin: auto;
     }
+    .actor{
+    	width:77%;
+    }
+    #p2-address {
+    color: var(--white-color);
+    font-size: 21px;
+    font-weight: 500;
+    display:none;
+	}
+	.search-btn--sub{
+		font-size:15px;
+	}
 }
 
 @media all and (max-width:600px){
@@ -2762,9 +2954,9 @@ h2{
     }
     .search-btn--sub{
         width: 100%;
-        height: 55px;
+        height: 35px;
         background: var(--linear-tim);
-        border-radius: 10px;
+        border-radius: 0 0 30px 30px;
         margin: 10px auto;
         border: none;
     }
@@ -2785,24 +2977,41 @@ h2{
         margin-top: 20px;
         margin: auto;
     }
+    .search-btn {
+    	width: 65%;
+    }
 
 }
 
 @media (max-width: 1200px){
-.col-lg-4 {
+.col-lg-3 {
     flex: 0 0 auto;
     width: 32.333333% !important;
+}
+.col-md-6{
+		flex: 0 0 auto;
+ 		width: 49% !important;
+}
 }
 @media (max-width: 992px){
-.col-lg-4 {
+.col-lg-3 {
     flex: 0 0 auto;
     width: 32.333333% !important;
 }
+.col-md-6{
+		flex: 0 0 auto;
+ 		width: 49% !important;
 }
+.col-sm-6{
+	    flex: 0 0 auto;
+ 		width: 49% !important;
+}
+}
+
 @media (max-width: 768px){
-.col-md-6 {
-    flex: 0 0 auto;
-    width: 49% !important;
+.col-xs-12{
+	flex: 0 0 auto;
+    width: 99% !important;
 }
 }
 
@@ -2931,7 +3140,6 @@ h2{
   
 }
 
-}
 #container-success{
 	width:100%;
 	height:1000px;
@@ -2949,6 +3157,18 @@ h2{
 	    font-size: 40px;
 	        margin-bottom: 150px;
 }
+.toast-warning {
+  margin-top: 40px;
+}
+.toast-error {
+  margin-top: 40px;
+}
+.toast-success {
+  margin-top: 40px;
+}
+#toast-container {
+  margin-top: 40px !important;
+}
 @keyframes modalFadeIn{
     from{
         transform: translateX(500px);
@@ -2957,7 +3177,3 @@ h2{
         transform: translateX(0);
     }
 }
-
-/*
-max-width: calc(100% -32px)
-*/

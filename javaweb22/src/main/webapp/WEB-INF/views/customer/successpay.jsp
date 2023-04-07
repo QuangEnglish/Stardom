@@ -56,8 +56,8 @@
 	<jsp:include page="/WEB-INF/views/customer/layout/header-success.jsp"></jsp:include>
 	<div id="container-success">
 		 <div class="alert  alert-secondary alert-dismissible fade show" id="alert-success" role="alert">
-                <h4 class="alert-heading">Đặt bàn thành công</h4>
-                <p>Mong sớm được phục vụ quý khách.</p>
+                <h4 class="alert-heading">Thanh toán thành công</h4>
+                <p>Chúc quý khách ngon miệng.</p>
                 <hr>
                 <p class="mb-0">Mọi thắc mắc, ghi chú có thể liên hệ qua số điện thoại của quán.</p>
    

@@ -14,23 +14,6 @@
 				src="${base }/img/imgtrangchu/iconLogoOffStardom.png" alt="logo" /></a>
 			<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
 		</div>
-		<div class="wrapper-search-block" style="display:block;">
-			<form class="search-wrapper search-block" action="${base }/shop/detail/{shopSeo}" method="post">
-				<div class="search search-block--mg" style="width: 60%;">
-					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-						type="text" name="search-product-eat" id="conscious" placeholder="Tìm món..."
-						style="height: 46px; width: 60%;"> <i
-						class="fa-sharp fa-solid fa-location-crosshairs"></i>
-				</div>
-
-				<div class="search-block__btn">
-					<button type="submit"
-						class="search-block__btn--sub" id="add">
-						Tìm Kiếm
-					</button>
-				</div>
-			</form>
-		</div>
 		<div class="actor">
 			<div class="notification">
 				<a href="${base }/cart/checkout" style="color: var(- -black-color);">

@@ -8,9 +8,13 @@ function AddToCart(_baseUrl, _productId, _quanlity) {
 	setTimeout(function() {
 		toastr.clear();
 	}, 2000);
+	
+	var inputValueNote = document.getElementById("cartItemNote").value;
+	
 	var requestBody = {
 		productId: _productId,
-		quanlity: _quanlity
+		quanlity: _quanlity,
+		productNote: inputValueNote
 	};
 	// $ === jQuery
 	// json == javascript object

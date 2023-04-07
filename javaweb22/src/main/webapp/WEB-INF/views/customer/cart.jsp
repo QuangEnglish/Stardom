@@ -120,7 +120,7 @@
 											onclick="UpdateQuanlityCart('${base }', ${ci.productId}, 1)"
 											value="+">+</button>
 									</td>
-									<td><p style="margin-top: 25px;">${ci.productDetail }</p></td>
+									<td><p style="margin-top: 25px;">${ci.productNote }</p></td>
 									<td class="border-0 align-middle"><button id="delete"
 											class="delete-button fw-bolder"
 											onclick="deleteItem('${base }', ${ci.productId})"
@@ -176,16 +176,16 @@
 											never share your email with anyone else.</small>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
-										<label for="customerPhone">Phone</label> <input type="tel"
+										<label for="customerPhone">Số điện thoại</label> <input type="tel"
 											value="${userLogined.phone }" class="form-control"
-											id="customerPhone" name="customerPhone" placeholder="Phone"
+											id="customerPhone" name="customerPhone" placeholder="Shipper sẽ gọi cho bạn vào số này để nhận hàng"
 											required>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerAddress">Địa chỉ giao hàng</label> <input
 											type="text" class="form-control" id="customerAddress"
 											value="${userLogined.shippingAddress }"
-											name="customerAddress" placeholder="Address" required>
+											name="customerAddress" placeholder="Bạn cần ghi rõ địa điểm cụ thẻ giao hàng" required>
 									</div>
 								</c:when>
 								<c:otherwise>
@@ -220,7 +220,7 @@
 									</h5></li>
 							</ul>
 							<button type="submit"
-								class="btn btn-dark rounded-pill py-2 btn-block">Thanh
+								class="btn btn-dark pay-btn rounded-pill py-2 btn-block">Thanh
 								toán</button>
 						</div>
 					</div>
@@ -307,7 +307,8 @@
 	<script type="text/javascript">
 	
 	function UpdateQuanlityCart(_baseUrl, _productId, _quanlity) {
-
+		let prevQuantity = ($(`#quanlity_${_productId}`).text());
+		if(prevQuantity ==1 && _quanlity == -1) return;
 		// tạo javascript object để binding với data bên phía controller  
 		var requestBody = {
 			productId: _productId,

@@ -3,11 +3,29 @@ package com.devpro.javaweb23.dto;
 import com.devpro.javaweb23.services.BaseService;
 
 public class ProductSearch {
+	private int categoryIdShop;
+	private int shopId;
 	private String keyword;
 	private String categoryId;
 	private String currentPage;
 	private String seo;
 	
+	public int getCategoryIdShop() {
+		return categoryIdShop;
+	}
+
+	public void setCategoryIdShop(int categoryIdShop) {
+		this.categoryIdShop = categoryIdShop;
+	}
+
+	public int getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(int shopId) {
+		this.shopId = shopId;
+	}
+
 	public String getSeo() {
 		return seo;
 	}

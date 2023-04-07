@@ -26,33 +26,31 @@
 						<div class="select-container">
 							<select class="select-input" name="provinceAddress"
 								id="provinceAddress">
-								<optgroup label="Tỉnh">
 									<option value="">Tỉnh</option>
 									<option value="Hà Nội">Hà Nội</option>
 									<option value="Đà Nẵng">Đà Nẵng</option>
 									<option value="Hồ Chí Minh">Hồ Chí Minh</option>
-								</optgroup>
 							</select>
 						</div>
 						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
 						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-							type="text" name="townAddress" id="wards-2"
+							type="text" name="townAddress" id="townAddress"
 							value="${shopSearch.townAddress }" placeholder="Quận, huyện..."
 							style="height: 46px; width: 60%;"> <i
 							class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 					<div class="search">
 						<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-							type="text" name="villageAddress" id="wards"
+							type="text" name="villageAddress" id="villageAddress"
 							value="${shopSearch.villageAddress }" placeholder="Phường, xã..."
 							style="height: 46px; width: 60%;"> <i
 							class="fa-sharp fa-solid fa-location-crosshairs"></i>
 					</div>
 				</div>
 				<div class="search-btn">
-					<button type="submit" class="search-btn--sub" id="add">
+					<button type="submit" class="search-btn--sub" id="btn-add-content">
 						<i class="fa-solid fa-magnifying-glass"
 							style="font-size: 25px; color: #fff;"></i> Tìm Kiếm
 					</button>
@@ -68,15 +66,18 @@
 					id="sp-title-content">Quán ăn gần bạn</span>
 			</div>
 			<form action="${base }/home/shop/search" class="filter-select">
+				<div class="custom-select" style="width:70%;">
 				<select class="filter-select-body" name="filter-select"
-					id="filter-select" onchange="myFunctionSelect()">
+					id="filter-select">
+					<option value="0" selected>Tìm quán</option>
 					<option value="">Quán ăn gần bạn</option>
 					<option value="1">Quán ăn nổi bật</option>
 					<option value="2">Quán ăn đang sale</option>
 					<option value="3">Quán quen</option>
 				</select>
+				</div>
 				<button type="submit" id="btnFilterSearch" class="btnFilterSearch">
-					<i class="fa-solid fa-magnifying-glass"></i>Tìm
+					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</form>
 
@@ -92,9 +93,13 @@
 		<div class="body-content row">
 			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
 				<!-- body-item -->
-				<div class="body-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6" >
+				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" >
 					
 					<div class="img-item">
+						<div class="img-item-pos arm-sale" id="arm-sale"><span>Sale</span></div>
+						<div class="arrow-sale arrow-sale" id="arrow-sale"></div>
+						<div class="img-item-pos arm-hot" id="arm-hot"><span>Hot</span></div>
+						<div class="arrow-hot arrow-hot" id="arrow-hot"></div>
 						<img src="${base }/upload/${shop.avatar}" alt="">
 					</div>
 					<h3>${shop.name }</h3>

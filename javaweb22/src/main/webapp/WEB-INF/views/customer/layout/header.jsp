@@ -20,7 +20,7 @@
 					<a class="brand-logo" href="${base }/home/shop"><img
 						class="logo-img"
 						src="${base }/img/imgtrangchu/iconLogoOffStardom.png" alt="logo" /></a>
-					<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
+					<a href="${base }/home/shop" class="brand-title_a"><h2 class="brand-title">Stardom</h2></a>
 				</div>
 				<div class="wrapper-search-block">
 					<form class="search-wrapper search-block"
@@ -45,7 +45,7 @@
 						</div>
 						<div class="search-block__btn">
 							<button type="submit"
-								class="search-block__btn--sub" id="add">
+								class="search-block__btn--sub" id="btn-add-head">
 								Tìm Kiếm</button>
 						</div>
 					</form>

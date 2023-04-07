@@ -23,9 +23,20 @@ public class CartItem {
 	//ảnh sản phẩm
 	private String productAvatar;
 	
-	//ghichu
+	//mô tả
 	private String productDetail;
 	
+	//ghichu
+	private String productNote;	
+	
+	public String getProductNote() {
+		return productNote;
+	}
+
+	public void setProductNote(String productNote) {
+		this.productNote = productNote;
+	}
+
 	public String getProductAvatar() {
 		return productAvatar;
 	}

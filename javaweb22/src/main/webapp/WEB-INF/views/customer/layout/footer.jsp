@@ -45,8 +45,8 @@
                         <p>Đăng ký nhận bản tin của chúng tôi để nhận tin tức, cập nhật các nội dung khác qua email.
                         </p>
                         <div class="search-email">
-                            <input type="text" name="search-email" id="search-email" placeholder="Email">
-                            <button type="submit" id="search-email">Gửi</button>
+                            <input type="email" name="search-post-email" id="search-post-email" placeholder="Email">
+                            <button type="submit" id="search-post-email" onclick="SearchEmailPost()">Gửi</button>
                         </div>
                     </div>
                 </div>

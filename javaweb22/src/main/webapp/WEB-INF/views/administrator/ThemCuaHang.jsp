@@ -124,6 +124,11 @@
 												name="closeTime" id="closeTime"></sf:input></td>
 									</tr>
 									<tr>
+										<td style="width: 160px;">Số điện thoại quán:</td>
+										<td><sf:input path="phone" type="tel"
+												name="phone" id="phone"></sf:input></td>
+									</tr>
+									<tr>
 										<td>Mô tả ngắn:</td>
 										<td><sf:input path="shortDescriptionShop" type="text"
 												id="short_description"></sf:input></td>

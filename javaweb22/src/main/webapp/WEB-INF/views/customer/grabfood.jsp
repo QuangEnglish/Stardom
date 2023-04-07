@@ -16,11 +16,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
+
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js"
-	integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="shortcut icon"
 	href="${base}/img/imgtrangchu/iconLogoOffStardomChuan.png" />
@@ -33,6 +30,11 @@
 	rel="stylesheet"
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+	rel="stylesheet" />
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
 	rel="stylesheet" />
@@ -47,13 +49,9 @@
 		<jsp:include page="/WEB-INF/views/customer/layout/subFooter.jsp"></jsp:include>
 		<jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 	</div>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#filter-select").val('${shopSearchFilter.filterSelect}');
-			$("#provinceAddress").val('${shopSearch.provinceAddress}');
 
-		});
-	</script>
+	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
+
 	<script type="text/javascript">
 		function AddViewShop(shopId) {
 			var data = {
@@ -75,15 +73,63 @@
 		}
 	</script>
 	<script type="text/javascript">
-		$(".body-item").slice(8).hide();
-		$("#myButton-see-add").html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Xem thêm");
-		$("#myButton-see-add").click(function() {
-			if ($(this).text() === "Xem thêm") {
-				$(this).html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Thu gọn");
-			} else {
-				$(this).html("<i class='fa-solid fa-plus' style='color: #fff; margin-right: 5px;'></i>Xem thêm");
+		function SearchEmailPost() {
+			//bắt lỗi email
+			var emailInput = document.getElementById("search-post-email");
+			var emailValue = emailInput.value;
+
+			var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(emailValue)) {
+				toastr.error ('Nhập email không hợp lệ!');
+			}else{
+				var _email = document.getElementById("search-post-email").value;
+				var data = {
+					email : _email
+				}
+				jQuery.ajax({
+					url : '${base}' + "/ajax/search-email",
+					type : "post",
+					contentType : "application/json",
+					data : JSON.stringify(data),
+	
+					dataType : "json",
+					success : function(jsonResult) {
+						toastr.success(jsonResult.message);
+					},
+					error : function(jqXhr, textStatus, errorMessage) {
+						alert("Lỗi");
+					}
+				});
+				
 			}
-			$(".body-item").slice(8).stop().fadeToggle(500);
+		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Xử lý sự kiện click của nút button
+			$("#btn-add-content").click(function() {
+				// Đặt giá trị của thẻ select về giá trị đầu tiên
+				$("#filter-select").val($("#filter-select option:first").val());
+			});
+			$("#btn-add-head").click(function() {
+				// Đặt giá trị của thẻ select về giá trị đầu tiên
+				$("#filter-select").val($("#filter-select option:first").val());
+			});
+			$("#filter-select").val('${shopSearchFilter.filterSelect}');
+			$("#provinceAddress").val('${shopSearch.provinceAddress}');
+			
+			if(('${shopSearchFilter.filterSelect}')==1){
+				$("#sp-title-content").text("Quán ăn nổi bật");
+				$(".arm-hot").show();
+				$(".arrow-hot").show();
+			}
+			else if(('${shopSearchFilter.filterSelect}')==2){
+				$("#sp-title-content").text("Quán ăn đang sale");
+				$(".arm-sale").show();
+				$(".arrow-sale").show();
+			}else if(('${shopSearchFilter.filterSelect}')==3){
+				$("#sp-title-content").text("Quán quen");
+			}
 		});
 	</script>
 </body>

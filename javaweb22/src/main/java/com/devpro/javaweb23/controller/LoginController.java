@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.devpro.javaweb23.model.Contact;
 import com.devpro.javaweb23.model.User;
 import com.devpro.javaweb23.services.impl.UserService;
 
