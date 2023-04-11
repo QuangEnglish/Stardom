@@ -2,7 +2,6 @@ package com.devpro.javaweb23.controller.administrator;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,26 +20,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.javaweb23.controller.BaseController;
-import com.devpro.javaweb23.model.Categories;
-import com.devpro.javaweb23.model.Contact;
 import com.devpro.javaweb23.model.Product;
 import com.devpro.javaweb23.services.PagerData;
-import com.devpro.javaweb23.services.impl.CategoriesService;
 import com.devpro.javaweb23.services.impl.ProductService;
-import com.devpro.javaweb23.services.impl.ShopService;
 import com.devpro.javaweb23.dto.ProductSearch;
 
 @Controller
 public class AdminProductController extends BaseController {
 
 	@Autowired
-	private CategoriesService categoriesService;
-
-	@Autowired
 	private ProductService productService;
-	
-	@Autowired
-	private ShopService shopService;
 
 	//list sản phẩm
 	@RequestMapping(value = { "/admin/sanpham" }, method = RequestMethod.GET)

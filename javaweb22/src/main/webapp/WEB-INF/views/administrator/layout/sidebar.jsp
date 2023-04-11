@@ -76,7 +76,7 @@
 								<li class="nav-item"><a class="nav-link"
 									href="pages/ui-features/buttons.html">Danh sách đơn hàng</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="pages/ui-features/SanPham.html">Khách hàng liên hệ</a></li>
+									href="${base }/admin/khachhang">Khách hàng liên hệ</a></li>
 
 							</ul>
 						</div></li>

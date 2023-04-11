@@ -111,18 +111,20 @@
 											value="vi_VN" /> <strong><fmt:formatNumber
 												value="${ci.priceUnit }" type="currency" /></strong></td>
 									<td class="border-0 align-middle">
-										<button style="width: 25px; height: 25px; font-weight: bold;"
+										<button type="button"
+											style="width: 25px; height: 25px; font-weight: bold;"
 											class="decrease-quantity-btn"
 											onclick="UpdateQuanlityCart('${base }', ${ci.productId}, -1)"
 											value="-">-</button> <strong><span
 											id="quanlity_${ci.productId}">${ci.quanlity }</span></strong>
-										<button style="width: 25px; height: 25px; font-weight: bold;"
+										<button type="button"
+											style="width: 25px; height: 25px; font-weight: bold;"
 											onclick="UpdateQuanlityCart('${base }', ${ci.productId}, 1)"
 											value="+">+</button>
 									</td>
 									<td><p style="margin-top: 25px;">${ci.productNote }</p></td>
 									<td class="border-0 align-middle"><button id="delete"
-											class="delete-button fw-bolder"
+											class="delete-button fw-bolder" type="button"
 											onclick="deleteItem('${base }', ${ci.productId})"
 											style="text-decoration: none; color: black; padding: 5px 10px;">
 											<i class="fa-sharp fa-solid fa-trash"></i>Xóa
@@ -165,27 +167,28 @@
 										<label for="customerPhone">Họ và tên khách hàng</label> <input
 											type="text" class="form-control" id="customerFullName"
 											value="${userLogined.username }" name="customerFullName"
-											placeholder="Full name" required>
+											placeholder="Full name">
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerEmail">Địa chỉ Email</label> <input
 											type="email" class="form-control" id="customerEmail"
 											value="${userLogined.email }" name="customerEmail"
-											placeholder="Enter email" required> <small
-											id="emailHelp" class="form-text text-muted">We'll
-											never share your email with anyone else.</small>
+											placeholder="Enter email"> <small id="emailHelp"
+											class="form-text text-muted">We'll never share your
+											email with anyone else.</small>
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
-										<label for="customerPhone">Số điện thoại</label> <input type="tel"
-											value="${userLogined.phone }" class="form-control"
-											id="customerPhone" name="customerPhone" placeholder="Shipper sẽ gọi cho bạn vào số này để nhận hàng"
-											required>
+										<label for="customerPhone">Số điện thoại</label> <input
+											type="tel" value="${userLogined.phone }" class="form-control"
+											id="customerPhone" name="customerPhone"
+											placeholder="Shipper sẽ gọi cho bạn vào số này để nhận hàng">
 									</div>
 									<div class="form-group" style="margin-bottom: 5px;">
 										<label for="customerAddress">Địa chỉ giao hàng</label> <input
 											type="text" class="form-control" id="customerAddress"
 											value="${userLogined.shippingAddress }"
-											name="customerAddress" placeholder="Bạn cần ghi rõ địa điểm cụ thẻ giao hàng" required>
+											name="customerAddress"
+											placeholder="Bạn cần ghi rõ địa điểm cụ thẻ giao hàng">
 									</div>
 								</c:when>
 								<c:otherwise>
@@ -208,7 +211,7 @@
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Tiền phụ thu </strong><strong>5.000đ</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
-									class="text-muted">Phí vận chuyển ship</strong><strong>0.5%</strong></li>
+									class="text-muted">Phí vận chuyển ship</strong><strong>5%</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Thuế</strong><strong>$0.00</strong></li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
@@ -238,77 +241,19 @@
 	<!-- JS -->
 	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
 	<script src="${base}/js/animation-rung.js"></script>
-
-	<!-- 
-	
+	<script src="${base}/js/cart.js"></script>
 	<script type="text/javascript">
-		const productList = document.getElementById('product-list');
-		productList.addEventListener('click', function(event) {
-			console.log("quang anh");
-	  	if (event.target.classList.contains('delete-button')) {
-	    const listItem = event.target.closest('tr');
-	    listItem.remove();
-	  }
-	});		
-	</script>
-	 -->
-	<script type="text/javascript">
-			  const customerForm = document.getElementById("customer-form");
-			  const table = document.getElementById("my-table-cart");
-			  customerForm.addEventListener("submit", (event) => {
-			  const nameInput = document.getElementById("customerFullName");
-			  const emailInput = document.getElementById("customerEmail");
-			  const phoneInput = document.getElementById("customerPhone");
-			  const addressInput = document.getElementById("customerAddress");
-			  const rows = table.getElementsByTagName("tr");
-			  if (!nameInput.value || !emailInput.value || !phoneInput.value || !addressInput.value) {
-			    event.preventDefault();
-			    alert("Vui lòng nhập đầy đủ thông tin!");
-			  }
-			  if (rows.length < 2) {
-				 event.preventDefault();
-				 toastr.warning('Bạn cần thêm sản phẩm vào giỏ hàng!', {
-					  closeButton: true,
-					  timeOut: 50000,
-					  positionClass: 'toast-top-right',
-					  className: 'my-warning-class'
-					});
-			}
-		});						  		  
-	</script>
-	<script type="text/javascript">
-	function deleteItem(_baseUrl, _productId) {
-
-		// tạo javascript object để binding với data bên phía controller  
-		var requestBody = {
-			productId: _productId
-		};
-		// $ === jQuery
-		// json == javascript object
-		jQuery.ajax({
-			url: _baseUrl + "/ajax/deleteItems", 	   //->request mapping định nghĩa bên controller
-			type: "post",					   //-> method type của Request Mapping	
-			contentType: "application/json",   //-> nội dung gửi lên dạng json <=> javascript object
-			data: JSON.stringify(requestBody), //-> chuyển 1 javascript object thành string json
-
-			dataType: "json", 				   // kiểu dữ liệu trả về từ Controller
-			success: function (jsonResult) {    // gọi ajax thành công
-            	$("#numberEat").html(jsonResult.totalItems);
-            	location.reload();
-            	
-    		},
-			error: function (jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
-				alert("error");
-			}
-			
-		});
-	}
-	</script>
-	<script type="text/javascript">
-	
 	function UpdateQuanlityCart(_baseUrl, _productId, _quanlity) {
-		let prevQuantity = ($(`#quanlity_${_productId}`).text());
-		if(prevQuantity ==1 && _quanlity == -1) return;
+		//Xét điều kiện nếu quantity = 0 và nếu quantity - 1 thì return để k gọi đến controller
+		let productId = _productId;
+		let selector = "#quanlity_" + productId;
+		let element = document.querySelector(selector).innerText;
+
+
+		//let quantityText = $(`#quanlity_${productId.toString()}`).text();//lấy text (ở đây là quantity) 
+		//console.log(element);
+		
+		if(element == 1 && _quanlity == -1) return;
 		// tạo javascript object để binding với data bên phía controller  
 		var requestBody = {
 			productId: _productId,
@@ -328,8 +273,6 @@
 				$(`#quanlity_${ci.productId}`).html(parseInt(prevQuantity) +  _quanlity);// lay cai text tren cong hoac tru 1
 				
 				//let quantity = parseInt($('#quanlity_${ci.productId}').text());
-				//console.log(quantity);
-				
 					 //if (quantity > 1) {
 						$("#numberEat").html(jsonResult.totalItems);
 						location.reload()
@@ -348,14 +291,31 @@
 	}
 	</script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		  var tableRows = $('#table-container tbody tr');
-		  if (tableRows.length == 0) {
-		    $('#no-table-message').show();
-		  } else {
-		    $('#no-table-message').hide();
-		  }
-		});
+	//-----------xử lý nhập
+	  const customerForm = document.getElementById("customer-form");
+	  const table = document.getElementById("my-table-cart");
+	  customerForm.addEventListener("submit", (event) => {
+	  const nameInput = document.getElementById("customerFullName");
+	  const emailInput = document.getElementById("customerEmail");
+	  const phoneInput = document.getElementById("customerPhone");
+	  const addressInput = document.getElementById("customerAddress");
+	  const rows = table.getElementsByTagName("tr");
+	  if (!nameInput.value || !emailInput.value || !phoneInput.value || !addressInput.value) {
+	    event.preventDefault();
+	    alert("Vui lòng nhập đầy đủ thông tin!");
+	  }
+	  if (rows.length < 2) {
+		 event.preventDefault();
+		 toastr.warning('Bạn cần thêm sản phẩm vào giỏ hàng!', {
+			  closeButton: true,
+			  timeOut: 50000,
+			  positionClass: 'toast-top-right',
+			  className: 'my-warning-class'
+			});
+	}
+});		
+
+
 	</script>
 </body>
 </html>

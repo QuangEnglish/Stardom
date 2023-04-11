@@ -98,11 +98,10 @@ public class Shop extends BaseEntity{
 	}
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "view_id")
-	
-	
-	
+	@JoinColumn(name = "view_id")	
 	private View view;
+	
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_shop_category", 
 			   joinColumns = @JoinColumn(name = "shop_id"), 
@@ -117,6 +116,22 @@ public class Shop extends BaseEntity{
 		categories.getShops().remove(this);
 		categoriess.remove(categories);
 	}
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "tbl_shops_users", 
+			   joinColumns = @JoinColumn(name = "shop_id"), 
+			   inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> users = new HashSet<User>();
+	// qui tắc: Trong phía Many-To-Many thì cần 2 methods sau:
+	public void addUser(User user) {
+		user.getShops().add(this);
+		users.add(user);
+	}
+	public void deleteUser(User user) {
+		user.getShops().remove(this);
+		users.remove(user);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -250,6 +265,12 @@ public class Shop extends BaseEntity{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 	
 }

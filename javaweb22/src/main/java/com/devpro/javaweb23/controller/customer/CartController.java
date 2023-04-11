@@ -81,7 +81,7 @@ public class CartController extends BaseController {
 			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
 			saleOrderProducts.setProduct(productService.getById(cartItem.getProductId()));
 			saleOrderProducts.setQuality(cartItem.getQuanlity());
-
+			saleOrderProducts.setNote(cartItem.getProductNote());
 			// sử dụng hàm tiện ích add hoặc remove đới với các quan hệ onetomany
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 		}
@@ -200,7 +200,9 @@ public class CartController extends BaseController {
 			BigDecimal result = BigDecimal.valueOf(x).multiply(decimal);
 			sum = sum.add(item.getPriceUnit().multiply(result));
 		}
-
+		sum = sum.add(new BigDecimal(5000));
+		BigDecimal percent = new BigDecimal("5");
+		sum = sum.add(sum.multiply(percent.divide(new BigDecimal("100"))));
 		return sum;
 	}
 

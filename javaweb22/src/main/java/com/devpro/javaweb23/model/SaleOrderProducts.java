@@ -18,6 +18,9 @@ public class SaleOrderProducts extends BaseEntity {
 	@Column(name = "quality")
 	private Integer quality;
 	
+	@Column(name = "note", length = 200, nullable = true)
+	private String note;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "saleorder_id")
 	private SaleOrder saleOrder;
@@ -44,6 +47,14 @@ public class SaleOrderProducts extends BaseEntity {
 
 	public void setQuality(Integer quality) {
 		this.quality = quality;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 }

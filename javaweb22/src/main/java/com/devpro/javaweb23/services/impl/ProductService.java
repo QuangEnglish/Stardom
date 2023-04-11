@@ -201,7 +201,12 @@ public class ProductService extends BaseService<Product> {
 		if (searchModel != null) {
 			sql += " and category_id = " + searchModel.getCategoryIdShop()+" and shop_id = "+searchModel.getShopId();	
 		}
-		
+		// tìm kiếm theo title và description
+		if (!StringUtils.isEmpty(searchModel.getKeyword())) {
+				sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" + 
+								" or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
+								" or p.short_description like '%" + searchModel.getKeyword() + "%')";
+					}
 		return getEntitiesByNativeSQL(sql);
 	}
 }

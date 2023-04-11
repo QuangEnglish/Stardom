@@ -15,11 +15,11 @@
 			<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
 		</div>
 		<div class="wrapper-search-block" style="display:block;">
-			<form class="search-wrapper search-block" action="${base }/shop/detail/{shopSeo}" method="post">
+			<form class="search-wrapper search-block" action="${base }/shop/detail/${shop.seo}" method="get">
 				<div class="search search-block--mg" style="width: 60%;">
 					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
-						type="text" name="search-product-eat" id="conscious" placeholder="Tìm món..."
-						style="height: 46px; width: 60%;"> <i
+						type="text" name="keyword" id="conscious" placeholder="Tìm món..."
+						style="height: 46px; width: 60%;" required> <i
 						class="fa-sharp fa-solid fa-location-crosshairs"></i>
 				</div>
 
@@ -55,15 +55,12 @@
 									<p class="dropdown-itemz-p">
 										${userLogined.email }
 									</p> 
-									<a class="dropdown-itemz" style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;" href="${base }/login"><i class="fa-solid fa-right-to-bracket" style="color: #fff; margin-right: 5px;"></i>
-										Đăng Nhập
-									</a>
 									<!-- <div class="dropdown-divider"></div> -->
 									<a class="dropdown-itemz" href="${base }/logout"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
 										<i class="fa-sharp fa-solid fa-lock" style="color: #fff; margin-right: 5px;"></i>
 										Đăng Xuất
-									</a> <a class="dropdown-itemz" href="${base }/logout"
+									</a> <a class="dropdown-itemz" href="${base }/user"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
 										<i class="fa-solid fa-gear" style="color: #fff; margin-right: 5px;"></i>
 										Cài đặt tài khoản

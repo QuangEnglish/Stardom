@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.devpro.javaweb23.model.Email;
 import com.devpro.javaweb23.services.BaseService;
 
+
 @Service
 public class EmailService extends BaseService<Email>{
 
@@ -12,5 +13,6 @@ public class EmailService extends BaseService<Email>{
 	protected Class<Email> clazz() {
 		return Email.class;
 	}
+	
 
 }

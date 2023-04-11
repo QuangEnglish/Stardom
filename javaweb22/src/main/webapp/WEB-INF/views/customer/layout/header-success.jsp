@@ -38,15 +38,12 @@
 									<p class="dropdown-itemz-p">
 										${userLogined.email }
 									</p> 
-									<a class="dropdown-itemz" style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;" href="${base }/login"><i class="fa-solid fa-right-to-bracket" style="color: #fff; margin-right: 5px;"></i>
-										Đăng Nhập
-									</a>
 									<!-- <div class="dropdown-divider"></div> -->
 									<a class="dropdown-itemz" href="${base }/logout"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
 										<i class="fa-sharp fa-solid fa-lock" style="color: #fff; margin-right: 5px;"></i>
 										Đăng Xuất
-									</a> <a class="dropdown-itemz" href="${base }/logout"
+									</a> <a class="dropdown-itemz" href="${base }/user"
 										style="border-top: 1px solid #fff; border-radius: 0px 0px 10px 10px;">
 										<i class="fa-solid fa-gear" style="color: #fff; margin-right: 5px;"></i>
 										Cài đặt tài khoản

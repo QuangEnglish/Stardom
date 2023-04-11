@@ -27,7 +27,7 @@ setInterval(function(){
 //select-title
 	
 	
-
+//--------------------------------------------------
 $(document).ready(function(){
     $(window).scroll(function(){
         if($(this).scrollTop()>500){
@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 //
 
-
+//--------------------------------------------------
 // //trang chi tiet
 // document.querySelector('.acl').addEventListener('click', function(){
 //     document.querySelector('.title-content2').setAttribute("style", "padding: 132px 0px 80px 0px; background-color:red;");
@@ -60,6 +60,7 @@ $(document).ready(function(){
 //     document.querySelector('.title-content5').setAttribute("style", "padding: 132px 0px 80px 0px;");
 // }
 
+//--------------------------------------------------
 //btn xem thêm
 	$(".body-item").slice(8).hide();
 		$("#myButton-see-add")
@@ -80,7 +81,7 @@ $(document).ready(function(){
 //-btn xem thêm
 
 
-
+//--------------------------------------------------
 // css select
 var x, i, j, l, ll, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
@@ -158,8 +159,6 @@ document.addEventListener("click", closeAllSelect);
 
 
 
-
-
-
+//--------------------------------------------------
 
 

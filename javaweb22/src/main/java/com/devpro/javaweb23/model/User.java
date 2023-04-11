@@ -50,6 +50,21 @@ public class User extends BaseEntity implements UserDetails {
 		roles.remove(role);
 	}
 	
+	@ManyToMany(cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER, 
+			mappedBy = "users") // >>> property
+	private Set<Shop> shops = new HashSet<Shop>();
+	// qui tắc: Trong phía Many-To-Many thì cần 2 methods sau:
+	public void addShops(Shop shop) {
+		shop.getUsers().add(this);
+		shops.add(shop);
+	}
+	public void deleteShops(Shop shop) {
+		shop.getUsers().remove(this);
+		shops.remove(shop);
+	}
+	
+	
 	@OneToMany(cascade = CascadeType.ALL, 
 			   fetch = FetchType.EAGER, 
 			   mappedBy = "user")
@@ -120,6 +135,12 @@ public class User extends BaseEntity implements UserDetails {
 		this.shippingAddress = shippingAddress;
 	}
 	
+	public Set<Shop> getShops() {
+		return shops;
+	}
+	public void setShops(Set<Shop> shops) {
+		this.shops = shops;
+	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// trả về 1 danh sách các role

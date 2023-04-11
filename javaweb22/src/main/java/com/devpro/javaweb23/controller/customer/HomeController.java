@@ -96,4 +96,10 @@ public class HomeController extends BaseController{
 			//đường dẫn tới file view 
 			return "customer/success";   ///WEB-INF/views/customer/grabfood.jsp;
 		};
+		@RequestMapping(value = {"/user"}, method = RequestMethod.GET)
+		public String display_user(final Model model, final HttpServletRequest request, final HttpServletResponse response)
+		throws IOException{
+			//đường dẫn tới file view 
+			return "customer/caidattaikhoan";   ///WEB-INF/views/customer/grabfood.jsp;
+		};
 }

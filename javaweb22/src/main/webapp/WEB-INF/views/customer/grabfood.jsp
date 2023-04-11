@@ -130,6 +130,9 @@
 			}else if(('${shopSearchFilter.filterSelect}')==3){
 				$("#sp-title-content").text("Quán quen");
 			}
+			else if(('${shopSearchFilter.filterSelect}')==4){
+				window.location.href = "http://localhost:8080/login";
+			}
 		});
 	</script>
 </body>

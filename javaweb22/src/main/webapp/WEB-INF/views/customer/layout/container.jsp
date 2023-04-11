@@ -26,10 +26,10 @@
 						<div class="select-container">
 							<select class="select-input" name="provinceAddress"
 								id="provinceAddress">
-									<option value="">Tỉnh</option>
-									<option value="Hà Nội">Hà Nội</option>
-									<option value="Đà Nẵng">Đà Nẵng</option>
-									<option value="Hồ Chí Minh">Hồ Chí Minh</option>
+								<option value="">Tỉnh</option>
+								<option value="Hà Nội">Hà Nội</option>
+								<option value="Đà Nẵng">Đà Nẵng</option>
+								<option value="Hồ Chí Minh">Hồ Chí Minh</option>
 							</select>
 						</div>
 						<i class="fa-sharp fa-solid fa-location-crosshairs"></i>
@@ -66,15 +66,23 @@
 					id="sp-title-content">Quán ăn gần bạn</span>
 			</div>
 			<form action="${base }/home/shop/search" class="filter-select">
-				<div class="custom-select" style="width:70%;">
-				<select class="filter-select-body" name="filter-select"
-					id="filter-select">
-					<option value="0" selected>Tìm quán</option>
-					<option value="">Quán ăn gần bạn</option>
-					<option value="1">Quán ăn nổi bật</option>
-					<option value="2">Quán ăn đang sale</option>
-					<option value="3">Quán quen</option>
-				</select>
+				<div class="custom-select" style="width: 70%;">
+					<select class="filter-select-body" name="filter-select"
+						id="filter-select">
+						<option value="0" selected>Tìm quán</option>
+						<option value="">Quán ăn gần bạn</option>
+						<option value="1">Quán ăn nổi bật</option>
+						<option value="2">Quán ăn đang sale</option>
+						<c:choose>
+							<c:when test="${isLogined }">
+								<option value="3">Quán quen</option>
+							</c:when>
+							<c:otherwise>
+								<option value="4">Quán quen</option>
+							</c:otherwise>
+						</c:choose>
+
+					</select>
 				</div>
 				<button type="submit" id="btnFilterSearch" class="btnFilterSearch">
 					<i class="fa-solid fa-magnifying-glass"></i>
@@ -93,12 +101,16 @@
 		<div class="body-content row">
 			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
 				<!-- body-item -->
-				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" >
-					
+				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
 					<div class="img-item">
-						<div class="img-item-pos arm-sale" id="arm-sale"><span>Sale</span></div>
+						<div class="img-item-pos arm-sale" id="arm-sale">
+							<span>Sale</span>
+						</div>
 						<div class="arrow-sale arrow-sale" id="arrow-sale"></div>
-						<div class="img-item-pos arm-hot" id="arm-hot"><span>Hot</span></div>
+						<div class="img-item-pos arm-hot" id="arm-hot">
+							<span>Hot</span>
+						</div>
 						<div class="arrow-hot arrow-hot" id="arrow-hot"></div>
 						<img src="${base }/upload/${shop.avatar}" alt="">
 					</div>
@@ -113,10 +125,12 @@
 					<div class="sale-btnShop">
 						<div class="sale">
 							<i class="fa-solid fa-star"
-								style="color: #ffc107; margin-right: 5px;"></i><span>${shop.viewShop} lượt xem</span>
+								style="color: #ffc107; margin-right: 5px;"></i><span>${shop.viewShop}
+								lượt xem</span>
 						</div>
 						<div class="btnShop">
-							<a  href="${base }/shop/detail/${shop.seo}" onclick="AddViewShop(${shop.id})"><i
+							<a href="${base }/shop/detail/${shop.seo}"
+								onclick="AddViewShop(${shop.id})"><i
 								class="ti-shopping-cart"></i>Xem quán</a>
 						</div>
 					</div>
@@ -128,9 +142,9 @@
 
 		<!-- see-all -->
 		<div class="see-all">
-			<button type="button" class="btn-see-shop"  id="myButton-see-add">
-				<i class="fa-solid fa-plus"
-					style="color: #fff; margin-right: 5px;"></i>Xem thêm
+			<button type="button" class="btn-see-shop" id="myButton-see-add">
+				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
+				thêm
 			</button>
 		</div>
 		<!-- /see-all -->

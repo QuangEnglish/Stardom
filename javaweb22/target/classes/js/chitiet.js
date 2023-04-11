@@ -22,9 +22,11 @@
 		$(document).ready(function() {
 					  $("#showDiv").click(function() {
 					    $("#myDiv").toggle(500);
+					    $("#wrapper-myDiv").fadeIn();
 					  });
 					  $("#closeDiv").click(function() {
 						    $("#myDiv").toggle(300);
+						    $("#wrapper-myDiv").fadeOut();
 						  });
 					});
 					

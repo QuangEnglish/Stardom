@@ -1,12 +1,9 @@
 package com.devpro.javaweb23.controller.customer;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,10 +56,24 @@ public class ShopController extends BaseController{
 		Shop shop = shopService.searchShop(ss).getData().get(0);
 		model.addAttribute("shop", shop);
 		
+		String keyword = request.getParameter("keyword");
+		String formattedString = null;
+		if(keyword !=  null) {
+			String inputString  = keyword.replaceAll("[%\\_\\-\\=\\&\\/\\(\\)\\*\\$\\#\\@\\!\\:\\;\\'\\.]", "").toLowerCase();
+			String[] words = inputString.split("\\s+");
+			for (int i = 0; i < words.length; i++) {
+				String word = words[i];
+				String firstLetter = word.substring(0, 1);
+				String restOfWord = word.substring(1);
+				words[i] = firstLetter.toUpperCase() + restOfWord.toLowerCase();
+			}
+			formattedString = String.join(" ", words);		
+		}
+		
 		ProductSearch productSearch1 = new ProductSearch();
 		productSearch1.setCategoryIdShop(45);
 		productSearch1.setShopId(shop.getId());
-		
+		productSearch1.setKeyword(formattedString);
 		
 		List<Product> product1 = productService.searchProductList(productSearch1);
 		model.addAttribute("product1", product1);
@@ -70,7 +81,7 @@ public class ShopController extends BaseController{
 		ProductSearch productSearch2 = new ProductSearch();
 		productSearch2.setCategoryIdShop(46);
 		productSearch2.setShopId(shop.getId());
-		
+		productSearch2.setKeyword(formattedString);
 		
 		List<Product> product2 = productService.searchProductList(productSearch2);
 		model.addAttribute("product2", product2);
@@ -78,7 +89,7 @@ public class ShopController extends BaseController{
 		ProductSearch productSearch3 = new ProductSearch();
 		productSearch3.setCategoryIdShop(47);
 		productSearch3.setShopId(shop.getId());
-		
+		productSearch3.setKeyword(formattedString);
 		
 		List<Product> product3 = productService.searchProductList(productSearch3);
 		model.addAttribute("product3", product3);
@@ -86,7 +97,7 @@ public class ShopController extends BaseController{
 		ProductSearch productSearch4 = new ProductSearch();
 		productSearch4.setCategoryIdShop(48);
 		productSearch4.setShopId(shop.getId());
-		
+		productSearch4.setKeyword(formattedString);
 		
 		List<Product> product4 = productService.searchProductList(productSearch4);
 		model.addAttribute("product4", product4);
@@ -94,13 +105,14 @@ public class ShopController extends BaseController{
 		ProductSearch productSearch5 = new ProductSearch();
 		productSearch5.setCategoryIdShop(49);
 		productSearch5.setShopId(shop.getId());
-		
+		productSearch5.setKeyword(formattedString);
 		
 		List<Product> product5 = productService.searchProductList(productSearch5);
 		model.addAttribute("product5", product5);
 		
 		return "customer/chitiet";
 	}
+	
 	@RequestMapping(value = { "/shop/detail/{shopSeo}" }, method = RequestMethod.POST)
 	public String shop_seo_post(final Model model, 
 					   final HttpServletRequest request, 
@@ -115,6 +127,40 @@ public class ShopController extends BaseController{
 		Shop shop = shopService.searchShop(ss).getData().get(0);
 		model.addAttribute("shop", shop);
 		
+		ProductSearch productSearch1 = new ProductSearch();
+		productSearch1.setCategoryIdShop(45);
+		productSearch1.setShopId(shop.getId());
+
+		List<Product> product1 = productService.searchProductList(productSearch1);
+		model.addAttribute("product1", product1);
+		
+		ProductSearch productSearch2 = new ProductSearch();
+		productSearch2.setCategoryIdShop(46);
+		productSearch2.setShopId(shop.getId());
+		
+		List<Product> product2 = productService.searchProductList(productSearch2);
+		model.addAttribute("product2", product2);
+		
+		ProductSearch productSearch3 = new ProductSearch();
+		productSearch3.setCategoryIdShop(47);
+		productSearch3.setShopId(shop.getId());
+		
+		List<Product> product3 = productService.searchProductList(productSearch3);
+		model.addAttribute("product3", product3);
+		
+		ProductSearch productSearch4 = new ProductSearch();
+		productSearch4.setCategoryIdShop(48);
+		productSearch4.setShopId(shop.getId());
+		
+		List<Product> product4 = productService.searchProductList(productSearch4);
+		model.addAttribute("product4", product4);
+		
+		ProductSearch productSearch5 = new ProductSearch();
+		productSearch5.setCategoryIdShop(49);
+		productSearch5.setShopId(shop.getId());
+		
+		List<Product> product5 = productService.searchProductList(productSearch5);
+		model.addAttribute("product5", product5);
 		
 		return "customer/chitiet";
 	}
@@ -168,11 +214,11 @@ public class ShopController extends BaseController{
 						//format
 						String inputString2  = villageAddress.replaceAll("[%\\_\\-\\=\\&\\/\\(\\)\\*\\$\\#\\@\\!\\:\\;\\'\\.]", "").toLowerCase();
 						String[] words2 = inputString2.split("\\s+");
-						for (int i = 0; i < words.length; i++) {
-						    String word2 = words[i];
+						for (int i = 0; i < words2.length; i++) {
+						    String word2 = words2[i];
 						    String firstLetter2 = word2.substring(0, 1);
 						    String restOfWord2 = word2.substring(1);
-						    words[i] = firstLetter2.toUpperCase() + restOfWord2.toLowerCase();
+						    words2[i] = firstLetter2.toUpperCase() + restOfWord2.toLowerCase();
 						}
 						String formattedString2 = String.join(" ", words2);
 						

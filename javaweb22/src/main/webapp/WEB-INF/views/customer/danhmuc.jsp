@@ -31,12 +31,6 @@
             <!-- header -->
             <jsp:include page="/WEB-INF/views/customer/layout/header-chitiet.jsp"></jsp:include>
             <!-- /header -->
-            <!--banner__search -->
-            <div id="banner__search">
-                <button type="submit" id="search-eat"><i class="ti-search"></i></button>
-                <input type="text" name="search-eat" id="search-eat" placeholder="Tìm món ăn hoặc quán ăn">
-            </div>
-            <!-- /banner__search -->
             <!-- banner__list -->
             <div id="banner__list" class="row">
                 <div class="banner__list-item  col-xl-2 col-lg-4 col-md-6 col-sm-6 col-xs-6">

@@ -41,6 +41,8 @@
 </head>
 
 <body>
+	<div id="wrapper-myDiv">
+	 </div>
 	<!-- all -->
 	<div id="all">
 		<!-- top__chitiet -->
@@ -91,13 +93,12 @@
 						<button type="button" id="showDiv">
 							<i class="fa-sharp fa-regular fa-clock"></i>Đặt bàn
 						</button>
-						<div id="wrapper-myDiv">
 						<div id="myDiv">
 							<span id="closeDiv"><i class="ti-close"
 								style="font-size: 25px; font-weight: bold;"></i></span>
 							<div class="card-book">
 								<div class="card-body-book">
-									<h5 class="card-title-book">Đặt bàn trước cho quán thôi!</h5>
+									<h5 class="card-title-book">Đặt bàn trước cho quán!</h5>
 
 									<!-- General Form Elements -->
 									<form action="${base }/chitiet/book" method="post">
@@ -197,9 +198,7 @@
 								</div>
 							</div>
 
-						</div>
-						
-						</div>
+						</div>					
 					</div>
 					<!-- /btn-book-shop -->
 					<!-- product-details__sale -->
@@ -663,7 +662,7 @@
 								class="text-modal-2">5.000</span>
 						</div>
 					</div>
-					<!-- thirdBody -->
+					<!-- thirdBody
 					<div class="secondBody">
 						<span class="sp-secondBody-f">Topping</span><span
 							class="sp-secondBody-c">Optional, max 5</span>
@@ -717,6 +716,8 @@
 								class="text-modal-2">0</span>
 						</div>
 					</div>
+					
+					 -->
 					<!-- /thirdBody -->
 					<!-- four -->
 					<div class="secondBody">
