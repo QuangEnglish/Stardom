@@ -53,7 +53,7 @@
 <body>
 
 	<!-- Navigation-->
-	<jsp:include page="/WEB-INF/views/customer/layout/header-chitiet.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/customer/layout/header-success.jsp"></jsp:include>
 	<!-- Section-->
 	<section class="py-5 wrapper-container-cart">
 		<div class="pos-fix">

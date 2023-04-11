@@ -47,7 +47,7 @@
 				<div class="content-wrapper content-wrapper__product">
 					<div class="content-wrapper__product__body">
 						<div class="product__body__nav">
-							<a href="../../index.html">Trang chủ</a> <span><i
+							<a href="${base }/admin/trangchu">Trang chủ</a> <span><i
 								class="mdi mdi-chevron-right"></i></span> <a
 								href="../../pages/ui-features/SanPham.html">Gửi mail khách
 								hàng</a>

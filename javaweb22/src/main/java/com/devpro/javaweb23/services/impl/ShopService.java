@@ -185,8 +185,7 @@ public class ShopService extends BaseService<Shop> {
 			}
 			// tìm kiếm theo địa chỉ
 			if (searchModel.getProvinceAddress() != null && !"0".equals(searchModel.getProvinceAddress())
-					|| searchModel.getTownAddress() != null && !"0".equals(searchModel.getTownAddress())
-					|| searchModel.getVillageAddress() != null && !"0".equals(searchModel.getVillageAddress())) {
+					||!StringUtils.isEmpty(searchModel.getTownAddress())||!StringUtils.isEmpty(searchModel.getVillageAddress())) {
 				sql += " and ( province_address like '%" + searchModel.getProvinceAddress() + "%'" 
 					+ " and town_address like '%" + searchModel.getTownAddress() + "%'" 
 					+ " and village_address like '%" + searchModel.getVillageAddress() + "%')";

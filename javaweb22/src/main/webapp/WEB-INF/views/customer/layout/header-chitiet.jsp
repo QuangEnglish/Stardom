@@ -15,11 +15,11 @@
 			<a href="${base }/home/shop"><h2 class="brand-title">Stardom</h2></a>
 		</div>
 		<div class="wrapper-search-block" style="display:block;">
-			<form class="search-wrapper search-block" action="${base }/shop/detail/${shop.seo}" method="get">
+			<form class="search-wrapper search-block" action="${base }/shop/detail/${shop.seo}" method="post">
 				<div class="search search-block--mg" style="width: 60%;">
 					<i class="fa-sharp fa-solid fa-location-dot"></i> <input
 						type="text" name="keyword" id="conscious" placeholder="Tìm món..."
-						style="height: 46px; width: 60%;" required> <i
+						style="height: 46px; width: 60%;"> <i
 						class="fa-sharp fa-solid fa-location-crosshairs"></i>
 				</div>
 

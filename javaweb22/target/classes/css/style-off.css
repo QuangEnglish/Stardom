@@ -2469,10 +2469,10 @@ h2{
     .product-details__time {
         width: 100%;
         display: block;
-        margin: 20px 0px;
+        margin: 20px auto;
     }
     .product-details__select {
-        width: 420px;
+
         height: 48px;
         margin-right: 20px;
         border: 1px solid gainsboro;
@@ -2494,6 +2494,9 @@ h2{
     display: block;
     margin-top: 20px;
     margin: auto;
+	}
+	#product-details{
+		margin:auto;
 	}
 }
 @media (min-width: 1200px){
@@ -2584,9 +2587,14 @@ h2{
     top: -8px;
     left: 0;
     z-index: 1000;
+    
 }
+	.search-block{
+	display: none;
+	}
 }
 @media all and (max-width:1024px){
+	
     .title-content span{
         font-size: 25px;
         font-weight: 600;
@@ -2607,6 +2615,11 @@ h2{
         width: 80%;
         margin-top: 20px;
         /* padding-top: 150px; */
+    }
+        .product-details__time {
+        width: 100%;
+        display: block;
+        margin: 20px auto;
     }
     #address{
         width: 60%;
@@ -2649,6 +2662,11 @@ h2{
 
 }
 @media all and (max-width:992px){
+	    .product-details__time {
+        width: 100%;
+        display: block;
+        margin: 20px auto;
+    }
     .title-content span{
         font-size: 25px;
         font-weight: 600;
@@ -2680,8 +2698,9 @@ h2{
         width: 100%;
      }
      .product-details__select{
-         width: 420px;
+   
          height: 48px;
+         margin:auto;
          margin-right: 20px;
          border: 1px solid gainsboro;
          border-radius: 10px;
@@ -2724,6 +2743,7 @@ h2{
     }
     .brand-title{
         font-size: 30px;
+        display:none;
     }
     .footer-pay p {
         display: none;
@@ -2766,6 +2786,11 @@ h2{
 
 }
 @media all and (max-width:768px){
+	    .product-details__time {
+        width: 100%;
+        display: block;
+        margin: 20px auto;
+    }
     .title-content span{
         font-size: 25px;
         font-weight: 600;
@@ -2840,8 +2865,9 @@ h2{
         width: 100%;
      }
      .product-details__select{
-         width: 320px;
+
          height: 48px;
+         margin:auto;
          margin-right: 20px;
          border: 1px solid gainsboro;
          border-radius: 10px;
@@ -2891,6 +2917,7 @@ h2{
     #product-details {
         width: 80%;
         margin-top: 20px;
+        margin: auto;
         /* padding-top: 150px; */
     }
     .wrapper-imgShop {
@@ -2910,6 +2937,9 @@ h2{
 	}
 	.search-btn--sub{
 		font-size:15px;
+	}
+	.btn-book-shop{
+		width:50%;
 	}
 }
 
@@ -2984,6 +3014,7 @@ h2{
     #product-details {
         width: 80%;
        margin-top: 20px;
+       margin:auto;
         /* padding-top: 150px; */
     }
     .wrapper-imgShop {
@@ -2995,7 +3026,9 @@ h2{
     .search-btn {
     	width: 65%;
     }
-
+	.btn-book-shop{
+		width:50%;
+	}
 }
 
 @media (max-width: 1200px){

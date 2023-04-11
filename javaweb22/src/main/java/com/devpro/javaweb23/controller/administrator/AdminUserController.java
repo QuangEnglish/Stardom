@@ -2,6 +2,7 @@ package com.devpro.javaweb23.controller.administrator;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.devpro.javaweb23.controller.BaseController;
 import com.devpro.javaweb23.dto.UserSearch;
+import com.devpro.javaweb23.model.Email;
 import com.devpro.javaweb23.model.User;
 import com.devpro.javaweb23.services.PagerData;
 import com.devpro.javaweb23.services.impl.EmailService;
@@ -27,7 +29,8 @@ import com.devpro.javaweb23.services.impl.UserService;
 public class AdminUserController extends BaseController {
 	@Autowired
 	private UserService userService;
-
+	@Autowired
+	private EmailService emailService;
 	// list khách hàng
 	@RequestMapping(value = { "/admin/khachhang" }, method = RequestMethod.GET)
 	public String danh_sach_khach_hang(final Model model, final HttpServletRequest request,
@@ -73,8 +76,11 @@ public class AdminUserController extends BaseController {
 	
 	@RequestMapping(value = { "/admin/sendEmailToAllUsers" }, method = RequestMethod.GET)
 	public String gui_mail_all_khach_hang(final Model model, final HttpServletRequest request,
-			final HttpServletResponse response,@RequestParam String subject, @RequestParam String content) throws IOException {	
-		userService.sendEmailToAllUsers(subject, content);
+			final HttpServletResponse response,@RequestParam String subject, @RequestParam String content) throws IOException {
+		List<Email> emails = emailService.findAll();
+        for (Email email : emails) {
+		emailService.sendEmailToAllUsers(email.getEmail(), subject, content);
+        }
 		return "administrator/GuiMailKhachHang";
 	}
 	

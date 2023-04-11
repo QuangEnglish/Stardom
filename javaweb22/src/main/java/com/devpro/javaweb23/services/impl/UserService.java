@@ -17,11 +17,7 @@ import com.devpro.javaweb23.services.PagerData;
 
 @Service
 public class UserService extends BaseService<User> {
-    @Autowired
-    private EmailService emailService;
 
-    @Autowired
-    private JavaMailSender mailSender;
 	@Override
 	protected Class<User> clazz() {
 		return User.class;
@@ -50,15 +46,4 @@ public class UserService extends BaseService<User> {
 		return getEntitiesByNativeSQL(sql, searchModel.getPage());
 	}
 
-	public void sendEmailToAllUsers(String subject, String content) {
-		List<Email> emails = emailService.findAll();
-        for (Email email : emails) {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(email.getEmail());
-            message.setSubject(subject);
-            message.setText(content);
-            mailSender.send(message);
-        }
-    }
-	
 }
