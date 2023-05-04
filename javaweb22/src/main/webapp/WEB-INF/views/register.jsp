@@ -44,8 +44,11 @@
 								vài bước</h6>
 							<div class="alert alert-danger" role="alert" id="error-message"
 								style="display: none">Bạn cần nhập đầy đủ thông tin.</div>
-							<sf:form class="pt-3" modelAttribute="user" onsubmit="return validateForm()"
-								action="${base }/register" method="post">
+							<div class="alert alert-danger" role="alert" id="error-message2"
+								style="display: none">Sai mật khẩu</div>
+							<sf:form class="pt-3" modelAttribute="user" id="myFormRegister"
+								onsubmit="return validateForm()" action="${base }/register"
+								method="post">
 								<div class="form-group">
 									<sf:input path="username" type="text"
 										class="form-control form-control-lg"
@@ -67,18 +70,23 @@
 										class="form-control form-control-lg"
 										id="exampleInputPassword1" placeholder="Mật khẩu"></sf:input>
 								</div>
+								<div class="form-group">
+									<sf:input path="password" type="password"
+										class="form-control form-control-lg"
+										id="exampleInputPassword2" placeholder="Nhập lại mật khẩu"></sf:input>
+								</div>
 								<div class="mb-4">
 									<div class="form-check">
 										<label class="form-check-label text-muted"> <input
-											type="checkbox" class="form-check-input">Tôi đồng ý
+											type="checkbox" class="form-check-input" id="myCheckBox">Tôi đồng ý
 											với tất cả Điều khoản & Điều kiện <i class="input-helper"></i>
 										</label>
 									</div>
 								</div>
 								<div class="mt-3">
-									<button type="submit"
-										class="btn btn-block btn-gradient-primary2 btn-lg font-weight-medium auth-form-btn btn-regist"
-										>ĐĂNG KÝ</button>
+									<button type="submit" id="mySubmit"
+										class="btn btn-block btn-gradient-primary2 btn-lg font-weight-medium auth-form-btn btn-regist">ĐĂNG
+										KÝ</button>
 								</div>
 								<div class="text-center mt-4 font-weight-light">
 									Bạn đã có tài khoản <a href="${base }/login"
@@ -105,20 +113,41 @@
 	<script src="${base }/assets/js/misc.js"></script>
 	<!-- endinject -->
 	<script type="text/javascript">
-		 function validateForm() {
-		  var name = document.getElementById("exampleInputUsername1").value;
-		  var email = document.getElementById("exampleInputEmail1").value;
-		  var phone = document.getElementById("exampleInputPhone").value;
-		  var pass = document.getElementById("exampleInputPassword1").value;
-		  if (name == "" || email == "" || phone=="" || pass=="") {
-			  document.getElementById("error-message").style.display = "block";
-			    return false;
-		  } else {
-			  document.getElementById("error-message").style.display = "none";
-			    return true;
-		  }
-		 
+		function validateForm() {
+			var name = document.getElementById("exampleInputUsername1").value;
+			var email = document.getElementById("exampleInputEmail1").value;
+			var phone = document.getElementById("exampleInputPhone").value;
+			var pass = document.getElementById("exampleInputPassword1").value;
+			var pass2 = document.getElementById("exampleInputPassword2").value;
+			if (name == "" || email == "" || phone == "" || pass == "" || pass2 == "") {
+				document.getElementById("error-message").style.display = "block";
+				return false;
+			} else {
+				document.getElementById("error-message").style.display = "none";
+				return true;
+			}
+
 		}
 	</script>
+	<script>
+		const myCheckBox = document.getElementById('myCheckBox');
+		const mySubmit = document.getElementById('mySubmit');
+		const myFormRegister = document.getElementById('myFormRegister');
+		myCheckBox.addEventListener('click', function(){
+			if(myCheckBox.checked){
+				myFormRegister.addEventListener('submit', function(event){
+					alert('Đăng ký tài khoản thành công!');
+				});
+				
+			}else{
+				myFormRegister.addEventListener('submit', function(event){
+					event.preventDefault();
+					alert('Cần xác nhận các điều khoản!');
+				});
+			}
+		});
+
+	</script>
+	
 </body>
 </html>

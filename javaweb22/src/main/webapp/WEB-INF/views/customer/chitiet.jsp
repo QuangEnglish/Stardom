@@ -25,6 +25,9 @@
 
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/regular.min.css" integrity="sha512-WidMaWaNmZqjk3gDE6KBFCoDpBz9stTsTZZTeocfq/eDNkLfpakEd7qR0bPejvy/x0iT0dvzIq4IirnBtVer5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -158,7 +161,7 @@
 										
 												</select>
 											</div>
-											<label class="col-sm-2 col-form-label">Bàn:</label>
+											<label class="col-sm-2 col-form-label">Số lượng bàn:</label>
 											<div class="col-sm-4">
 												<select class="form-select" name="saleorderTable"
 													aria-label="Default select example">
@@ -258,7 +261,7 @@
 								ảnh nhà hàng</div>
 						</div>
 						<c:forEach items="${shop.shopImages }" var="shopImage">>				
-							<div class="mySlides ">
+							<div class="mySlides animate__animated animate__fadeIn">
 								<img src="${base }/upload/${shopImage.path}" style="width: 100%">
 								<div class="text">Bên trong quán</div>
 							</div>

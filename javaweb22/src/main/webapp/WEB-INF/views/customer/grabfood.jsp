@@ -19,6 +19,9 @@
 
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="shortcut icon"
 	href="${base}/img/imgtrangchu/iconLogoOffStardomChuan.png" />
 <link rel="stylesheet"
@@ -122,6 +125,7 @@
 				$("#sp-title-content").text("Quán ăn nổi bật");
 				$(".arm-hot").show();
 				$(".arrow-hot").show();
+				$(".btnShop").addClass("btnShop-red");
 			}
 			else if(('${shopSearchFilter.filterSelect}')==2){
 				$("#sp-title-content").text("Quán ăn đang sale");

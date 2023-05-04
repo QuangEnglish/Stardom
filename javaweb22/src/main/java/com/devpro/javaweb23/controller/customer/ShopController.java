@@ -190,7 +190,7 @@ public class ShopController extends BaseController{
 		shopSearch.setFilterSelect(filterSelect);
 		//shopSearch.setKeyword(keyword);			
 		//muốn giữ được các giá trị search trên màn hình thì cần phải đẩy lại dữ liệu nhập trước đó xuống vỉew
-		model.addAttribute("shopSearch", shopSearch);
+		model.addAttribute("shopSearch", new ShopSearch());
 					
 		PagerData<Shop> shops = shopService.searchShop(shopSearch);
 		model.addAttribute("shops", shops);

@@ -1,6 +1,8 @@
 package com.devpro.javaweb23.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.devpro.javaweb23.model.Role;
 import com.devpro.javaweb23.model.User;
 import com.devpro.javaweb23.services.impl.UserService;
 
@@ -43,12 +46,14 @@ public class LoginController extends BaseController {
 			throws IOException {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(4);
 		String encodedPassword  = passwordEncoder.encode(user.getPassword());
+		
 		User user2 = new User();
 		user2.setUsername(user.getUsername());
 		user2.setEmail(user.getEmail());
 		user2.setPhone(user.getPhone());
 		user2.setPassword(encodedPassword);
 		userService.saveOrUpdate(user2);
+		//userService.roleUserGuest(user2.getId());
 		// reset data, tránh spring form đẩy lại data lấy trước đó.
 		model.addAttribute("user", new User());
 		return "register";

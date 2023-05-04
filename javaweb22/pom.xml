@@ -66,10 +66,6 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-		</dependency>
 
 		<!-- devtools -->
 		<dependency>

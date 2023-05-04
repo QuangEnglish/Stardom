@@ -24,7 +24,7 @@ public class SaleOrderProducts extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "saleorder_id")
 	private SaleOrder saleOrder;
-	
+
 	public SaleOrder getSaleOrder() {
 		return saleOrder;
 	}

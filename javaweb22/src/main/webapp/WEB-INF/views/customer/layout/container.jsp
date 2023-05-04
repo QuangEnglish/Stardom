@@ -26,7 +26,7 @@
 						<div class="select-container">
 							<select class="select-input" name="provinceAddress"
 								id="provinceAddress">
-								<option value="">Tỉnh</option>
+								<option value="">Thành phố</option>
 								<option value="Hà Nội">Hà Nội</option>
 								<option value="Đà Nẵng">Đà Nẵng</option>
 								<option value="Hồ Chí Minh">Hồ Chí Minh</option>
@@ -98,10 +98,10 @@
 		<!-- /title-content-filter -->
 
 		<!-- body-content -->
-		<div class="body-content row">
+		<div class="body-content row ">
 			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
 				<!-- body-item -->
-				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 animate__animated animate__fadeIn">
 
 					<div class="img-item">
 						<div class="img-item-pos arm-sale" id="arm-sale">
@@ -112,7 +112,7 @@
 							<span>Hot</span>
 						</div>
 						<div class="arrow-hot arrow-hot" id="arrow-hot"></div>
-						<img src="${base }/upload/${shop.avatar}" alt="">
+						<img class="lazy" src="${base }/upload/${shop.avatar}" alt="">
 					</div>
 					<h3>${shop.name }</h3>
 					<h4>
