@@ -257,7 +257,7 @@
 					<div class="slideshow-container" style="height: 412px !important;">
 						<div class="mySlides ">
 							<img src="${base }/upload/${shop.avatar}" style="width: 100%">
-							<div class="text" style="color: var(- -violet-color);">Hình
+							<div class="text">Hình
 								ảnh nhà hàng</div>
 						</div>
 						<c:forEach items="${shop.shopImages }" var="shopImage">>				
@@ -633,7 +633,7 @@
 							<span class="checkmark-modal"></span>
 						</label>
 						<div class="wrapper-text-modal">
-							<span class="text-modal-1">chả</span> <span class="text-modal-2">7.000</span>
+							<span class="text-modal-1">xxx</span> <span class="text-modal-2">7.000</span>
 						</div>
 					</div>
 					<div class="line-gray"></div>
@@ -642,7 +642,7 @@
 							<span class="checkmark-modal"></span>
 						</label>
 						<div class="wrapper-text-modal">
-							<span class="text-modal-1">Pate</span> <span class="text-modal-2">10.000</span>
+							<span class="text-modal-1">xxx</span> <span class="text-modal-2">10.000</span>
 						</div>
 					</div>
 					<div class="line-gray"></div>
@@ -651,7 +651,7 @@
 							<span class="checkmark-modal"></span>
 						</label>
 						<div class="wrapper-text-modal">
-							<span class="text-modal-1">thịt nướng</span> <span
+							<span class="text-modal-1">xxx</span> <span
 								class="text-modal-2">15.000</span>
 						</div>
 					</div>
@@ -661,7 +661,7 @@
 							<span class="checkmark-modal"></span>
 						</label>
 						<div class="wrapper-text-modal">
-							<span class="text-modal-1">trứng</span> <span
+							<span class="text-modal-1">xxx</span> <span
 								class="text-modal-2">5.000</span>
 						</div>
 					</div>

@@ -101,7 +101,8 @@
 		<div class="body-content row ">
 			<c:forEach var="shop" items="${shops.data }" varStatus="loop">
 				<!-- body-item -->
-				<div class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 animate__animated animate__fadeIn">
+				<div
+					class="body-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 animate__animated animate__fadeIn">
 
 					<div class="img-item">
 						<div class="img-item-pos arm-sale" id="arm-sale">
@@ -308,10 +309,45 @@
 				chúng tôi xua tan cơn đói của bạn nhờ một loạt đối tác bán đồ ăn ở
 				Việt Nam.</p>
 		</div>
+		<div class="grapfood">
+			<span>Làm cách nào để đặt đồ ăn ở Việt Nam?</span>
+			<p>Sau đây là cách đơn giản nhất để đặt đồ ăn qua GrabFood khi
+				bạn ở Việt Nam:</p>
+			<p style="margin-left: 10px; padding: 0px !important">1. Tìm kiếm
+				nhà hàng hoặc món ăn yêu thích - Nhập địa chỉ của bạn vào trang chủ.
+				Xem các Nhà hàng và điểm ăn uống gần chỗ bạn trong danh sách của
+				GrabFood. Chọn nhà hàng yêu thích, duyệt hết thực đơn và chọn món ăn
+				bạn muốn đặt.</p>
+			<p style="margin-left: 10px; padding: 0px !important">2. Kiểm tra
+				& Thanh toán - Sau khi chắc chắn rằng bạn đã đặt đầy đủ các món theo
+				nhu cầu, hãy nhấp vào tab “ORDER NOW” (ĐẶT MÓN NGAY) và nhập địa chỉ
+				giao đồ ăn cuối cùng. Chọn phương thức thanh toán phù hợp nhất với
+				bạn và thanh toán.</p>
+			<p style="margin-left: 10px; padding: 0px !important">3. Giao
+				hàng - GrabFood đã thiết kế một hành trình phục vụ khách hàng liền
+				mạch để bạn có thể thưởng thức món ăn một cách trọn vẹn. Chúng tôi
+				sẽ gửi cho bạn email và tin nhắn SMS tức thời xác nhận đơn đặt hàng
+				của bạn và thời gian giao hàng dự kiến. Sau đó chúng tôi sẽ giao
+				ngay đồ ăn cho bạn.</p>
+		</div>
+		<div class="grapfood">
+			<span> Stardom có cung cấp dịch vụ giao đồ ăn 24x7 không?</span>
+			<p>Chúng tôi chỉ biết một điều duy nhất, đó là "đồ ăn", vậy nên
+				tất nhiên chúng tôi cung cấp dịch vụ này rồi. Xin lưu ý, mặc dù
+				chúng tôi là đối tác giao đồ ăn phục vụ 24x7, nhưng một số nhà hàng
+				trong danh mục của chúng tôi có thể hạn chế giao đồ ăn khuya hoặc có
+				thể không phục vụ đối với các đơn đặt hàng. Tuy nhiên, chúng tôi đã
+				liệt kê danh sách những nhà hàng phục vụ nhu cầu ăn khuya của bạn
+				trong mục Late Night Delivery (Giao hàng khuya).</p>
+		</div>
+		<div class="grapfood">
+			<span> Stardom có chấp nhận tiền mặt không?</span>
+			<p>Tất nhiên là có! GrabFood chấp nhận mọi hình thức thanh toán cho dịch vụ giao đồ ăn, bao gồm cả tiền mặt khi giao hàng tại Việt Nam.</p>
+		</div>
 		<!-- /text-->
 		<!-- see-all -->
 		<div class="see-all">
-			<button type="button" class="btn-see-shop">
+			<button type="button" class="btn-see-shop" id="myButton-see-add-content">
 				<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem
 				thêm
 			</button>

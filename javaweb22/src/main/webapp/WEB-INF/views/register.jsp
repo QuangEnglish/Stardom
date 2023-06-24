@@ -45,7 +45,12 @@
 							<div class="alert alert-danger" role="alert" id="error-message"
 								style="display: none">Bạn cần nhập đầy đủ thông tin.</div>
 							<div class="alert alert-danger" role="alert" id="error-message2"
-								style="display: none">Sai mật khẩu</div>
+								style="display: none">Mật khẩu không khớp</div>
+							<div class="alert alert-danger" role="alert" id="error-message3"
+								style="display: none">Cần xác nhận các điều khoản!</div>
+							<div class="alert alert-success" role="alert" id="error-message4" style="display: none">
+  									Đăng ký thành công!
+							</div>	
 							<sf:form class="pt-3" modelAttribute="user" id="myFormRegister"
 								onsubmit="return validateForm()" action="${base }/register"
 								method="post">
@@ -60,7 +65,7 @@
 										placeholder="Email"></sf:input>
 								</div>
 								<div class="form-group">
-									<sf:input path="phone" type="text"
+									<sf:input path="phone" type="text" maxlength="10"
 										class="form-control form-control-lg" id="exampleInputPhone"
 										placeholder="Số điện thoại"></sf:input>
 
@@ -71,9 +76,9 @@
 										id="exampleInputPassword1" placeholder="Mật khẩu"></sf:input>
 								</div>
 								<div class="form-group">
-									<sf:input path="password" type="password"
+									<input type="password"
 										class="form-control form-control-lg"
-										id="exampleInputPassword2" placeholder="Nhập lại mật khẩu"></sf:input>
+										id="exampleInputPassword2" placeholder="Nhập lại mật khẩu">
 								</div>
 								<div class="mb-4">
 									<div class="form-check">
@@ -114,39 +119,38 @@
 	<!-- endinject -->
 	<script type="text/javascript">
 		function validateForm() {
+			const myCheckBox = document.getElementById('myCheckBox');
+			const mySubmit = document.getElementById('mySubmit');
+			const myFormRegister = document.getElementById('myFormRegister');
 			var name = document.getElementById("exampleInputUsername1").value;
 			var email = document.getElementById("exampleInputEmail1").value;
 			var phone = document.getElementById("exampleInputPhone").value;
 			var pass = document.getElementById("exampleInputPassword1").value;
 			var pass2 = document.getElementById("exampleInputPassword2").value;
+			
 			if (name == "" || email == "" || phone == "" || pass == "" || pass2 == "") {
 				document.getElementById("error-message").style.display = "block";
 				return false;
-			} else {
+			}else if(pass !== pass2){
+				document.getElementById("error-message2").style.display = "block";
 				document.getElementById("error-message").style.display = "none";
+				return false;
+			}
+			else if(myCheckBox.checked == false){
+				document.getElementById("error-message3").style.display = "block";
+				document.getElementById("error-message2").style.display = "none";
+				document.getElementById("error-message").style.display = "none";
+				return false;
+			}
+			else{
+				document.getElementById("error-message").style.display = "none";
+				document.getElementById("error-message2").style.display = "none";
+				document.getElementById("error-message3").style.display = "none";
+				document.getElementById("error-message4").style.display = "block";
 				return true;
 			}
 
 		}
-	</script>
-	<script>
-		const myCheckBox = document.getElementById('myCheckBox');
-		const mySubmit = document.getElementById('mySubmit');
-		const myFormRegister = document.getElementById('myFormRegister');
-		myCheckBox.addEventListener('click', function(){
-			if(myCheckBox.checked){
-				myFormRegister.addEventListener('submit', function(event){
-					alert('Đăng ký tài khoản thành công!');
-				});
-				
-			}else{
-				myFormRegister.addEventListener('submit', function(event){
-					event.preventDefault();
-					alert('Cần xác nhận các điều khoản!');
-				});
-			}
-		});
-
 	</script>
 	
 </body>

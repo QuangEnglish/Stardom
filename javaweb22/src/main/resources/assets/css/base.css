@@ -13734,7 +13734,7 @@
   /* === Landing screens === */
   /* Auth */
   .auth .auth-form-light {
-     background: url('http://localhost:8080/img/imgtrangchu/backgroundLogin7.jpg'); 
+  
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }

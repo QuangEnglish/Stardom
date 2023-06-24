@@ -80,6 +80,23 @@ $(document).ready(function(){
 						
 //-btn xem thêm
 
+//btn-xem thêm nội dung
+	$(".grapfood").slice(1).hide();
+	$("#myButton-see-add-content").html('<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem thêm');
+	$("#myButton-see-add-content").click(
+		function(){
+			if($(this).text()==="Xem thêm"){
+				$(this).html('<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Thu gọn');
+			}else{
+				window.scrollTo({ top: 2500, behavior: 'smooth' });
+				$(this).html('<i class="fa-solid fa-plus" style="color: #fff; margin-right: 5px;"></i>Xem thêm');
+			}
+			$(".grapfood").slice(1).stop().fadeToggle(500);
+		}
+	);
+
+//btn-xem thêm nội dung
+
 
 //--------------------------------------------------
 // css select
